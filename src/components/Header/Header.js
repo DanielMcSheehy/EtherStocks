@@ -14,6 +14,7 @@ import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
+import moutainImg from './mountain-image-08.jpg';
 
 class Header extends React.Component {
   render() {
@@ -29,11 +30,11 @@ class Header extends React.Component {
               height="38"
               alt="React"
             />
-            <span className={s.brandTxt}>Your Company</span>
+            <span className={s.brandTxt}>EthDev</span>
           </Link>
           <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
+            <h1 className={s.bannerTitle}>EtherStocks</h1>
+            <p className={s.bannerDesc}>Good Luck</p>
           </div>
         </div>
       </div>
