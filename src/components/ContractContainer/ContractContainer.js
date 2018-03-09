@@ -26,15 +26,24 @@ class ContractContainer extends React.Component {
 
   render() {
     // console.log('bots', this.state.stockAddress['BOTS'].split('https://etherscan.io/address/')[1]);
+    // for (const key in this.state.stockAddress) {
+    //   console.log(
+    //     key,
+    //     this.state.stockAddress[key].split('https://etherscan.io/address/')[1],
+    //   );
+    // }
+    let stockView = [];
+    Object.keys(this.state.stockAddress).map(function(key, index) {
+      stockView.push(<ContractViewer
+        stockName={key}
+        contractAddress={this.state.stockAddress[key].split('https://etherscan.io/address/')[1]}
+        />);
 
-    for (const key in this.state.stockAddress) {
-      console.log(
-        key,
-        this.state.stockAddress[key].split('https://etherscan.io/address/')[1],
-      );
-    }
+   }.bind(this));
+   // {this.props.players.map(p => <p style={{fontSize: '11px'}}>Player: {p}</p>)}
     return (
       <div>
+        {stockView}
         <ContractViewer
           stockName="BOTS"
           contractAddress="0xc908a34165d2720d12ffcfb6b99b47161b1c9946"
