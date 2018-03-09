@@ -3,18 +3,17 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Button.css';
 
 class ButtonView extends React.Component {
-      constructor(prop) {
-        super(prop);
-        this.state = {
-        };
-        this.handleClick =  this.handleClick.bind(this);
-      }
+  constructor(prop) {
+    super(prop);
+    this.state = {};
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleClick(event) {
     event.preventDefault();
   }
   render() {
-    var outerWrapper = {
+    const outerWrapper = {
       backgroundColor: this.props.color,
       color: 'white',
       marginBottom: '10px',
@@ -24,13 +23,13 @@ class ButtonView extends React.Component {
       borderRadius: '4px',
       textAlign: 'center',
     };
-    let red = '#ce2b37';
-    let green = '#009246';
-    let orange = '#f37735';
-    let yellow = '#ffc425';
-    let lightBlue = '#00aedb';
-    let blue = '#0057e7';
-    
+    const red = '#ce2b37';
+    const green = '#009246';
+    const orange = '#f37735';
+    const yellow = '#ffc425';
+    const lightBlue = '#00aedb';
+    const blue = '#0057e7';
+
     return (
       <div>
         <button style={outerWrapper}>{this.props.label}</button>
