@@ -13,12 +13,6 @@ class ContractViewer extends React.Component {
         super(props);
         this.state = {
             ContractInstance: {},
-            stockAddress: {'CRYP2 KITTIES': 'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
-            'BOTS': 'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
-            'PUPPIES': 'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
-            'DRAGONS': 'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
-            'TUPLIPS': 'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-            'ALPACAS': 'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85'},
             price: 0,
             contractBalance: 0,
             tokenSupply: 0,
@@ -40,18 +34,8 @@ class ContractViewer extends React.Component {
         }
         
         const MyContract = web3.eth.contract(Abi);
-
-        let stockAddress = {
-            'CRYP2 KITTIES': 'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
-            'BOTS': 'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
-            'PUPPIES': 'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
-            'DRAGONS': 'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
-            'TUPLIPS': 'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-            'ALPACAS': 'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85'
-        }
-        //this.setState({ stockAddress });
         
-        var ContractInstance = MyContract.at('0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0');
+        var ContractInstance = MyContract.at(this.props.contractAddress);
         
         console.log(ContractInstance);
         // var newGameEvent = ContractInstance.newGame({},{fromBlock: 0, toBlock: 'latest'});
@@ -61,7 +45,7 @@ class ContractViewer extends React.Component {
             ownerAccount: web3.eth.accounts[0]
         });
 
-        console.log('account here: ', ContractInstance);
+        
         this.getBuyPrice(ContractInstance);
         }
         
@@ -69,7 +53,7 @@ class ContractViewer extends React.Component {
     getBuyPrice(ContractInstance) { //Returns total number (not -1)
         let answer;
         this.setState({ContractInstance});
-        console.log('hi', this.state.ContractInstance);
+       
             ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
                 console.error(error);
@@ -85,7 +69,7 @@ class ContractViewer extends React.Component {
                 console.error(error);
                 }
                 else {
-                    console.log('balance: ', result.c[0])
+                    //console.log('balance: ', result.c[0])
                 this.setState({ contractBalance: result.c[0] })
                 }
             }.bind(this));
@@ -95,7 +79,7 @@ class ContractViewer extends React.Component {
                 console.error(error);
                 }
                 else {
-                    console.log('token: ', result.c[0])
+                    //console.log('token: ', result.c[0])
                 this.setState({ tokenSupply: result.c[0] })
                 }
             }.bind(this));
@@ -164,9 +148,7 @@ class ContractViewer extends React.Component {
       
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
-        <StockView price= {this.state.price} stockName='BOTS' shares={this.state.price} tokenSupply={this.state.tokenSupply} />
-        <StockView stockName='Gaming'/>
-        <StockView stockName='Adult Entertainment'/>
+        <StockView price= {this.state.price} stockName={this.props.stockName} shares={this.state.price} tokenSupply={this.state.tokenSupply} />
       </div>
     );
   }

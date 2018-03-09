@@ -10,11 +10,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import ContractViewer from '../../components/ContractViewer';
+import ContractContainer from '../../components/ContractContainer';
 import s from './Home.css';
-
-
-
 
 class Home extends React.Component {
   static propTypes = {
@@ -27,14 +24,12 @@ class Home extends React.Component {
     ).isRequired,
   };
 
-  
-
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1 style={{ marginLeft: '40%'}}>Featured</h1>
-          <ContractViewer />
+          <h1 style={{ marginLeft: '40%' }}>Featured</h1>
+          <ContractContainer />
         </div>
       </div>
     );
