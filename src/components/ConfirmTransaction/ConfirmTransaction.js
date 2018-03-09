@@ -5,12 +5,21 @@ import s from './ConfirmTransaction.css';
 class ConfirmTransaction extends React.Component {
   constructor(prop) {
     super(prop);
-    this.state = {};
+    this.state = {
+      ethValue: 0,
+    };
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick(event) {
     event.preventDefault();
+    this.props.buy(this.state.ethValue);
+  }
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ ethValue: event.target.value });
+
   }
   render() {
     const outerWrapper = {
@@ -37,7 +46,7 @@ class ConfirmTransaction extends React.Component {
 
     return (
       <div>
-        <textarea style={textAreaWrap} rows="1" cols="10" placeholder="eth">
+        <textarea onChange={this.handleChange} style={textAreaWrap} rows="1" cols="10" placeholder="eth">
           
         </textarea>
         <button onClick={this.handleClick} style={outerWrapper}>

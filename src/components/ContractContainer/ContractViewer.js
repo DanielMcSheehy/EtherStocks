@@ -74,9 +74,10 @@ class ContractViewer extends React.Component {
             }.bind(this));
     }
     
-  buy() {
-    let _amountToSendInWei = web3.toWei(0.000001);
-    web3.eth.contract(Abi).at(this.props.contractAddress).fund({from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+  buy(_amountToSendInWei) {
+    let _ethValue = web3.toWei(_amountToSendInWei);
+    alert(_ethValue);
+    web3.eth.contract(Abi).at(this.props.contractAddress).fund({from: this.state.ownerAccount, value: _ethValue}, function(error, result) {
         if (error) {
         console.error(error);
         }

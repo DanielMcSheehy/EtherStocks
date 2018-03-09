@@ -7,13 +7,15 @@ import ConfirmTransaction from '../ConfirmTransaction';
 class ButtonView extends React.Component {
   constructor(prop) {
     super(prop);
-    this.state = {};
+    this.state = {
+      togglePaymentIntput: false,
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     event.preventDefault();
-    this.props.buy();
+    this.setState({ togglePaymentIntput: true });
   }
   render() {
     const red = '#ce2b37';
@@ -23,10 +25,12 @@ class ButtonView extends React.Component {
     const lightBlue = '#00aedb';
     const blue = '#0057e7';
 
+    let toggleInput = this.state.togglePaymentIntput ? <ConfirmTransaction buy={this.props.buy}/> : "";
     return (
+      
       <div>
         <Button click={this.handleClick}  label="Buy" color={green} />
-        <ConfirmTransaction />
+        {toggleInput}
         <Button click={this.props.sell} label="Sell" color={red} />
         <Button click={this.props.reinvest} label="Reinvest" color={orange} />
         <Button click={this.props.withdraw} label="Withdraw" color={lightBlue} />
