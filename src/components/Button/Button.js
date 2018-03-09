@@ -32,7 +32,7 @@ class ButtonView extends React.Component {
 
     return (
       <div>
-        <button onClick={this.props.buy} style={outerWrapper}>
+        <button onClick={this.props.click} style={outerWrapper}>
           {this.props.label}
         </button>
       </div>

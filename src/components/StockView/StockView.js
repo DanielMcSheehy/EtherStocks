@@ -50,7 +50,13 @@ class StockView extends React.Component {
           <p>Price: {this.props.price} ETH</p>
           <p>Balance: {this.props.shares} Shares</p>
           <p>Token Supply: {this.props.tokenSupply} Shares</p>
-          <ButtonView buy={this.props.buy} />
+          <ButtonView 
+          buy={this.props.buy} 
+          sell={this.props.sell} 
+          reinvest={this.props.reinvest} 
+          withdraw={this.props.withdraw} 
+          getout={this.props.getout} 
+          />
         </div>
       </div>
     );

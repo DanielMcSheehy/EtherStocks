@@ -54,11 +54,10 @@ class ContractViewer extends React.Component {
        
             ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
-                console.error(error);
+                    console.error(error);
                 }
                 else {
-                    //console.log('price: ', web3.toWei(result.c[1]));
-                this.setState({ price: web3.fromWei(result.c[1]) })
+                    this.setState({ price: web3.fromWei(result.c[1]) })
                 }
             }.bind(this));
             
@@ -96,7 +95,6 @@ class ContractViewer extends React.Component {
   }
 
   sell() { // No parameter, sells all. Must withdraw() to get ether. GetMeOutOfHere is sell->withdraw
-    let _amountToSendInWei = web3.toWei(0.000001);
     web3.eth.contract(Abi).at(this.props.contractAddress).sellMyTokens({from: this.state.ownerAccount}, function(error, result) {
         if (error) {
         console.error(error);
@@ -108,7 +106,6 @@ class ContractViewer extends React.Component {
   }
 
   reinvest() {
-    let _amountToSendInWei = web3.toWei(0.000001);
     web3.eth.contract(Abi).at(this.props.contractAddress).reinvestDividends({from: this.state.ownerAccount}, function(error, result) {
         if (error) {
         console.error(error);
@@ -120,7 +117,6 @@ class ContractViewer extends React.Component {
   }
 
   withdraw() {
-    let _amountToSendInWei = web3.toWei(0.000001);
     web3.eth.contract(Abi).at(this.props.contractAddress).withdraw({from: this.state.ownerAccount}, function(error, result) {
         if (error) {
         console.error(error);
@@ -132,7 +128,6 @@ class ContractViewer extends React.Component {
   }
 
   getout() {
-    let _amountToSendInWei = web3.toWei(0.000001);
     web3.eth.contract(Abi).at(this.props.contractAddress).getMeOutOfHere({from: this.state.ownerAccount}, function(error, result) {
         if (error) {
         console.error(error);
@@ -152,7 +147,16 @@ class ContractViewer extends React.Component {
       
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
-        <StockView buy={this.buy} price= {this.state.price} stockName={this.props.stockName} shares={this.state.price} tokenSupply={this.state.tokenSupply} />
+        <StockView 
+        buy={this.buy} 
+        sell={this.sell} 
+        reinvest={this.reinvest} 
+        withdraw={this.withdraw} 
+        getout={this.getout} 
+        price= {this.state.price} 
+        stockName={this.props.stockName} 
+        shares={this.state.price} 
+        tokenSupply={this.state.tokenSupply} />
       </div>
     );
   }
