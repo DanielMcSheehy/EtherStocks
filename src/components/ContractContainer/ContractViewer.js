@@ -18,10 +18,7 @@ class ContractViewer extends React.Component {
             tokenSupply: 0,
         };
         this.getBuyPrice =  this.getBuyPrice.bind(this);
-        this.intiateContract = this.intiateContract.bind(this);
-        this.setBet = this.setBet.bind(this);
-        this.getBets = this.getBets.bind(this);
-        this.join = this.join.bind(this);
+        this.buy = this.buy.bind(this);
       }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
@@ -40,16 +37,13 @@ class ContractViewer extends React.Component {
         console.log(ContractInstance);
         // var newGameEvent = ContractInstance.newGame({},{fromBlock: 0, toBlock: 'latest'});
         
-        
         this.setState({
             ownerAccount: web3.eth.accounts[0]
         });
-
         
         this.getBuyPrice(ContractInstance);
         }
         
-
     getBuyPrice(ContractInstance) { //Returns total number (not -1)
         let answer;
         this.setState({ContractInstance});
@@ -84,62 +78,21 @@ class ContractViewer extends React.Component {
                 }
             }.bind(this));
     }
-    getBets(event) { // Returns all info about certain bet, consider using a loop
-        event.preventDefault();
-        this.getGameCount();
-        let gameTotal = this.state.gamecount;
-        for (var i = 0; i<= gameTotal-1; i++){
-            this.state.ContractInstance.getBet(i, {from: this.state.ownerAccount}, function(error, result) {
-                if (error) {
-                console.error(error);
-                }
-                else {
-        
-                }
-            }.bind(this));
+    
+  buy() {
+
+    let _amountToSendInWei = web3.toWei(0.000001);
+    web3.eth.contract(Abi).at(this.props.contractAddress).fund({from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+        if (error) {
+        console.error(error);
         }
-    }
-    intiateContract() { // Need to do this to become owner
-        this.state.ContractInstance.deployGamble({from: this.state.ownerAccount}, function(error, result) {
-            if (error) {
-            console.error(error);
-            }
-            else {
-            console.log('result: ', result);
-            }
-        });
-    }
-    setBet(event) { // Creates New Game
-        event.preventDefault();
-        let betValue = this.bet.value;
-        let max_players = this.maxPlayers.value;
-
-        this.state.ContractInstance.setBet(betValue, max_players, {from: this.state.ownerAccount}, function(error, result) {
-            if (error) {
-            console.error(error);
-            }
-            else {
-            console.log('result: ', result);
-            }
-        });
-    }
-
-    join(index, _amountToSendInWei) { // Am I sending the right amount?
-        //event.preventDefault();
-        //let _amountToSendInWei = 100;
-        this.state.ContractInstance.join(index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
-            if (error) {
-            console.error(error);
-            }
-            else {
-            console.log('result: ', result);
-            }
-        });
-    }
+        else {
+        console.log('result: ', result);
+        }
+    });
+  }
 
   render() {
-      // <div style={{marginLeft: '10%'}}>  {this.state.games.map((p, index) => <GameView index={index} players={p.players} open={p.open} cost={p.betValue}
-      //maxPlayers={p.maxPlayers} winnerAddress={p.winnerAddress} join={this.join.bind(this)} />)} 
       var outerWrapper = {
         height: '500px',
         display: 'block',
@@ -148,7 +101,7 @@ class ContractViewer extends React.Component {
       
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
-        <StockView price= {this.state.price} stockName={this.props.stockName} shares={this.state.price} tokenSupply={this.state.tokenSupply} />
+        <StockView buy={this.buy} price= {this.state.price} stockName={this.props.stockName} shares={this.state.price} tokenSupply={this.state.tokenSupply} />
       </div>
     );
   }

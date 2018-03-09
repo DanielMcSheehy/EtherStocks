@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './StockView.css';
-import Button from '../ButtonView';
+import ButtonView from '../ButtonView';
 
 class StockView extends React.Component {
   constructor(prop) {
@@ -17,7 +17,6 @@ class StockView extends React.Component {
   render() {
     const outerWrapper = {
       // CSS in this is temporary.
-      float: 'left',
       width: '25%',
       borderRadius: '3px',
       textAlign: 'center',
@@ -51,7 +50,7 @@ class StockView extends React.Component {
           <p>Price: {this.props.price} ETH</p>
           <p>Balance: {this.props.shares} Shares</p>
           <p>Token Supply: {this.props.tokenSupply} Shares</p>
-          <Button />
+          <ButtonView buy={this.props.buy} />
         </div>
       </div>
     );

@@ -23,7 +23,7 @@ class ButtonView extends React.Component {
 
     return (
       <div>
-        <Button label="Buy" color={green} />
+        <Button buy={this.props.buy} label="Buy" color={green} />
         <Button label="Sell" color={red} />
         <Button label="Reinvest" color={orange} />
         <Button label="Withdraw" color={lightBlue} />
