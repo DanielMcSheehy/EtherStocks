@@ -48,10 +48,9 @@ class StockView extends React.Component {
           <p style={headerText}>{this.props.stockName}</p>
         </div>
         <div style={ContentWrapper}>
-          <p>0.105576 ETH</p>
-          <p>Total Shares: 4946.5533 EPY</p>
-          <p>Mark Cap: 257.1738 ETH</p>
-          <p>Buy cost: 0.1055678</p>
+          <p>Price: {this.props.price} ETH</p>
+          <p>Balance: {this.props.shares} Shares</p>
+          <p>Token Supply: {this.props.tokenSupply} Shares</p>
           <Button />
         </div>
       </div>

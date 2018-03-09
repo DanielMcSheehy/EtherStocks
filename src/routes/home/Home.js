@@ -15,6 +15,7 @@ import s from './Home.css';
 
 
 
+
 class Home extends React.Component {
   static propTypes = {
     news: PropTypes.arrayOf(

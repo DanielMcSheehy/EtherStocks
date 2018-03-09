@@ -13,13 +13,17 @@ class ContractViewer extends React.Component {
         super(props);
         this.state = {
             ContractInstance: {},
-            gamecount: 0,
-            ownerAccount: '',
-            betValue: 0,
-            maxPlayers: 3,
-            games: [],
+            stockAddress: {'CRYP2 KITTIES': 'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
+            'BOTS': 'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
+            'PUPPIES': 'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
+            'DRAGONS': 'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
+            'TUPLIPS': 'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
+            'ALPACAS': 'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85'},
+            price: 0,
+            contractBalance: 0,
+            tokenSupply: 0,
         };
-        this.getGameCount =  this.getGameCount.bind(this);
+        this.getBuyPrice =  this.getBuyPrice.bind(this);
         this.intiateContract = this.intiateContract.bind(this);
         this.setBet = this.setBet.bind(this);
         this.getBets = this.getBets.bind(this);
@@ -36,91 +40,66 @@ class ContractViewer extends React.Component {
         }
         
         const MyContract = web3.eth.contract(Abi);
-        var ContractInstance = MyContract.at('0x8acf3a3cf142eb3305230982e0cf0d344090f492');
-        var newGameEvent = ContractInstance.newGame({},{fromBlock: 0, toBlock: 'latest'});
-        var joinedGameEvent = ContractInstance.joined({},{fromBlock: 0, toBlock: 'latest'});
-        var winGameEvent = ContractInstance.win({},{fromBlock: 0, toBlock: 'latest'});
 
-        newGameEvent.watch(function(error, result){
-            console.log('newgame', result);
-            let eventObj = result.args;
-            
-                let translateObj = {
-                    index: eventObj.index.c[0], // needed?
-                    winnerAddress: '', //'0x
-                    betValue: eventObj.betValue.c[0],
-                    maxPlayers: eventObj.maxPlayers.c[0],
-                    players: [],
-                    open: true //will update on win() event
-                };
-                    //if (this.state.games.length  < this.state.gamecount) { //Prevent storing duplicate games 
-                        var joined = this.state.games.concat(translateObj);
-                        this.setState({ games: joined });
-                        console.log('setting state', this.state.games);
-        }.bind(this));
-
-        joinedGameEvent.watch(function(error, result){ // Includes balance 
-            if (error) {
-                console.log(error);
-            }
-            else {
-                console.log('joined', result);
-                let eventObj = result.args;
-                let index = eventObj.index.c[0];
-                let newPlayerAddress = eventObj.playerAddress;
-                let updatedGames = this.state.games.slice(0);
-                try {
-                    updatedGames[index].players.push(newPlayerAddress); //FIX!!
-                    this.setState({games: updatedGames});
-                } catch {
-                    console.log('error');
-                }
-            }
-        }.bind(this));
-
-        winGameEvent.watch(function(error, result){ //Include Payout Later
-            if (error) {
-                console.log(error);
-            }
-            else {
-                console.log('win', result);
-                let eventObj = result.args;
-                let winnerAddress = eventObj.winnerAddress;
-                let index = eventObj.index.c[0];
-                let payout = eventObj.payout.c[0];
-                let updatedGames = this.state.games.slice(0);
- 
-                try {
-                    updatedGames[index].winnerAddress = winnerAddress;
-                    updatedGames[index].open = false;
-                    this.setState({games: updatedGames});
-                } catch {
-                    console.log('error win');
-                }
-           
-            }
-        }.bind(this));
-
+        let stockAddress = {
+            'CRYP2 KITTIES': 'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
+            'BOTS': 'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
+            'PUPPIES': 'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
+            'DRAGONS': 'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
+            'TUPLIPS': 'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
+            'ALPACAS': 'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85'
+        }
+        //this.setState({ stockAddress });
+        
+        var ContractInstance = MyContract.at('0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0');
+        
+        console.log(ContractInstance);
+        // var newGameEvent = ContractInstance.newGame({},{fromBlock: 0, toBlock: 'latest'});
+        
+        
         this.setState({
-            ContractInstance: ContractInstance,
             ownerAccount: web3.eth.accounts[0]
         });
+
         console.log('account here: ', ContractInstance);
-        
+        this.getBuyPrice(ContractInstance);
         }
         
 
-    getGameCount() { //Returns total number (not -1)
+    getBuyPrice(ContractInstance) { //Returns total number (not -1)
         let answer;
-        this.state.ContractInstance.totalGames({from: this.state.ownerAccount}, function(error, result) {
-            if (error) {
-            console.error(error);
-            }
-            else {
-            this.setState({ gamecount: result.c[0] })
-            }
-        }.bind(this));
-       }
+        this.setState({ContractInstance});
+        console.log('hi', this.state.ContractInstance);
+            ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
+                if (error) {
+                console.error(error);
+                }
+                else {
+                    //console.log('price: ', web3.toWei(result.c[1]));
+                this.setState({ price: web3.fromWei(result.c[1]) })
+                }
+            }.bind(this));
+            
+            ContractInstance.balanceOf(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
+                if (error) {
+                console.error(error);
+                }
+                else {
+                    console.log('balance: ', result.c[0])
+                this.setState({ contractBalance: result.c[0] })
+                }
+            }.bind(this));
+
+            ContractInstance.totalSupply({from: this.state.ownerAccount}, function(error, result) {
+                if (error) {
+                console.error(error);
+                }
+                else {
+                    console.log('token: ', result.c[0])
+                this.setState({ tokenSupply: result.c[0] })
+                }
+            }.bind(this));
+    }
     getBets(event) { // Returns all info about certain bet, consider using a loop
         event.preventDefault();
         this.getGameCount();
@@ -182,9 +161,10 @@ class ContractViewer extends React.Component {
         display: 'block',
         position: 'relative',
       };
+      
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
-        <StockView stockName='Oil'/>
+        <StockView price= {this.state.price} stockName='BOTS' shares={this.state.price} tokenSupply={this.state.tokenSupply} />
         <StockView stockName='Gaming'/>
         <StockView stockName='Adult Entertainment'/>
       </div>
