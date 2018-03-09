@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './StockView.css';
-import Button from '../Button';
+import Button from '../ButtonView';
 
 class StockView extends React.Component {
       constructor(prop) {
