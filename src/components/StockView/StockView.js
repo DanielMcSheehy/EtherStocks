@@ -16,11 +16,10 @@ class StockView extends React.Component {
 
   render() {
     const outerWrapper = {
-      // CSS in this is temporary.
-      width: '25%',
+      width: '70%',
       borderRadius: '3px',
       textAlign: 'center',
-      marginRight: '20px',
+      marginRight: '10px',
     };
     const stockHeader = {
       backgroundColor: '#f7f7f7',
@@ -40,7 +39,6 @@ class StockView extends React.Component {
       lineHeight: '35px',
     };
 
-    // Below will be dynamic, will fix soon
     return (
       <div style={outerWrapper}>
         <div style={stockHeader}>

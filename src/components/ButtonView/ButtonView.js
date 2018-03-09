@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ButtonView.css';
 import Button from '../Button';
+import ConfirmTransaction from '../ConfirmTransaction';
 
 class ButtonView extends React.Component {
   constructor(prop) {
@@ -12,6 +13,7 @@ class ButtonView extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
+    this.props.buy();
   }
   render() {
     const red = '#ce2b37';
@@ -23,7 +25,8 @@ class ButtonView extends React.Component {
 
     return (
       <div>
-        <Button click={this.props.buy}  label="Buy" color={green} />
+        <Button click={this.handleClick}  label="Buy" color={green} />
+        <ConfirmTransaction />
         <Button click={this.props.sell} label="Sell" color={red} />
         <Button click={this.props.reinvest} label="Reinvest" color={orange} />
         <Button click={this.props.withdraw} label="Withdraw" color={lightBlue} />

@@ -10,7 +10,7 @@
 @import '../variables.css';
 
 .root {
-  background: #f5f5f5;
+  background: 'yellow';
   color: #333;
 }
 

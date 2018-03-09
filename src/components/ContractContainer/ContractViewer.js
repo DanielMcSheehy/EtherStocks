@@ -29,7 +29,7 @@ class ContractViewer extends React.Component {
         if (typeof Web3 != 'undefined') {
           console.log("Using web3 detected from external source like Metamask");
           web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
-        }else{
+        } else {
           console.log('use metamask!');
           this.web3 = new Web3(new web3.providers.HttpProvider("http://localhost:8545")); // Not to be used.
         }
@@ -39,19 +39,13 @@ class ContractViewer extends React.Component {
         var ContractInstance = MyContract.at(this.props.contractAddress);
         
         console.log(ContractInstance);
-        // var newGameEvent = ContractInstance.newGame({},{fromBlock: 0, toBlock: 'latest'});
         
-        this.setState({
-            ownerAccount: web3.eth.accounts[0]
-        });
+        this.setState({ ownerAccount: web3.eth.accounts[0] });
         
         this.getBuyPrice(ContractInstance);
-        }
+    }
         
-    getBuyPrice(ContractInstance) { //Returns total number (not -1)
-        let answer;
-        this.setState({ContractInstance});
-       
+    getBuyPrice(ContractInstance) {    
             ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
                     console.error(error);
@@ -63,21 +57,19 @@ class ContractViewer extends React.Component {
             
             ContractInstance.balanceOf(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
-                console.error(error);
+                    console.error(error);
                 }
                 else {
-                    //console.log('balance: ', result.c[0])
-                this.setState({ contractBalance: result.c[0] })
+                    this.setState({ contractBalance: result.c[0] })
                 }
             }.bind(this));
 
             ContractInstance.totalSupply({from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
-                console.error(error);
+                    console.error(error);
                 }
                 else {
-                    //console.log('token: ', result.c[0])
-                this.setState({ tokenSupply: result.c[0] })
+                    this.setState({ tokenSupply: result.c[0] })
                 }
             }.bind(this));
     }
@@ -140,8 +132,7 @@ class ContractViewer extends React.Component {
 
   render() {
       var outerWrapper = {
-        height: '500px',
-        display: 'block',
+        float: 'left',
         position: 'relative',
       };
       
