@@ -13,9 +13,9 @@ class ButtonView extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    this.setState({ togglePaymentIntput: true });
+  handleClick() {
+   
+    this.setState({ togglePaymentIntput: !this.state.togglePaymentIntput });
   }
   render() {
     const red = '#ce2b37';
@@ -25,7 +25,7 @@ class ButtonView extends React.Component {
     const lightBlue = '#00aedb';
     const blue = '#0057e7';
 
-    let toggleInput = this.state.togglePaymentIntput ? <ConfirmTransaction buy={this.props.buy}/> : "";
+    let toggleInput = this.state.togglePaymentIntput ? <ConfirmTransaction toggle={this.handleClick} buy={this.props.buy}/> : "";
     return (
       
       <div>

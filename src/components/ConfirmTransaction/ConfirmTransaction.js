@@ -15,11 +15,12 @@ class ConfirmTransaction extends React.Component {
   handleClick(event) {
     event.preventDefault();
     this.props.buy(this.state.ethValue);
+    this.props.toggle();
   }
   handleChange(event) {
     event.preventDefault();
     this.setState({ ethValue: event.target.value });
-
+    
   }
   render() {
     const outerWrapper = {

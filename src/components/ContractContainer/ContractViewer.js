@@ -74,17 +74,21 @@ class ContractViewer extends React.Component {
             }.bind(this));
     }
     
-  buy(_amountToSendInWei) {
-    let _ethValue = web3.toWei(_amountToSendInWei);
-    alert(_ethValue);
-    web3.eth.contract(Abi).at(this.props.contractAddress).fund({from: this.state.ownerAccount, value: _ethValue}, function(error, result) {
-        if (error) {
-        console.error(error);
-        }
-        else {
-        console.log('result: ', result);
-        }
-    });
+  buy(_ethValue) {
+    let _amountToSendInWei = web3.toWei(_ethValue);
+    if (_ethValue > 0.000001) {
+        web3.eth.contract(Abi).at(this.props.contractAddress).fund({from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+            if (error) {
+            console.error(error);
+            }
+            else {
+            console.log('result: ', result);
+            }
+        });
+    }
+    else {
+        alert('Minimum Purchase of 0.000001');
+    }
   }
 
   sell() { // No parameter, sells all. Must withdraw() to get ether. GetMeOutOfHere is sell->withdraw
