@@ -61,6 +61,7 @@ class ContractViewer extends React.Component {
                 }
                 else {
                     this.setState({ contractBalance: result.c[0] })
+                    console.log('see this? ', this.state.contractBalance);
                 }
             }.bind(this));
 
@@ -151,7 +152,7 @@ class ContractViewer extends React.Component {
         getout={this.getout} 
         price= {this.state.price} 
         stockName={this.props.stockName} 
-        shares={this.state.price} 
+        shares={this.state.contractBalance} 
         tokenSupply={this.state.tokenSupply} />
       </div>
     );
