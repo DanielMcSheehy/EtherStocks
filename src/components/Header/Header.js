@@ -17,8 +17,15 @@ import logoUrl2x from './logo-small@2x.png';
 import EthLogo from './EthStockLogo.png';
 import Steemit from './steemit.png';
 
+
 class Header extends React.Component {
   render() {
+    var outerWrapper = {
+      marginLeft: '250px',
+    };
+    var roundLogo = {
+      borderRadius: '5px',
+    };
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -26,11 +33,17 @@ class Header extends React.Component {
           <Link className={s.brand} to="/">
             <img
               src={Steemit}
-              srcSet={`${logoUrl2x} 2x`}
+              style={roundLogo}
               alt="React"
             />
           </Link>
           <div className={s.banner}>
+          <img
+          style={outerWrapper}
+              src={EthLogo}
+              width="100px"
+              alt="React"
+            />
             <h1 className={s.bannerTitle}>EtherStocks</h1>
             <p className={s.bannerDesc}>Good Luck</p>
           </div>

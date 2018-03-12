@@ -12,25 +12,34 @@ import cx from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
+import MetaMaskLogo from './MetaMask.png';
+import Reddit from './reddit.png';
 
 class Navigation extends React.Component {
   render() {
+    var roundLogo = {
+      borderRadius: '5px',
+      float: 'right',
+    };
     return (
       <div className={s.root} role="navigation">
-        <Link className={s.link} to="/about">
-          About
-        </Link>
-        <Link className={s.link} to="/contact">
-          Contact
-        </Link>
-        <span className={s.spacer}> | </span>
-        <Link className={s.link} to="/login">
-          Log in
-        </Link>
-        <span className={s.spacer}>or</span>
-        <Link className={cx(s.link, s.highlight)} to="/register">
-          Sign up
-        </Link>
+      <div className={s.logo}>
+        <Link className={s.link} to="https://metamask.io/"> 
+              <img
+                style={roundLogo}
+                height="50px"
+                src={Reddit}
+                alt="React"
+              />
+          </Link>
+          <Link className={s.link} to="https://metamask.io/">
+              <img 
+                src={MetaMaskLogo}
+                alt="React"
+                style={roundLogo}
+              />
+          </Link>
+        </div>
       </div>
     );
   }
