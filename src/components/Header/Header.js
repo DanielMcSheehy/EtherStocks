@@ -14,7 +14,8 @@ import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
-import EthLogo from './EthStockLogo.png';
+//import EthLogo from './EthStockLogo.png';
+import EthLogo from './badge-critical-charts.png';
 import Steemit from './steemit.png';
 
 

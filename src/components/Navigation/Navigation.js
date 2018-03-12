@@ -24,21 +24,21 @@ class Navigation extends React.Component {
     return (
       <div className={s.root} role="navigation">
       <div className={s.logo}>
-        <Link className={s.link} to="https://metamask.io/"> 
+        <a className={s.link} href="https://reddit.com/"> 
               <img
                 style={roundLogo}
                 height="50px"
                 src={Reddit}
                 alt="React"
               />
-          </Link>
-          <Link className={s.link} to="https://metamask.io/">
+          </a>
+          <a className={s.link} href="https://metamask.io/">
               <img 
                 src={MetaMaskLogo}
                 alt="React"
                 style={roundLogo}
               />
-          </Link>
+          </a>
         </div>
       </div>
     );

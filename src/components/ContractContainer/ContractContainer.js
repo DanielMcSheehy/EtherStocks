@@ -76,13 +76,16 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0x1ab8c9fc5f3b9ec59216777cc4514ab2a0a96d55',
       'SILVER':
           'https://etherscan.io/address/0x029d0650c81817afb1810ae10270823318321878',
-      'EGYPTIAN GOLD':
+      'EGYPT GOLD':
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
   }
 
   render() {
+    var outerWrapper = {
+     clear: 'left',
+    };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
@@ -113,8 +116,11 @@ class ContractContainer extends React.Component {
     return( 
       <div>
         {FeaturedstockView}
-        
-        {nonFeaturedstockView}
+        <div style={outerWrapper}>
+          <br />
+          <h1 style={{ marginLeft: '44%' }}>Current Stocks</h1>
+          {nonFeaturedstockView}
+        </div>
       </div>
     );
   }
