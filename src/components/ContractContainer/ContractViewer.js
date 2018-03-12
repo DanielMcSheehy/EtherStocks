@@ -51,7 +51,10 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    this.setState({ price: web3.fromWei(result.c[1]) })
+                    //this.setState({ price: web3.fromWei(result.c[1]) });
+                    //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
+                    let buyPrice = (1 / (web3.fromWei(result.c[1], 'ether') * .9) / 1000000).toFixed(6);
+                    this.setState({ price: buyPrice });
                 }
             }.bind(this));
             
