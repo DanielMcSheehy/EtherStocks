@@ -27,7 +27,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <div className={s.container}>
+        <div >
           <h1 style={{ marginLeft: '43%' }}>Featured</h1>
           <ContractContainer />
         </div>

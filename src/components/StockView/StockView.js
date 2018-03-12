@@ -19,7 +19,7 @@ class StockView extends React.Component {
       width: '70%',
       borderRadius: '3px',
       textAlign: 'center',
-      marginRight: '10px',
+      marginRight: '-10px',
     };
     const stockHeader = {
       backgroundColor: '#f7f7f7',

@@ -38,7 +38,6 @@ class ContractContainer extends React.Component {
         />,
       );
     });
-
     return <div>{stockView}</div>;
   }
 }

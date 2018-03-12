@@ -14,7 +14,8 @@ import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
-import moutainImg from './mountain-image-08.jpg';
+import EthLogo from './EthStockLogo.png';
+import Steemit from './steemit.png';
 
 class Header extends React.Component {
   render() {
@@ -24,13 +25,10 @@ class Header extends React.Component {
           <Navigation />
           <Link className={s.brand} to="/">
             <img
-              src={logoUrl}
+              src={Steemit}
               srcSet={`${logoUrl2x} 2x`}
-              width="38"
-              height="38"
               alt="React"
             />
-            <span className={s.brandTxt}>EthDev</span>
           </Link>
           <div className={s.banner}>
             <h1 className={s.bannerTitle}>EtherStocks</h1>
