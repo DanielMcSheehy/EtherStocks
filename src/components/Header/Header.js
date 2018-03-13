@@ -22,7 +22,7 @@ import Steemit from './steemit.png';
 class Header extends React.Component {
   render() {
     var outerWrapper = {
-      marginLeft: '250px',
+      marginLeft: '260px',
     };
     var roundLogo = {
       borderRadius: '5px',

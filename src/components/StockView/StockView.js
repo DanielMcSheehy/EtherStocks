@@ -37,12 +37,13 @@ class StockView extends React.Component {
     const headerText = {
       fontSize: '20px',
       lineHeight: '35px',
+      textDecoration:  'none',
     };
-
+    let addressLink = `https://etherscan.io/address/${this.props.address}`;
     return (
       <div style={outerWrapper}>
         <div style={stockHeader}>
-          <p style={headerText}>{this.props.stockName}</p>
+          <a style={headerText} href={addressLink}>{this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
           <p>Price: {this.props.price} ETH</p>

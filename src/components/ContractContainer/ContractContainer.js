@@ -22,7 +22,7 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85',
       },
       nonFeaturedStockAddress: {
-      'KARAMA':
+      'KARMA':
           'https://etherscan.io/address/0x344b603d852143dd9b7d6d95a92df77061486765',
       'COMMODOR 64':
           'https://etherscan.io/address/0xea788fc8313c3c84810489cd7724f3251da624a3',
@@ -118,7 +118,8 @@ class ContractContainer extends React.Component {
         {FeaturedstockView}
         <div style={outerWrapper}>
           <br />
-          <h1 style={{ marginLeft: '44%' }}>Current Stocks</h1>
+          <h1 style={{ marginLeft: '40%' }}>Current Stocks</h1>
+          <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
           {nonFeaturedstockView}
         </div>
       </div>

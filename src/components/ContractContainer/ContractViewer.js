@@ -51,9 +51,11 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    //this.setState({ price: web3.fromWei(result.c[1]) });
+                    //let buyPrice = result.c[1]; //0.008723 
                     //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
-                    let buyPrice = (1 / (web3.fromWei(result.c[1], 'ether') * .9) / 1000000).toFixed(6);
+                    let _weiprice = result.c[1];
+                    let _ethConverted = (_weiprice/1e18);
+                    let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
                     this.setState({ price: buyPrice });
                 }
             }.bind(this));
@@ -63,7 +65,7 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    this.setState({ contractBalance: result.c[0] })
+                    this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) })
                     console.log('see this? ', this.state.contractBalance);
                 }
             }.bind(this));
@@ -73,7 +75,8 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    this.setState({ tokenSupply: result.c[0] })
+                    let tokenSupply = (result.c[0]*.1).toFixed(4)
+                    this.setState({ tokenSupply });
                 }
             }.bind(this));
     }
@@ -156,6 +159,7 @@ class ContractViewer extends React.Component {
         getout={this.getout} 
         price= {this.state.price} 
         stockName={this.props.stockName} 
+        address={this.props.contractAddress}
         shares={this.state.contractBalance} 
         tokenSupply={this.state.tokenSupply} />
       </div>
