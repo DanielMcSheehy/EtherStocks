@@ -1,0 +1,6 @@
+{
+  "name": "Instructions",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Instructions.js"
+}
