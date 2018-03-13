@@ -46,7 +46,12 @@ class Header extends React.Component {
               alt="React"
             />
             <h1 className={s.bannerTitle}>EtherStocks</h1>
-            <p className={s.bannerDesc}>Good Luck</p>
+            <p className={s.bannerDesc}>
+              We are the worldwide stock exchange. 
+              A market where anyone from anywhere can invest in any business 
+              worldwide using cryptocurrencies (BTC,ETH,NXT, and others)
+              or fiat money.
+            </p>
           </div>
         </div>
       </div>
