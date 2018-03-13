@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import ContractContainer from '../../components/ContractContainer';
 import Instructions from '../../components/Instructions';
+import FAQ from '../../components/FAQ';
 import s from './Home.css';
 
 class Home extends React.Component {
@@ -33,6 +34,7 @@ class Home extends React.Component {
           <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
           <ContractContainer />
           <Instructions />
+          <FAQ />
         </div>
       </div>
     );

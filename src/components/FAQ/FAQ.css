@@ -10,10 +10,9 @@
 @import '../variables.css';
 
 .root {
-  width: 50%;
-  margin-left: 4%;
-
+  width: 40%;
   float: left;
+  margin-left: 5%;
 }
 
 .container {
@@ -25,14 +24,6 @@
 
 .header {
   color: lightskyblue;
-}
-
-.boldText {
-  font-weight: bold;
-}
-
-.italicText {
-  font-style: italic;
 }
 
 .text {
@@ -47,7 +38,7 @@
   border-radius: 15px;
   width: 25px;
   height: 25px;
-  background-color: #363b74;
+  background-color: paleturquoise;
   color: white;
   font-size: 20px;
   text-align: center;
