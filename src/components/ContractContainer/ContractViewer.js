@@ -16,6 +16,7 @@ class ContractViewer extends React.Component {
             price: 0,
             contractBalance: 0,
             tokenSupply: 0,
+            dividends: 0,
         };
         this.getBuyPrice =  this.getBuyPrice.bind(this);
         this.buy = this.buy.bind(this);
@@ -77,6 +78,19 @@ class ContractViewer extends React.Component {
                 else {
                     let tokenSupply = (result.c[0]*.1).toFixed(4)
                     this.setState({ tokenSupply });
+                }
+            }.bind(this));
+                
+            ContractInstance.dividends(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
+                if (error) {
+                    console.error(error);
+                }
+                else {
+                    let div = result.c[0];
+                    let dividends = web3.fromWei(div); // Shit code  I know. needs to be reformatted
+                    dividends = dividends > 0.0001 ? dividends.toFixed(3) : 0;
+
+                    this.setState({ dividends }) //Very low
                 }
             }.bind(this));
     }
@@ -161,7 +175,9 @@ class ContractViewer extends React.Component {
         stockName={this.props.stockName} 
         address={this.props.contractAddress}
         shares={this.state.contractBalance} 
-        tokenSupply={this.state.tokenSupply} />
+        tokenSupply={this.state.tokenSupply} 
+        dividends={this.state.dividends}
+        />
       </div>
     );
   }
