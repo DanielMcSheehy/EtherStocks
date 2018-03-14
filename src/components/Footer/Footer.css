@@ -12,6 +12,7 @@
 .root {
   background: #333;
   color: #fff;
+  clear: left;
 }
 
 .container {

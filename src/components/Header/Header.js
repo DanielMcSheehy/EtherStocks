@@ -35,6 +35,7 @@ class Header extends React.Component {
             <img
               src={Steemit}
               style={roundLogo}
+              height="45px"
               alt="React"
             />
           </a>

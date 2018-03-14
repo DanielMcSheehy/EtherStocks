@@ -25,7 +25,7 @@ class FAQ extends React.Component {
           <p> Q. What causes "stocks" to go up or down and how are dividens paid?</p>
           <p> Q. Are there any fees or commissions?</p>
           <p> Q. What is a smart contract?</p>
-          <p> Q. Wait, are you saying that if I buy some of these stoks and never sell I can keep collecting dividends forever?</p>
+          <p> Q. Wait, are you saying that if I buy some of these stocks never sell I can keep collecting dividends forever?</p>
           <p> Q. Okay, what about if the site crashes?</p>
         </div>
       </div>
