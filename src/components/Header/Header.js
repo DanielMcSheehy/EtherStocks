@@ -31,13 +31,13 @@ class Header extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
-          <Link className={s.brand} to="/">
+          <a className={s.brand} href="https://steemit.com/@brittuf">
             <img
               src={Steemit}
               style={roundLogo}
               alt="React"
             />
-          </Link>
+          </a>
           <div className={s.banner}>
           <img
           style={outerWrapper}
