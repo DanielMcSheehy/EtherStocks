@@ -13,6 +13,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
 import MetaMaskLogo from './MetaMask.png';
+import MetaMaskSVG from './metamasksvg.svg';
 import Reddit from './reddit.png';
 
 class Navigation extends React.Component {
@@ -34,7 +35,8 @@ class Navigation extends React.Component {
           </a>
           <a className={s.link} href="https://metamask.io/">
               <img 
-                src={MetaMaskLogo}
+                src={MetaMaskSVG}
+                height="50px"
                 alt="React"
                 style={roundLogo}
               />

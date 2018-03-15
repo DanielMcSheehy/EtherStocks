@@ -15,7 +15,7 @@ import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
 //import EthLogo from './EthStockLogo.png';
-import EthLogo from './badge-critical-charts.png';
+import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
 import Steemit from './steemit.png';
 
@@ -24,7 +24,7 @@ import Steemit from './steemit.png';
 class Header extends React.Component {
   render() {
     var outerWrapper = {
-      marginLeft: '260px',
+      marginLeft: '20%',
     };
     var roundLogo = {
       borderRadius: '5px',
