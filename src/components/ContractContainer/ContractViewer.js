@@ -39,7 +39,7 @@ class ContractViewer extends React.Component {
         
         var ContractInstance = MyContract.at(this.props.contractAddress);
         
-        console.log(ContractInstance);
+        //console.log(ContractInstance);
         
         this.setState({ ownerAccount: web3.eth.accounts[0] });
         
@@ -67,7 +67,7 @@ class ContractViewer extends React.Component {
                 }
                 else {
                     this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) })
-                    console.log('see this? ', this.state.contractBalance);
+                    //('see this? ', this.state.contractBalance);
                 }
             }.bind(this));
 
@@ -103,7 +103,7 @@ class ContractViewer extends React.Component {
             console.error(error);
             }
             else {
-            console.log('result: ', result);
+            //console.log('result: ', result);
             }
         });
     }

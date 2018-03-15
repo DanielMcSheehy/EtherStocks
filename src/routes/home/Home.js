@@ -13,6 +13,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import ContractContainer from '../../components/ContractContainer';
 import Instructions from '../../components/Instructions';
 import FAQ from '../../components/FAQ';
+import DonateContainer from '../../components/DonateContainer';
 import s from './Home.css';
 
 class Home extends React.Component {
@@ -33,9 +34,10 @@ class Home extends React.Component {
           <h1 style={{ marginLeft: '44%' }}>Featured</h1>
           <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
           <ContractContainer />
-          <div style={{ clearn: 'left', minWidth: '500px' }}>
+          <div style={{ clear: 'left', minWidth: '500px' }}>
             <Instructions />
             <FAQ />
+            <DonateContainer />
           </div>
         </div>
       </div>

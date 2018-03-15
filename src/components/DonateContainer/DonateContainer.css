@@ -1,0 +1,17 @@
+.donate {
+    color: white;
+    clear: left;
+    float: left;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30%;
+    margin-left: 20%;
+    text-align: center;
+    background-color: #333;
+  }
+  .confirm {
+    float: left;
+    margin-top: 18px;
+    margin-left: 10px;
+    width: 20%;
+  }
