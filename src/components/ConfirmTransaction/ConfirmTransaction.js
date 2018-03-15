@@ -26,7 +26,7 @@ class ConfirmTransaction extends React.Component {
     //      //#009246
     const outerWrapper = {
       backgroundColor: this.props.color,
-      color: 'blue',
+      color: 'white',
       fontSize: '10px',
       marginBottom: '0px',
       marginTop: '-3px',

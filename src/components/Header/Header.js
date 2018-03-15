@@ -16,7 +16,9 @@ import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
 //import EthLogo from './EthStockLogo.png';
 import EthLogo from './badge-critical-charts.png';
+import GitLogo from './gitlogo.svg';
 import Steemit from './steemit.png';
+
 
 
 class Header extends React.Component {
@@ -26,11 +28,22 @@ class Header extends React.Component {
     };
     var roundLogo = {
       borderRadius: '5px',
+      marginRight: '20px',
+      clear: 'left',
+      left: '0',
     };
     return (
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
+          <a className={s.brand} href="https://github.com/DanielMcSheehy/EtherStocks">
+            <img
+              src={GitLogo}
+              style={roundLogo}
+              height="45px"
+              alt="React"
+            />
+          </a>
           <a className={s.brand} href="https://steemit.com/@brittuf">
             <img
               src={Steemit}
