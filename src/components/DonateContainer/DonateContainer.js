@@ -51,10 +51,10 @@ class DonateContainer extends React.Component {
 
   render() {
     
-    let toggleInput = this.state.togglePaymentIntput ? <div className={s.confirm}><ConfirmTransaction toggle={this.handleClick} buy={this.sendEth} /></div>  : "";
+    let toggleInput = this.state.togglePaymentIntput ? <div className={s.confirm}><ConfirmTransaction toggle={this.handleClick} buy={this.sendEth} color="#009246" buttonText="Confirm" /></div>  : "";
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div >
-         <p className={s.donate} onClick={this.handleClick}>Donate: 0x05384A688f405dB8b5b687FD3Abf1ED62dBa0327</p>
+         <p className={s.donate} onClick={this.handleClick}>Donate</p>
          {toggleInput}
         
       </div>

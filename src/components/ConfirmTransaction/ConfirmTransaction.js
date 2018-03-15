@@ -23,11 +23,13 @@ class ConfirmTransaction extends React.Component {
     
   }
   render() {
+    //      //#009246
     const outerWrapper = {
       backgroundColor: this.props.color,
       color: 'blue',
       fontSize: '10px',
-      marginBottom: '10px',
+      marginBottom: '0px',
+      marginTop: '-3px',
       height: '30px',
       width: '25%',
       border: '1px solid #0057e7',
@@ -37,6 +39,7 @@ class ConfirmTransaction extends React.Component {
     const textAreaWrap = {
       textAlign: 'right',
       resize: 'none',
+      verticalAlign: 'top',
     };
     const red = '#ce2b37';
     const green = '#009246';
@@ -51,7 +54,7 @@ class ConfirmTransaction extends React.Component {
           
         </textarea>
         <button onClick={this.handleClick} style={outerWrapper}>
-          
+          {this.props.buttonText}
         </button>
       </div>
     );
