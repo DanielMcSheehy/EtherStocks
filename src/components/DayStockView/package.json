@@ -1,0 +1,6 @@
+{
+  "name": "DayStockView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DayStockView.js"
+}

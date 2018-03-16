@@ -54,7 +54,7 @@ class ContractViewer extends React.Component {
                 else {
                     //let buyPrice = result.c[1]; //0.008723 
                     //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
-                    console.log(result);
+                    //console.log(result);
                     let _weiprice = result.c[1];
                     //let _ethConverted = (_weiprice/1e18);
                     let _ethConverted = web3.fromWei(_weiprice, 'ether');
