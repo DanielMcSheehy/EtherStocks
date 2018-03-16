@@ -8,8 +8,14 @@ class DayTraderContainer extends React.Component {
     super(prop);
     this.state = {
       featuredDayTraderAddress: {
-        'Coffee':
+        'COFFEE':
           '0x14198A76E2543c0a140AA7C0582E1e06888420AC',
+        'TULIPS':
+           '0x31be0d2149976be6650a8e1a4c00cd5bd179fa55',
+        'BOTS':
+            '0xa96af9f00bf2672812e374cbd33353a93a1f0752',
+        'PLATINUM':
+            '0xf808b1188b47de5dd5bba49f647c5557922f82f0',
       },
     };
   }

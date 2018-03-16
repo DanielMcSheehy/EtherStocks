@@ -71,7 +71,7 @@ class DayTraderViewer extends React.Component {
                         'nextSellingPrice': (result[2].c[0])/10000,
                         'level: ': result[3].c[0],
                         'multipler': result[4].c[0],
-                        'purchasedAt': (result[5].c[0])/10000,
+                        'purchasedAt': (result[5].c[0]),
                     }
                     this.setState({ bags })
                     console.log('result', result);
@@ -128,6 +128,7 @@ class DayTraderViewer extends React.Component {
         owner={this.state.bags.ownerAddress}
         price={this.state.bags.sellingPrice}
         nextPrice={this.state.bags.nextSellingPrice}
+        purchasedAt={this.state.bags.purchasedAt}
         click={this.buy}
         />
       </div>

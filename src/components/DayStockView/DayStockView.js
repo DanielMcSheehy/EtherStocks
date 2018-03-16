@@ -7,7 +7,9 @@ import DayTraderTimer from './DayTraderTimer';
 class DayStockView extends React.Component {
   constructor(prop) {
     super(prop);
-    this.state = {};
+    this.state = {
+      timeLeft: 5256,
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -15,12 +17,25 @@ class DayStockView extends React.Component {
     event.preventDefault();
   }
 
+
+  componentDidMount() {
+    setTimeout(function(){ 
+      
+      let timeLeft = ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0);
+      //let timeLeft = (this.props.purchasedAt+1200) - (Date.now())/1000;
+      console.log('here:', timeLeft);
+      this.setState({ timeLeft});
+    }.bind(this), 10000);
+    
+  }
+
   render() {
     const outerWrapper = {
+      float: 'left',
       width: '20%',
       borderRadius: '3px',
       textAlign: 'center',
-      marginRight: '-10px',
+      marginRight: '10px',
       marginBottom: '10px',
     };
     const stockHeader = {
@@ -32,7 +47,7 @@ class DayStockView extends React.Component {
       boxShadow: '1px 1px 5px grey',
     };
     const ownerHeader = {
-      fontSize: '11px',
+      fontSize: '10px',
       color: '#3b5998',
       height: '40px',
       borderTopRightRadius: '3px',
@@ -60,7 +75,7 @@ class DayStockView extends React.Component {
       
     }
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
-
+    
     return (
       <div style={outerWrapper}>
         <div style={stockHeader}>
@@ -70,7 +85,7 @@ class DayStockView extends React.Component {
           <p>Day Trade</p>
           <p>Buy price: {this.props.price}</p>
           <p>Next price: {this.props.nextPrice}</p>
-          Invest in:  <DayTraderTimer start={1000} />
+          Invest in:  <DayTraderTimer start={this.state.timeLeft}/>
 
           <div style={ownerHeader}>
             <p>Owner: {this.props.owner}</p>
