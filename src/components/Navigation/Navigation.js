@@ -26,7 +26,7 @@ class Navigation extends React.Component {
     return (
       <div className={s.root} role="navigation">
       <div className={s.logo}>
-        <a className={s.link} href="https://reddit.com/"> 
+        <a className={s.link} href="https://www.reddit.com/r/EtherStocks/"> 
               <img
                 style={roundLogo}
                 height="50px"
