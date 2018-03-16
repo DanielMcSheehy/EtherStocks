@@ -8,6 +8,7 @@
     margin-left: 45%;
     text-align: center;
     background-color: #333;
+    box-shadow: 2px 2px grey;
   }
   .confirm {
     float: left;

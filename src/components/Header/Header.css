@@ -60,6 +60,7 @@
   text-align: left;
   background-color: #FF5700;
   border-radius: 7px;
+  box-shadow: 2px 2px #333;
 }
 
 .bannerDesc {

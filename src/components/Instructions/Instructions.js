@@ -63,6 +63,10 @@ class Instructions extends React.Component {
             <div className={s.numberBullet}>2</div>
             <p className={s.innerText}><span className={s.boldText}>Buy and hold</span> - get money from dividends when price fluctuates.</p>
           </div>
+          
+          <div className={s.disclaimer}>
+            <p className={s.innerText}><span className={s.boldText}>Disclaimer</span> - This game is purely fantasy, and only to be used for entertaiment purposes.</p>
+          </div>
 
           <p className={s.italicText}>Good luck.</p>
         </div>
