@@ -14,17 +14,16 @@ import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
-//import EthLogo from './EthStockLogo.png';
 import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
-import Steemit from './steemit.png';
+import Steemit from './steemit-vector-logo.svg';
 
 
 
 class Header extends React.Component {
   render() {
     var outerWrapper = {
-      marginLeft: '20%',
+      marginLeft: '8%',
     };
     var roundLogo = {
       borderRadius: '5px',
@@ -32,6 +31,7 @@ class Header extends React.Component {
       clear: 'left',
       left: '0',
     };
+
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -59,7 +59,11 @@ class Header extends React.Component {
               width="100px"
               alt="React"
             />
-            <h1 className={s.bannerTitle}>EtherStocks</h1>
+              <h1 className={s.bannerTitle}>
+                EtherStocks 
+                <span className={s.betaWrapper}> beta </span>
+              </h1>
+             
             <p className={s.bannerDesc}>
               We are the worldwide stock exchange. 
               A market where anyone from anywhere can invest in any business 

@@ -40,10 +40,26 @@
 
 .bannerTitle {
   margin: 0;
+  margin-left: 10px;
   padding: 10px;
   font-weight: normal;
   font-size: 4em;
   line-height: 1em;
+  text-align:center;
+}
+
+.betaWrapper {
+  margin: 0;
+  margin-top: 0px; 
+  vertical-align: top;
+  font-weight: small;
+  font-size: 0.25em;
+  line-height: 1em;
+  padding: 3px;
+  padding-left: 1px;
+  text-align: left;
+  background-color: #FF5700;
+  border-radius: 7px;
 }
 
 .bannerDesc {

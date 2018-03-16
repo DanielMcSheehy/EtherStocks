@@ -14,13 +14,14 @@ import s from './Navigation.css';
 import Link from '../Link';
 import MetaMaskLogo from './MetaMask.png';
 import MetaMaskSVG from './metamasksvg.svg';
-import Reddit from './reddit.png';
+import Reddit from './Reddit_icon.svg';
 
 class Navigation extends React.Component {
   render() {
     var roundLogo = {
       borderRadius: '5px',
       float: 'right',
+      marginBottom: '10px',
     };
     return (
       <div className={s.root} role="navigation">
