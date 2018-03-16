@@ -5,6 +5,7 @@ import Abi from './contractAbi.json';
 import DayStockView from '../DayStockView';
 
 
+
 var Web3 = require('web3');
 
 class DayTraderViewer extends React.Component {
@@ -111,9 +112,7 @@ class DayTraderViewer extends React.Component {
             alert('Purchased');
             }
         });
-
   }
-
 
   render() {
       var outerWrapper = {

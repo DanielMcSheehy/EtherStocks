@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './DayStockView.css';
 import ButtonView from '../ButtonView';
+import DayTraderTimer from './DayTraderTimer';
 
 class DayStockView extends React.Component {
   constructor(prop) {
@@ -69,12 +70,12 @@ class DayStockView extends React.Component {
           <p>Day Trade</p>
           <p>Buy price: {this.props.price}</p>
           <p>Next price: {this.props.nextPrice}</p>
-          <p>Invest in:  </p>
+          Invest in:  <DayTraderTimer start={1000} />
 
           <div style={ownerHeader}>
             <p>Owner: {this.props.owner}</p>
           </div>
-          <button onClick={this.props.click} style={purchaseButton} >Purchase</button>
+          <button onClick={this.props.click} style={purchaseButton}>Purchase</button>
         </div>
       
       </div>
