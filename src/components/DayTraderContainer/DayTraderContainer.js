@@ -14,9 +14,15 @@ class DayTraderContainer extends React.Component {
            '0x31be0d2149976be6650a8e1a4c00cd5bd179fa55',
         'BOTS':
             '0xa96af9f00bf2672812e374cbd33353a93a1f0752',
-        'PLATINUM':
-            '0xf808b1188b47de5dd5bba49f647c5557922f82f0',
       },
+      twoMultiplierTraderAddress: {
+        'PLATINUM':
+            '0x8acf3a3cf142eb3305230982e0cf0d344090f492',
+        'CRYP2 KITTIES':
+            '0x5d7fe5f36cabc664cc2ab7e7f6c93cc9df889fd4',
+        'WAMPUM':
+            '0xc76fb6bb684a5cefb423bec1fb31fe319dd9184f',
+      }
     };
   }
 
@@ -24,13 +30,32 @@ class DayTraderContainer extends React.Component {
     var outerWrapper = {
      clear: 'left',
     };
-    const FeaturedstockView = [];
+    var multiplier = {
+     marginTop: '10%',
+     marginLeft: '10%', 
+     marginRight: '5%',
+     clear: 'left',
+     float: 'left',
+    }
+    const OneMultiplierStockView = [];
     Object.keys(this.state.featuredDayTraderAddress).map((key, index) => {
-      FeaturedstockView.push(
+        OneMultiplierStockView.push(
         <DayTraderViewer
           stockName={key}
           contractAddress={
             this.state.featuredDayTraderAddress[key]
+          }
+        />,
+      );
+    });
+
+    const TwoMultiplierStockView = [];
+    Object.keys(this.state.twoMultiplierTraderAddress).map((key, index) => {
+        TwoMultiplierStockView.push(
+        <DayTraderViewer
+          stockName={key}
+          contractAddress={
+            this.state.twoMultiplierTraderAddress[key]
           }
         />,
       );
@@ -42,9 +67,12 @@ class DayTraderContainer extends React.Component {
         <div style={outerWrapper}>
           <br />
           <h1 style={{ marginLeft: '40%' }}>Day Trader</h1>
-          <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
+          <hr style={{ marginLeft: '10%', width: '75%' }}></hr>
         </div>
-        {FeaturedstockView}
+        <p style={multiplier}>1.5X </p>
+        {OneMultiplierStockView}
+        <p style={multiplier}>2.0X </p>
+        {TwoMultiplierStockView}
       </div>
     );
   }
