@@ -40,8 +40,8 @@ class StockView extends React.Component {
       lineHeight: '35px',
       textDecoration:  'none',
     };
-    const chartLink = {
-      
+    const balance = {
+      fontSize: '15px',
     }
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
     let graphLink = `http://shawntabrizi.com/ethgraph/?address=${this.props.address}`;
@@ -52,10 +52,10 @@ class StockView extends React.Component {
         </div>
         <div style={ContentWrapper}>
           <p>Price: {this.props.price} ETH</p>
-          <p>Balance: {this.props.shares} Shares</p>
+          <p style={balance}>Balance: {this.props.shares} Shares</p>
           <p>Token Supply: {this.props.tokenSupply} Shares</p>
           <p>Dividends {this.props.dividends} ETH</p>
-          <a href={graphLink} style={chartLink} >Chart</a>
+          <a href={graphLink}  >Chart</a>
           <ButtonView 
           buy={this.props.buy} 
           sell={this.props.sell} 

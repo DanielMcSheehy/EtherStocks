@@ -10,12 +10,12 @@ class ContractContainer extends React.Component {
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
+        'PLATINUM':
+          'https://etherscan.io/address/0xf39729a98d936199c8260af86018ebf21ed8f846',
+        'WAMPUM':
+          'https://etherscan.io/address/0xa9e20fdd18c792f302e273b09aa142984f25ea64',
         BOTS:
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
-        PUPPIES:
-          'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
-        DRAGONS:
-          'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
         TUPLIPS:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
         ALPACAS:
@@ -38,6 +38,10 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0x5ac108d7b48979f261cf57ed7f9df95f8cb56865',
       'COCOA':
           'https://etherscan.io/address/0xfdfcfa5dce03a67fde31d674784312bed25f0b90',
+      PUPPIES:
+          'https://etherscan.io/address/0x5037c9fbfccbbb8409157d72cb9579ac3d05661e',
+      DRAGONS:
+          'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
       'CORN':
           'https://etherscan.io/address/0xda9018d28bc96f4509645fbc28e872c7d678931d',
       'DRAGONS':
@@ -48,8 +52,6 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0x8c9ae207ee452c1a94e0653e5db1c7b4de7d76c2',
       'ALPACAS':
           'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85',
-      'PLATINUM':
-          'https://etherscan.io/address/0xf39729a98d936199c8260af86018ebf21ed8f846',
       'TEARS':
           'https://etherscan.io/address/0x443013c1557b329d97c2983461a441d33791a31e',
       'SHILLS':
@@ -60,8 +62,6 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xe1a1ee035cff3a830bc236ff01cbee0c65ce4c25',
       'DIAMOND':
           'https://etherscan.io/address/0xfd7107eec2f21f69d75d0d7479a7ff9de477e5c9',
-      'WAMPUM':
-          'https://etherscan.io/address/0xa9e20fdd18c792f302e273b09aa142984f25ea64',
       'COBALT':
           'https://etherscan.io/address/0xe0af40d534685f46718d07cdee8f2d78af9916dd',
       'SALT':
