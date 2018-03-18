@@ -13,22 +13,25 @@ import { spawn } from './lib/cp';
 import { makeDir, moveDir, cleanDir } from './lib/fs';
 import run from './run';
 
-// GitHub Pages
-const remote = {
-  name: 'github',
-  url: 'https://github.com/<user>/<repo>.git',
-  branch: 'gh-pages',
-  website: 'https://<user>.github.io/<repo>/',
-  static: true,
-};
+// old: website: 'https://<app>.herokuapp.com',
+// url: 'https://<user>@<app>.scm.azurewebsites.net:443/<app>.git',
 
-// Heroku
+// GitHub Pages
 // const remote = {
-//   name: 'heroku',
-//   url: 'https://git.heroku.com/<app>.git',
-//   branch: 'master',
-//   website: 'https://<app>.herokuapp.com',
+//   name: 'github',
+//   url: 'https://github.com/<user>/<repo>.git',
+//   branch: 'gh-pages',
+//   website: 'https://<user>.github.io/<repo>/',
+//   static: true,
 // };
+
+//Heroku
+const remote = {
+  name: 'heroku',
+  url: 'https://git.heroku.com/pacific-shelf-75142.git',
+  branch: 'master',
+  website: 'https://pacific-shelf-75142.herokuapp.com/',
+};
 
 // Azure Web Apps
 // const remote = {

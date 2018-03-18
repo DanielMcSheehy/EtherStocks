@@ -39,7 +39,6 @@ class Home extends React.Component {
           <div style={{ clear: 'left', minWidth: '500px' }}>
             <Instructions />
             <FAQ />
-            <DonateContainer />
           </div>
         </div>
       </div>

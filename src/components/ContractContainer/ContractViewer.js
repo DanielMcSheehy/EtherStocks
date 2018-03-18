@@ -27,6 +27,9 @@ class ContractViewer extends React.Component {
       }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
+        try {
+            
+        
         if (typeof Web3 != 'undefined') {
           console.log("Using web3 detected from external source like Metamask");
           web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
@@ -44,6 +47,9 @@ class ContractViewer extends React.Component {
         this.setState({ ownerAccount: web3.eth.accounts[0] });
         
         this.getBuyPrice(ContractInstance);
+        } catch (error) {
+               console.log('Error with MetaMask'); 
+        }
     }
         
     getBuyPrice(ContractInstance) {    

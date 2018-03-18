@@ -21,6 +21,7 @@ class DayTraderViewer extends React.Component {
       }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
+        try {
         if (typeof Web3 != 'undefined') {
           console.log("Using web3 detected from external source like Metamask");
           web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
@@ -28,6 +29,8 @@ class DayTraderViewer extends React.Component {
           console.log('use metamask!');
           this.web3 = new Web3(new web3.providers.HttpProvider("http://localhost:8545")); // Not to be used.
         }
+        
+            
         
         const MyContract = web3.eth.contract(Abi);
         
@@ -38,6 +41,10 @@ class DayTraderViewer extends React.Component {
         this.setState({ ownerAccount: web3.eth.accounts[0] });
         
         this.getBuyPrice(ContractInstance);
+
+        } catch (error) {
+                alert('Please Use MetaMask');
+        }
     }
         
     getBuyPrice(ContractInstance) {    
