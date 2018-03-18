@@ -43,7 +43,7 @@ class DayTraderViewer extends React.Component {
         this.getBuyPrice(ContractInstance);
 
         } catch (error) {
-                console.log('Please Use MetaMask');
+                console.log('Please Use MetaMask ');
         }
     }
         
