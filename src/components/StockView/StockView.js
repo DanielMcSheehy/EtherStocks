@@ -16,7 +16,7 @@ class StockView extends React.Component {
 
   render() {
     const outerWrapper = {
-      width: '70%',
+      width: '100%',
       borderRadius: '3px',
       textAlign: 'center',
       marginRight: '-10px',
