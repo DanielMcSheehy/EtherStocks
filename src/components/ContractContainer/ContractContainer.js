@@ -18,8 +18,8 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
         TUPLIPS:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-        ALPACAS:
-          'https://etherscan.io/address/0x98fd6adfbf79b83f675e7214f70c98a1b7101b85',
+        'COFFEE':    
+          'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       },
       nonFeaturedStockAddress: {
       'KARMA':
