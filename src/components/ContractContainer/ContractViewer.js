@@ -27,6 +27,7 @@ class ContractViewer extends React.Component {
       }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
+        console.log('Searching..');
         try {
             
         
