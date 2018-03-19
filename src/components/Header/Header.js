@@ -66,10 +66,7 @@ class Header extends React.Component {
               </h1>
              
             <p className={s.bannerDesc}>
-              We are the worldwide stock exchange. 
-              A market where anyone from anywhere can invest in any business 
-              worldwide using cryptocurrencies (BTC,ETH,NXT, and others)
-              or fiat money.
+              A fantasy stock game, safe and secure on the ethereum blockchain.  Buy, Hodl and win.  Don't play with more than you are willing to lose.  *Clicking on stock name will bring you to the contract on etherscan
             </p>
           </div>
         </div>
