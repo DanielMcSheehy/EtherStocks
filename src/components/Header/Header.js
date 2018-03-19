@@ -17,6 +17,7 @@ import logoUrl2x from './logo-small@2x.png';
 import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
 import Steemit from './steemit-vector-logo.svg';
+import DiscordLogo from './discordlogo.png';
 
 
 
@@ -45,6 +46,16 @@ class Header extends React.Component {
               alt="React"
             />
           </a>
+
+          <a className={s.brand} href="https://discord.gg/mb2mHJF">
+            <img
+              src={DiscordLogo}
+              style={roundLogo}
+              height="45px"
+              alt="React"
+            />
+          </a>
+
           <a className={s.brand} href="https://steemit.com/@brittuf">
             <img
               src={Steemit}
