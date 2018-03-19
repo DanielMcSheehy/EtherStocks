@@ -16,6 +16,7 @@ import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
 import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
+import DiscordLogo from './discordlogo.png';
 import Steemit from './steemit-vector-logo.svg';
 
 
@@ -45,6 +46,14 @@ class Header extends React.Component {
               alt="React"
             />
           </a>
+		  <a className={s.brand} href="https://discord.gg/mb2mHJF">
+            <img
+              src={DiscordLogo}
+              style={roundLogo}
+              height="45px"
+              alt="React"
+            />
+          </a>
           <a className={s.brand} href="https://steemit.com/@brittuf">
             <img
               src={Steemit}
@@ -65,11 +74,8 @@ class Header extends React.Component {
                 <span className={s.betaWrapper}> beta </span>
               </h1>
              
-            <p className={s.bannerDesc}>
-              We are the worldwide stock exchange. 
-              A market where anyone from anywhere can invest in any business 
-              worldwide using cryptocurrencies (BTC,ETH,NXT, and others)
-              or fiat money.
+             <p className={s.bannerDesc}>
+              A fantasy stock game, safe and secure on the ethereum blockchain.  Buy, Hodl and win.  Don't play with more than you are willing to lose.  *Clicking on stock name will bring you to the contract on etherscan
             </p>
           </div>
         </div>
