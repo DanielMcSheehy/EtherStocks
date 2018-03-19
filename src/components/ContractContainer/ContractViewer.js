@@ -170,7 +170,7 @@ class ContractViewer extends React.Component {
 
   render() {
       var outerWrapper = {
-        marginLeft: '5%',
+        marginLeft: '10px',
         float: 'left',
         position: 'relative',
       };
