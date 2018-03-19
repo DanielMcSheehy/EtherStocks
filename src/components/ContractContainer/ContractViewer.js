@@ -68,7 +68,7 @@ class ContractViewer extends React.Component {
                     
                     let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
                         //282303516109755     82303516109755
-                    buyPrice = (buyPrice).toFixed(6); //Bad
+                    //buyPrice = buyPrice.toFixed(6); //Bad
                     this.setState({ price: buyPrice });
                 }
             }.bind(this));
