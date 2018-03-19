@@ -20,20 +20,9 @@ class Footer extends React.Component {
           <span className={s.text}>© 2018 etherstock <span className={s.spacer}>·</span> All rights reserved</span>
           <span className={s.spacer}>·</span>
           <Link className={s.link} to="/">
-            Home
+            Scroll Up
           </Link>
-          <span className={s.spacer}>·</span>
-          <Link className={s.link} to="/admin">
-            Admin
-          </Link>
-          <span className={s.spacer}>·</span>
-          <Link className={s.link} to="/privacy">
-            Privacy
-          </Link>
-          <span className={s.spacer}>·</span>
-          <Link className={s.link} to="/not-found">
-            Not Found
-          </Link>
+          
         </div>
       </div>
     );
