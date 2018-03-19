@@ -67,7 +67,7 @@ class DayTraderContainer extends React.Component {
         <div style={outerWrapper}>
           <br />
           <h1 style={{ marginLeft: '40%' }}>Day Trader</h1>
-          <hr style={{ marginLeft: '10%', width: '75%' }}></hr>
+          <hr style={{ marginLeft: '35%', width: '23%' }}></hr>
         </div>
         <p style={multiplier}>1.5X </p>
         {OneMultiplierStockView}

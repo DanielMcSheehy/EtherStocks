@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContractViewer.css';
 import ContractViewer from './ContractViewer';
+import DayTraderContainer from '../../components/DayTraderContainer';
 
 class ContractContainer extends React.Component {
   constructor(prop) {
@@ -118,8 +119,10 @@ class ContractContainer extends React.Component {
         {FeaturedstockView}
         <div style={outerWrapper}>
           <br />
-          <h1 style={{ marginLeft: '40%' }}>Current Stocks</h1>
-          <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
+          <DayTraderContainer />
+          <br />
+          <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left' }}>Current Stocks</h1>
+          <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
           {nonFeaturedstockView}
         </div>
       </div>
