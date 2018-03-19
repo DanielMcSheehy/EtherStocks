@@ -85,7 +85,7 @@ class DayStockView extends React.Component {
           <p>Day Trade</p>
           <p>Buy price: {this.props.price}</p>
           <p>Next price: {this.props.nextPrice}</p>
-          Invest in:  <DayTraderTimer start={this.state.timeLeft}/>
+          Resets in:  <DayTraderTimer start={this.state.timeLeft}/>
 
           <div style={ownerHeader}>
             <p>Owner: {this.props.owner}</p>
