@@ -61,8 +61,9 @@ class ContractViewer extends React.Component {
                 else {
                     //let buyPrice = result.c[1]; //0.008723 
                     //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
-                    //console.log(result);
-                    let _weiprice = result.c[1];
+                    //console.log(result.toNumber());
+                    //let _weiprice = result.c[1];
+                    let _weiprice = result.toNumber();
                     //let _ethConverted = (_weiprice/1e18);
                     let _ethConverted = web3.fromWei(_weiprice, 'ether');
                     
@@ -78,7 +79,10 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) })
+                    this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) });
+                    // let _eth = web3.fromWei(result.toNumber(), 'ether');
+                    // console.log('new', result.toNumber());
+                    // this.setState({ contractBalance: (_eth) });
                     //('see this? ', this.state.contractBalance);
                 }
             }.bind(this));
@@ -88,7 +92,7 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    let tokenSupply = (result.c[0]*.1).toFixed(4)
+                    let tokenSupply = (result.c[0]*.1).toFixed(2)
                     this.setState({ tokenSupply });
                 }
             }.bind(this));
@@ -98,9 +102,14 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    let div = result.c[0];
-                    let dividends = web3.fromWei(div); // Shit code  I know. needs to be reformatted
-                    dividends = dividends > 0.0001 ? dividends.toFixed(3) : 0;
+                    //let div = result.c[0];
+                    let div = result.toNumber();
+                    let dividends = web3.fromWei(div); 
+                    dividends = parseFloat(dividends).toFixed(4);
+                        
+                    
+                    console.log('div', dividends);
+                    dividends = dividends > 0.0001 ? (dividends) : 0;
 
                     this.setState({ dividends }) //Very low
                 }
