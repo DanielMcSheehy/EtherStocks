@@ -87,6 +87,9 @@ class ContractContainer extends React.Component {
     var outerWrapper = {
      clear: 'left',
     };
+    var featuredStyle = {
+        marginLeft: '5%',
+       };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
@@ -116,14 +119,18 @@ class ContractContainer extends React.Component {
     });
     return( 
       <div>
+        <div style={featuredStyle}>
         {FeaturedstockView}
+        </div>
         <div style={outerWrapper}>
           <br />
           <DayTraderContainer />
           <br />
           <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left' }}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
-          {nonFeaturedstockView}
+          <div style={featuredStyle}>
+             {nonFeaturedstockView}
+          </div>
         </div>
       </div>
     );
