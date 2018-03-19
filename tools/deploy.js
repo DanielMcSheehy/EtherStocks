@@ -28,9 +28,9 @@ import run from './run';
 //Heroku
 const remote = {
   name: 'heroku',
-  url: 'https://git.heroku.com/sleepy-plains-49152.git',
+  url: 'https://git.heroku.com/pacific-savannah-26848.git',
   branch: 'master',
-  website: 'https://sleepy-plains-49152.herokuapp.com/',
+  website: 'https://pacific-savannah-26848.herokuapp.com/',
 };
 
 // Azure Web Apps
