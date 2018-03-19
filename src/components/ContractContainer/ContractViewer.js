@@ -59,10 +59,7 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    //let buyPrice = result.c[1]; //0.008723 
-                    //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
-                    //console.log(result.toNumber());
-                    //let _weiprice = result.c[1];
+
                     let _weiprice = result.toNumber();
                     //let _ethConverted = (_weiprice/1e18);
                     let _ethConverted = web3.fromWei(_weiprice, 'ether');
@@ -79,6 +76,7 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
+                    
                     this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) });
                     // let _eth = web3.fromWei(result.toNumber(), 'ether');
                     // console.log('new', result.toNumber());
