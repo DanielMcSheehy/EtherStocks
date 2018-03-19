@@ -109,7 +109,7 @@ class ContractViewer extends React.Component {
                         
                     
                     console.log('div', dividends);
-                    dividends = dividends > 0.0001 ? (dividends) : 0;
+                    dividends = dividends > 0.00001 ? (dividends) : 0;
 
                     this.setState({ dividends }) //Very low
                 }
