@@ -17,7 +17,7 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xa9e20fdd18c792f302e273b09aa142984f25ea64',
         BOTS:
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
-        TUPLIPS:
+        Tulips:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
         'COFFEE':    
           'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
