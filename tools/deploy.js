@@ -28,9 +28,9 @@ import run from './run';
 //Heroku
 const remote = {
   name: 'heroku',
-  url: 'https://git.heroku.com/pacific-savannah-26848.git',
+  url: 'https://git.heroku.com/nameless-fortress-88233.git',
   branch: 'master',
-  website: 'https://pacific-savannah-26848.herokuapp.com/',
+  website: 'https://nameless-fortress-88233.herokuapp.com/',
 };
 
 // Azure Web Apps
