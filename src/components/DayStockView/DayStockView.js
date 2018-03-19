@@ -53,10 +53,12 @@ class DayStockView extends React.Component {
       color: '#3b5998',
       height: '40px',
       borderBottom: '0px',
-      
       borderTopRightRadius: '3px',
       borderTopLeftRadius: '3px',
       boxShadow: '1px 1px 4px grey',
+    };
+    const ownerLink = {
+      textDecoration: 'none',
     };
     const ContentWrapper = {
       border: '1px solid lightgrey',
@@ -94,7 +96,7 @@ class DayStockView extends React.Component {
           Invest in:  <DayTraderTimer start={this.state.timeLeft}/>
 
           <div style={ownerHeader}>
-            <p>Owner: {ownerAddress}</p>
+            <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
           </div>
           <button onClick={this.props.click} style={purchaseButton}>Purchase</button>
         </div>
