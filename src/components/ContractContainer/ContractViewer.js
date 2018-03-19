@@ -27,7 +27,6 @@ class ContractViewer extends React.Component {
       }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
-        console.log('Searching..');
         try {
             
         
@@ -43,7 +42,6 @@ class ContractViewer extends React.Component {
         
         var ContractInstance = MyContract.at(this.props.contractAddress);
         
-        //console.log(ContractInstance);
         
         this.setState({ ownerAccount: web3.eth.accounts[0] });
         
@@ -106,7 +104,7 @@ class ContractViewer extends React.Component {
                     dividends = parseFloat(dividends).toFixed(4);
                         
                     
-                    console.log('div', dividends);
+                    //.log('div', dividends);
                     dividends = dividends > 0.00001 ? (dividends) : 0;
 
                     this.setState({ dividends }) //Very low

@@ -40,6 +40,10 @@
   background-color: #333;
 }
 
+.infoLink {
+  float: left;
+}
+
 .newsDesc {
   h1,
   h2,

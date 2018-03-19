@@ -81,7 +81,7 @@ class DayTraderViewer extends React.Component {
                         'purchasedAt': (result[5].c[0]),
                     }
                     this.setState({ bags })
-                    console.log('result', result);
+                    //console.log('result', result);
                 }
             }.bind(this));
 

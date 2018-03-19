@@ -88,7 +88,7 @@ class ContractContainer extends React.Component {
      clear: 'left',
     };
     var featuredStyle = {
-        marginLeft: '5%',
+        marginLeft: '2%',
        };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
@@ -126,7 +126,7 @@ class ContractContainer extends React.Component {
           <br />
           <DayTraderContainer />
           <br />
-          <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left' }}>Current Stocks</h1>
+          <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
           <div style={featuredStyle}>
              {nonFeaturedstockView}
