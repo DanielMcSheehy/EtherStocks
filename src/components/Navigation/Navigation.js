@@ -21,7 +21,7 @@ class Navigation extends React.Component {
     var roundLogo = {
       borderRadius: '5px',
       float: 'right',
-      marginBottom: '10px',
+      marginTop: '-15px',
     };
     return (
       <div className={s.root} role="navigation">

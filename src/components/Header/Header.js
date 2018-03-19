@@ -30,6 +30,7 @@ class Header extends React.Component {
       marginRight: '20px',
       clear: 'left',
       left: '0',
+      top: '10px',
     };
 
     return (
