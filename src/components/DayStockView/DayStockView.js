@@ -103,7 +103,7 @@ class DayStockView extends React.Component {
           <p><span style={boldText}>Day Trade</span></p>
           <p><span style={boldText}>Buy price: </span>{this.props.price}</p>
           <p><span style={boldText}>Next price: </span>{this.props.nextPrice}</p>
-          <span style={boldText}>Invest in:  </span><DayTraderTimer start={this.state.timeLeft}/>
+          <span style={boldText}>Resets in:  </span><DayTraderTimer start={this.state.timeLeft}/>
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
