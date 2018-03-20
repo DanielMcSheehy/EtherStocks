@@ -22,7 +22,7 @@ async function action({ fetch }) {
   if (!data || !data.news) throw new Error('Failed to load the news feed.');
  
   return {
-    title: 'React Starter Kit',
+    title: 'EtherStocks',
     component: (
       <Layout>
         <Home/>
