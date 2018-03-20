@@ -14,6 +14,7 @@ class DayTraderViewer extends React.Component {
         this.state = {
             ContractInstance: {},
             price: 0,
+            calculatedTimer: 0,
             bags: {},
         };
         this.getBuyPrice =  this.getBuyPrice.bind(this);
@@ -62,11 +63,21 @@ class DayTraderViewer extends React.Component {
                         'multipler': result[4].c[0],
                         'purchasedAt': (result[5].toNumber()),
                     }
-                    this.setState({ bags })
-                    //console.log('result', result);
+                    this.setState({ bags });
+                    let currentTime = (Date.now()/1000).toFixed(0);
+                    if (this.state.bags.purchasedAt) {
+                    let elapsedTime = 86400 - ((currentTime - this.state.bags.purchasedAt)).toFixed(0);
+                    
+                    
+                    // console.log('this is it: ', currentTime);
+                    // console.log('second', this.state.bags.purchasedAt);
+                     console.log('final: ', elapsedTime);
+                    this.setState({calculatedTimer: (elapsedTime)});
+                    }
+
                 }
             }.bind(this));
-
+            
     }
     
   buy() {
@@ -98,7 +109,7 @@ class DayTraderViewer extends React.Component {
         price={this.state.bags.sellingPrice}
         nextPrice={this.state.bags.nextSellingPrice}
         purchasedAt={this.state.bags.purchasedAt}
-        calculatedTimer = {timeLeft}
+        calculatedTimer = {this.state.calculatedTimer}
         click={this.buy}
         />
       </div>

@@ -56,6 +56,7 @@ class DayTraderTimer extends React.Component {
   }
 
   render() {
+
     return(
       <div>
         {this.state.time.h}:{this.state.time.m}:{this.state.time.s}

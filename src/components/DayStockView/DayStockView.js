@@ -21,11 +21,19 @@ class DayStockView extends React.Component {
 
   componentDidMount() {
     //setTimeout(function(){ 
+      //console.log('here me out', this.props.calculatedTimer);
+      
       let timeLeft = ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0);
+      //let timeLeft = 100;
       //let timeLeft = (this.props.purchasedAt+1200) - (Date.now())/1000;
       
-      this.setState({ timeLeft});
-      console.log('time after time:', this.state.timeLeft);
+      //this.setState({ timeLeft });
+      this.setState({ timeLeft }, () => {
+        //console.log('time after time:', this.state.timeLeft);
+        this.forceUpdate()
+      }); 
+      this.forceUpdate()
+      
 
     //}.bind(this), 1000);
   }
@@ -84,6 +92,9 @@ class DayStockView extends React.Component {
     const boldText = {
       fontWeight: 'bold',
     };
+    const blank = {
+      height: '20px',
+    }
     const chartLink = {
       
     }
@@ -93,9 +104,10 @@ class DayStockView extends React.Component {
     //let timeLeft = this.state.timeLeft ? this.state.timeLeft : 10;
 
     //let timeLeft = this.props.purchasedAt ? this.props.purchasedAt : 10;
-
+    console.log('here me out', this.props.calculatedTimer);
+    let timer = this.props.calculatedTimer ? <DayTraderTimer start={this.props.calculatedTimer}/> : <div style={blank}></div>;
     return (
-      <div style={outerWrapper}>
+      <div style={outerWrapper}> 
         <div style={stockHeader}>
           <a style={headerText} href={addressLink}> {this.props.stockName}</a>
         </div>
@@ -103,7 +115,7 @@ class DayStockView extends React.Component {
           <p><span style={boldText}>Day Trade</span></p>
           <p><span style={boldText}>Buy price: </span>{this.props.price}</p>
           <p><span style={boldText}>Next price: </span>{this.props.nextPrice}</p>
-          <span style={boldText}>Invest in:  </span><DayTraderTimer start={this.state.timeLeft}/>
+          <span style={boldText}>Invest in:  </span>{timer}
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
