@@ -16,14 +16,16 @@ class StockView extends React.Component {
 
   render() {
     const outerWrapper = {
-      width: '100%',
+	  width: '100%',
       borderRadius: '3px',
       textAlign: 'center',
-      marginRight: '-20px',
+	  marginLeft: '32%',
+	  marginRight: '10px',
       marginBottom: '10px',
     };
     const stockHeader = {
       backgroundColor: '#f7f7f7',
+	  fontWeight: 'bold',
       color: '#3b5998',
       height: '40px',
       borderTopRightRadius: '3px',
