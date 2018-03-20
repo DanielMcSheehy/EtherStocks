@@ -9,28 +9,48 @@ class DayTraderContainer extends React.Component {
     this.state = {
       featuredDayTraderAddress: {
         'COFFEE':
-          '0x14198A76E2543c0a140AA7C0582E1e06888420AC',
+          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'TULIPS':
-           '0x31be0d2149976be6650a8e1a4c00cd5bd179fa55',
+           '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'BOTS':
-            '0xa96af9f00bf2672812e374cbd33353a93a1f0752',
+          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
       },
       twoMultiplierTraderAddress: {
         'PLATINUM':
-            '0x8acf3a3cf142eb3305230982e0cf0d344090f492',
+            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'CRYP2 KITTIES':
-            '0x5d7fe5f36cabc664cc2ab7e7f6c93cc9df889fd4',
+            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'WAMPUM':
-            '0xc76fb6bb684a5cefb423bec1fb31fe319dd9184f',
+            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
       }
     };
   }
 
   render() {
+
+    // let oldContract = featuredDayTraderAddress: {
+    //   'COFFEE':
+    //     '0x14198A76E2543c0a140AA7C0582E1e06888420AC',
+    //   'TULIPS':
+    //      '0x31be0d2149976be6650a8e1a4c00cd5bd179fa55',
+    //   'BOTS':
+    //       '0xa96af9f00bf2672812e374cbd33353a93a1f0752',
+    // },
+    // twoMultiplierTraderAddress: {
+    //   'PLATINUM':
+    //       '0x8acf3a3cf142eb3305230982e0cf0d344090f492',
+    //   'CRYP2 KITTIES':
+    //       '0x5d7fe5f36cabc664cc2ab7e7f6c93cc9df889fd4',
+    //   'WAMPUM':
+    //       '0xc76fb6bb684a5cefb423bec1fb31fe319dd9184f',
+    // }
+
     var outerWrapper = {
      clear: 'left',
     };
     var multiplier = {
+     color: '#3b5998',
+     fontWeight: 'bold',
      marginTop: '10%',
      marginLeft: '10%', 
      marginRight: '5%',
@@ -41,6 +61,7 @@ class DayTraderContainer extends React.Component {
     Object.keys(this.state.featuredDayTraderAddress).map((key, index) => {
         OneMultiplierStockView.push(
         <DayTraderViewer
+          index={index}
           stockName={key}
           contractAddress={
             this.state.featuredDayTraderAddress[key]
@@ -53,6 +74,7 @@ class DayTraderContainer extends React.Component {
     Object.keys(this.state.twoMultiplierTraderAddress).map((key, index) => {
         TwoMultiplierStockView.push(
         <DayTraderViewer
+          index={3+index}
           stockName={key}
           contractAddress={
             this.state.twoMultiplierTraderAddress[key]

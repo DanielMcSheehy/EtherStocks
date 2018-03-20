@@ -48,8 +48,8 @@ class DayTraderViewer extends React.Component {
     }
         
     getBuyPrice(ContractInstance) {    
-            
-            ContractInstance.getBag(0, {from: this.state.ownerAccount}, function(error, result) {
+
+            ContractInstance.getBag(this.props.index, {from: this.state.ownerAccount}, function(error, result) { // 0-5
                 if (error) {
                     console.error(error);
                 }
@@ -60,7 +60,7 @@ class DayTraderViewer extends React.Component {
                         'nextSellingPrice': (result[2].c[0])/10000,
                         'level: ': result[3].c[0],
                         'multipler': result[4].c[0],
-                        'purchasedAt': (result[5].c[0]),
+                        'purchasedAt': (result[5].toNumber()),
                     }
                     this.setState({ bags })
                     //console.log('result', result);
@@ -71,7 +71,7 @@ class DayTraderViewer extends React.Component {
     
   buy() {
         let _amountToSendInWei = web3.toWei(this.state.bags.sellingPrice);
-        web3.eth.contract(Abi).at(this.props.contractAddress).purchase(0,{from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+        web3.eth.contract(Abi).at(this.props.contractAddress).purchase(this.props.index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
             if (error) {
             console.error(error);
             }
@@ -87,10 +87,12 @@ class DayTraderViewer extends React.Component {
         marginTop: '10px',
         position: 'relative',
       };
-      let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
-    return ( // This is where we put stocks. Will be dynamic very soon.
+      //let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
+      let timeLeft = ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0);
+    return ( 
       <div style={outerWrapper}>
         <DayStockView 
+        address={this.props.contractAddress}
         stockName={this.props.stockName}
         owner={this.state.bags.ownerAddress}
         price={this.state.bags.sellingPrice}

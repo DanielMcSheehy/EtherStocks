@@ -25,7 +25,7 @@ class StockView extends React.Component {
     };
     const stockHeader = {
       backgroundColor: '#f7f7f7',
-	  fontWeight: 'bold',
+	    fontWeight: 'bold',
       color: '#3b5998',
       height: '40px',
       borderTopRightRadius: '3px',
@@ -42,9 +42,13 @@ class StockView extends React.Component {
       lineHeight: '35px',
       textDecoration:  'none',
     };
+    const boldText = {
+      fontWeight: 'bold',
+    };
     const balance = {
       fontSize: '15px',
     }
+    
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
     let graphLink = `http://shawntabrizi.com/ethgraph/?address=${this.props.address}`;
     return (
@@ -53,10 +57,10 @@ class StockView extends React.Component {
           <a style={headerText} href={addressLink}>{this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
-          <p>Price: {this.props.price} ETH</p>
-          <p style={balance}>Balance: {this.props.shares} Shares</p>
-          <p>Token Supply: {this.props.tokenSupply} Shares</p>
-          <p>Dividends {this.props.dividends} ETH</p>
+          <p><span style={boldText}>Price: </span> {this.props.price} ETH</p>
+          <p style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
+          <p style={balance}><span style={boldText}>Token Supply: </span>{this.props.tokenSupply} Shares</p>
+          <p><span style={boldText}>Dividends:</span> {this.props.dividends} ETH</p>
           <a href={graphLink}  >Chart</a>
           <ButtonView 
           buy={this.props.buy} 
