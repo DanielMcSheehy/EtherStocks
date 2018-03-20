@@ -1,0 +1,6 @@
+{
+  "name": "ButtonView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ButtonView.js"
+}
