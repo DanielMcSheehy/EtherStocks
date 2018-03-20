@@ -19,24 +19,7 @@ class DayStockView extends React.Component {
   
   
 
-  componentDidMount() {
-    //setTimeout(function(){ 
-      //console.log('here me out', this.props.calculatedTimer);
-      
-      let timeLeft = ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0);
-      //let timeLeft = 100;
-      //let timeLeft = (this.props.purchasedAt+1200) - (Date.now())/1000;
-      
-      //this.setState({ timeLeft });
-      this.setState({ timeLeft }, () => {
-        //console.log('time after time:', this.state.timeLeft);
-        this.forceUpdate()
-      }); 
-      this.forceUpdate()
-      
 
-    //}.bind(this), 1000);
-  }
   
 
 
@@ -115,7 +98,7 @@ class DayStockView extends React.Component {
           <p><span style={boldText}>Day Trade</span></p>
           <p><span style={boldText}>Buy price: </span>{this.props.price}</p>
           <p><span style={boldText}>Next price: </span>{this.props.nextPrice}</p>
-          <span style={boldText}>Invest in:  </span>{timer}
+          <span style={boldText}>Resets in:  </span>{timer}
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
