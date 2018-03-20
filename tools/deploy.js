@@ -28,9 +28,9 @@ import run from './run';
 //Heroku
 const remote = {
   name: 'heroku',
-  url: 'https://git.heroku.com/gentle-sea-93194.git',
+  url: 'https://git.heroku.com/secure-fortress-20589.git',
   branch: 'master',
-  website: 'https://gentle-sea-93194.herokuapp.com/',
+  website: 'https://secure-fortress-20589.herokuapp.com/',
 };
 
 // Azure Web Apps
