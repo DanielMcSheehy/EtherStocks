@@ -20,7 +20,7 @@ class StockView extends React.Component {
       borderRadius: '3px',
       textAlign: 'center',
 	    marginLeft: '1%',
-      marginRight: '-15px',
+      marginRight: '10px',
       marginBottom: '10px',
     };
     const stockHeader = {
