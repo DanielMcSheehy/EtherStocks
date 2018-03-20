@@ -28,9 +28,9 @@ import run from './run';
 //Heroku
 const remote = {
   name: 'heroku',
-  url: 'https://git.heroku.com/secure-fortress-20589.git',
+  url: 'https://git.heroku.com/morning-headland-19427.git',
   branch: 'master',
-  website: 'https://secure-fortress-20589.herokuapp.com/',
+  website: 'https://morning-headland-19427.herokuapp.com/',
 };
 
 // Azure Web Apps
