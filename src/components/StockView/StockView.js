@@ -58,7 +58,7 @@ class StockView extends React.Component {
         </div>
         <div style={ContentWrapper}>
           <p><span style={boldText}>Price: </span> {this.props.price} ETH</p>
-          <p style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
+          <p style={balance}><span style={boldText}>Your Shares: </span>{this.props.shares} Shares</p>
           <p style={balance}><span style={boldText}><span style={balance}>Total Shares: </span>{this.props.tokenSupply} Shares</span></p>
           <p><span style={boldText}>Dividends:</span> {this.props.dividends} ETH</p>
           <a href={graphLink}  >Chart</a>
