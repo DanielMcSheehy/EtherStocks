@@ -8,7 +8,7 @@ class DayStockView extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      timeLeft: 5256,
+      timeLeft: 0,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -23,9 +23,10 @@ class DayStockView extends React.Component {
       
       let timeLeft = ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0);
       //let timeLeft = (this.props.purchasedAt+1200) - (Date.now())/1000;
-      console.log('here:', timeLeft);
+      
       this.setState({ timeLeft});
-    }.bind(this), 10000);
+      console.log('here:', this.state.timeLeft);
+    }.bind(this), 1000);
     
   }
 
@@ -81,9 +82,11 @@ class DayStockView extends React.Component {
       
     }
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
-    console.log('owner', this.props.owner);
+
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
-    
+    let timeLeft = this.state.timeLeft ? this.state.timeLeft : 10;
+    console.log('calc', this.props.calculatedTimer);
+    //let timeLeft = this.props.purchasedAt ? this.props.purchasedAt : 10;
     return (
       <div style={outerWrapper}>
         <div style={stockHeader}>

@@ -48,24 +48,6 @@ class DayTraderViewer extends React.Component {
     }
         
     getBuyPrice(ContractInstance) {    
-            // ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
-            //     if (error) {
-            //         console.error(error);
-            //     }
-            //     else {
-            //         //let buyPrice = result.c[1]; //0.008723 
-            //         //this.setState({ price: web3.fromWei(result.c[1], 'ether') });
-            //         console.log(result);
-            //         let _weiprice = result.c[1];
-            //         //let _ethConverted = (_weiprice/1e18);
-            //         let _ethConverted = web3.fromWei(_weiprice, 'ether');
-                    
-            //         let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
-            //             //282303516109755     82303516109755
-            //         buyPrice = (buyPrice/3.6).toFixed(6); //Bad
-            //         this.setState({ price: buyPrice });
-            //     }
-            // }.bind(this));
             
             ContractInstance.getBag(0, {from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
@@ -85,28 +67,6 @@ class DayTraderViewer extends React.Component {
                 }
             }.bind(this));
 
-            // ContractInstance.totalSupply({from: this.state.ownerAccount}, function(error, result) {
-            //     if (error) {
-            //         console.error(error);
-            //     }
-            //     else {
-            //         let tokenSupply = (result.c[0]*.1).toFixed(4)
-            //         this.setState({ tokenSupply });
-            //     }
-            // }.bind(this));
-                
-            // ContractInstance.dividends(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
-            //     if (error) {
-            //         console.error(error);
-            //     }
-            //     else {
-            //         let div = result.c[0];
-            //         let dividends = web3.fromWei(div); // Shit code  I know. needs to be reformatted
-            //         dividends = dividends > 0.0001 ? dividends.toFixed(3) : 0;
-
-            //         this.setState({ dividends }) //Very low
-            //     }
-            // }.bind(this));
     }
     
   buy() {
@@ -127,7 +87,7 @@ class DayTraderViewer extends React.Component {
         marginTop: '10px',
         position: 'relative',
       };
-      
+      let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
         <DayStockView 
@@ -136,6 +96,7 @@ class DayTraderViewer extends React.Component {
         price={this.state.bags.sellingPrice}
         nextPrice={this.state.bags.nextSellingPrice}
         purchasedAt={this.state.bags.purchasedAt}
+        calculatedTimer = {timeLeft}
         click={this.buy}
         />
       </div>
