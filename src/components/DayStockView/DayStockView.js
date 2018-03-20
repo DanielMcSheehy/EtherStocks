@@ -84,10 +84,7 @@ class DayStockView extends React.Component {
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
 
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
-    //let timeLeft = this.state.timeLeft ? this.state.timeLeft : 10;
 
-    //let timeLeft = this.props.purchasedAt ? this.props.purchasedAt : 10;
-    console.log('here me out', this.props.calculatedTimer);
     let timer = this.props.calculatedTimer ? <DayTraderTimer start={this.props.calculatedTimer}/> : <div style={blank}></div>;
     return (
       <div style={outerWrapper}> 

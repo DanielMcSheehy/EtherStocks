@@ -40,6 +40,7 @@ class StockView extends React.Component {
     const headerText = {
       fontSize: '20px',
       lineHeight: '35px',
+      overflow: 'hidden',
       textDecoration:  'none',
     };
     const boldText = {
@@ -59,7 +60,7 @@ class StockView extends React.Component {
         <div style={ContentWrapper}>
           <p><span style={boldText}>Price: </span> {this.props.price} ETH</p>
           <p style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
-          <p style={balance}><span style={boldText}><span style={balance}>Token Supply: </span>{this.props.tokenSupply} Shares</span></p>
+          <p style={balance}><span style={boldText}><span style={balance}>Total Shares </span>{this.props.tokenSupply} Shares</span></p>
           <p><span style={boldText}>Dividends:</span> {this.props.dividends} ETH</p>
           <a href={graphLink}  >Chart</a>
           <ButtonView 

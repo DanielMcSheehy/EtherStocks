@@ -68,10 +68,6 @@ class DayTraderViewer extends React.Component {
                     if (this.state.bags.purchasedAt) {
                     let elapsedTime = 86400 - ((currentTime - this.state.bags.purchasedAt)).toFixed(0);
                     
-                    
-                    // console.log('this is it: ', currentTime);
-                    // console.log('second', this.state.bags.purchasedAt);
-                     console.log('final: ', elapsedTime);
                     this.setState({calculatedTimer: (elapsedTime)});
                     }
 
@@ -87,7 +83,7 @@ class DayTraderViewer extends React.Component {
             console.error(error);
             }
             else {
-            alert('Purchased');
+            
             }
         });
   }
