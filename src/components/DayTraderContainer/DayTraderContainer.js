@@ -88,9 +88,11 @@ class DayTraderContainer extends React.Component {
         
         <div style={outerWrapper}>
           <br />
-          <h1 style={{ marginLeft: '47%' }}>Day Trader </h1>
-		  <h3 style={{ marginLeft: '42%' }}> Timer resets to 24 hours on purchase! </h3>
-          <hr style={{ marginLeft: '40%', width: '23%' }}></hr>
+          <h1 style={{ marginLeft: '40%' }}>Day Trader </h1>
+          
+		  <h3 style={{ marginLeft: '32%' }}> Timer resets to 24 hours on purchase </h3>
+      <hr style={{ marginLeft: '35%', width: '23%' }}></hr>
+          
         </div>
         <p style={multiplier}>1.5X </p>
         {OneMultiplierStockView}

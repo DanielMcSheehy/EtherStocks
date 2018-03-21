@@ -57,9 +57,10 @@ class DayTraderTimer extends React.Component {
 
   render() {
     let minutes = this.state.time.m < 10 ? `0${this.state.time.m}` : this.state.time.m;
+    let seconds = this.state.time.s < 10 ? `0${this.state.time.s}` : this.state.time.s;
     return(
       <div>
-        {this.state.time.h}:{minutes}:{this.state.time.s}
+        {this.state.time.h}:{minutes}:{seconds}
       </div>
     );
   }
