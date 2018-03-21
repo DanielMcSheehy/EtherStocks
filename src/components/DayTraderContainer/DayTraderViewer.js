@@ -55,15 +55,17 @@ class DayTraderViewer extends React.Component {
                     console.error(error);
                 }
                 else {
+                    //'sellingPrice': (result[1].c[0])/10000,
                     let bags = {
                         'ownerAddress': result[0],
-                        'sellingPrice': (result[1].c[0])/10000,
-                        'nextSellingPrice': (result[2].c[0])/10000,
+                        'sellingPrice': web3.fromWei(result[1].toNumber()),
+                        'nextSellingPrice': web3.fromWei(result[2].toNumber()),
                         'level: ': result[3].c[0],
                         'multipler': result[4].c[0],
                         'purchasedAt': (result[5].toNumber()),
                     }
                     this.setState({ bags });
+                    console.log('sucks man', this.props.index, ' price: ', this.state.bags.sellingPrice);
                     let currentTime = (Date.now()/1000).toFixed(0);
                     if (this.state.bags.purchasedAt) {
                     let elapsedTime = 86400 - ((currentTime - this.state.bags.purchasedAt)).toFixed(0);
@@ -77,7 +79,8 @@ class DayTraderViewer extends React.Component {
     }
     
   buy() {
-        let _amountToSendInWei = web3.toWei(this.state.bags.sellingPrice);
+        //let _amountToSendInWei = this.state.bags.sellingPrice;
+         let _amountToSendInWei = web3.toWei(this.state.bags.sellingPrice);
         web3.eth.contract(Abi).at(this.props.contractAddress).purchase(this.props.index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
             if (error) {
             console.error(error);
