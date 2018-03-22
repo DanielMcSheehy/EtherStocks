@@ -5,9 +5,11 @@ link: www.etherstocks.net
 
 This is a game; the rules are simple, try and make money buying and selling “stocks”. You can do this in a couple ways, you can simply buy low, sell high, or you can hodl and collect dividends.
 
+Architecture: 
 This game runs on dapp smart contracts such as: https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0
-
-How to Play:
+Each stock is its own smart contract, that allows buying/selling of erc20 'stock shares'.
+The site itself only interacts with the contracts, so players do not have to worry about site security/crashing, which is the intended application of dapps. 
+The day trader contracts are similar to the stocks, but have a 'game aspect' (see below), but invest the collected fees into the stocks (further incouraging stock investments). 
 
 In order to use this website, your browser needs to have the browser extension MetaMask installed. After that, you will see numerous stocks available for purchase in the table below.
 
