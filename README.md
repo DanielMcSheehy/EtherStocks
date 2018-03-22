@@ -1,6 +1,8 @@
 ![Alt text](UpdatedScreenshot.png?raw=true "Title")
 EtherStocks
 
+link: www.etherstocks.net
+
 This is a game; the rules are simple, try and make money buying and selling “stocks”. You can do this in a couple ways, you can simply buy low, sell high, or you can hodl and collect dividends.
 
 This game runs on dapp smart contracts such as: https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0
