@@ -9,6 +9,7 @@ This is a game; the rules are simple, try and make money buying and selling “s
 
 Architecture: 
 This game runs on dapp smart contracts such as: https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0
+
 Each stock is its own smart contract, that allows buying/selling of erc20 'stock shares'.
 The site itself only interacts with the contracts, so players do not have to worry about site security/crashing, which is the intended application of dapps. 
 Stocks Contract: buying a stock costs a 10% fee, that fees gets distruted to current stock holders as dividends, and price increases. 
