@@ -1,3 +1,4 @@
+![Alt text](UpdatedScreenshot.png?raw=true "Title")
 EtherStocks
 
 This is a game; the rules are simple, try and make money buying and selling “stocks”. You can do this in a couple ways, you can simply buy low, sell high, or you can hodl and collect dividends.
@@ -30,4 +31,4 @@ Buying a day trader stocks allows you to be the temperary owner. Someone else ca
 
 Disclaimer - This game is purely fantasy, and only to be used for entertaiment purposes.
 
-![Alt text](ProjectScreenShot.png?raw=true "Title")
+
