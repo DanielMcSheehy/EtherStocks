@@ -1,5 +1,33 @@
 EtherStocks
-Trade erc20 stocks on the blockchain. 
-Coming soon.
+
+This is a game; the rules are simple, try and make money buying and selling “stocks”. You can do this in a couple ways, you can simply buy low, sell high, or you can hodl and collect dividends.
+
+This game runs on dapp smart contracts such as: https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0
+
+How to Play:
+
+In order to use this website, your browser needs to have the browser extension MetaMask installed. After that, you will see numerous stocks available for purchase in the table below.
+
+There are multiple actions that you can do with each stock:
+
+1. Buy - Purchase shares at the current buy rate.
+
+2. Sell - Sell your shares at the current sell rate - ETH will be deposited into your dividens.
+
+3. Withdraw - Withdraw your dividends into your Ethereum network.
+
+4. Reinvest - Purchase shares using ETH using your dividends for the current stock.
+
+5. Get out - Sell your shares and withdraw dividends immediately.
+
+Each time a share is purchased, the rate for subsequent purchaes will be increased by 0.25%.
+
+Additionally, each time a share is bought or sold, 10% from the transaction will be distrubuted between all shareholders as a dividend.
+
+Day Trader: 
+
+Buying a day trader stocks allows you to be the temperary owner. Someone else can purchase the stock from you for 1.5X, or 2.0X the price (so you take away profit minus small fees). After 24 hours if no one buys a stock, the price resets. There will eventually be prices to be the last stock holder. 
+
+Disclaimer - This game is purely fantasy, and only to be used for entertaiment purposes.
 
 ![Alt text](ProjectScreenShot.png?raw=true "Title")
