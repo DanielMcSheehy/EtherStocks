@@ -99,14 +99,16 @@ class DayTraderViewer extends React.Component {
       };
       //let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
       let timeLeft = ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0);
+      let priceFixed = parseFloat(this.state.bags.sellingPrice).toFixed(4);
+      let nextPriceFixed = parseFloat(this.state.bags.nextSellingPrice).toFixed(4);
     return ( 
       <div style={outerWrapper}>
         <DayStockView 
         address={this.props.contractAddress}
         stockName={this.props.stockName}
         owner={this.state.bags.ownerAddress}
-        price={this.state.bags.sellingPrice}
-        nextPrice={this.state.bags.nextSellingPrice}
+        price={priceFixed}
+        nextPrice={nextPriceFixed}
         purchasedAt={this.state.bags.purchasedAt}
         calculatedTimer = {this.state.calculatedTimer}
         click={this.buy}
