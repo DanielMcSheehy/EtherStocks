@@ -1,7 +1,7 @@
 ![Alt text](UpdatedScreenshot.png?raw=true "Title")
 EtherStocks
 
-link: www.etherstocks.net
+www.etherstocks.net
 
 This is a game; the rules are simple, try and make money buying and selling “stocks”. You can do this in a couple ways, you can simply buy low, sell high, or you can hodl and collect dividends.
 
