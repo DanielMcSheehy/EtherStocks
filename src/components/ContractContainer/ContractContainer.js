@@ -84,9 +84,8 @@ class ContractContainer extends React.Component {
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
-    this.generateBuyPrice =  this.generateBuyPrice.bind(this);
     this.storeContracts =  this.storeContracts.bind(this);
-    
+    this.sortStocks =  this.sortStocks.bind(this);
   }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
@@ -111,7 +110,6 @@ class ContractContainer extends React.Component {
           });
         
         
-        
         this.setState({ ownerAccount: web3.eth.accounts[0] });
         
         
@@ -119,8 +117,13 @@ class ContractContainer extends React.Component {
             console.log('Error with MetaMask: ', error); 
         }
     }
-    generateBuyPrice() {
-
+    sortStocks(stockArr) {
+        
+        stockArr.sort(function (a,b) {
+            return b.price - a.price;
+        });
+        console.log(stockArr);
+        return stockArr;
     }
 
     storeContracts(ContractInstance, index, stockName) { // gets contract instance passed in, stores each contract info to stockContractObj
@@ -138,9 +141,11 @@ class ContractContainer extends React.Component {
                 let buyObj = Object.assign({}, this.state.stockContractObj[index]);
                 buyObj.name = stockName;
                 buyObj.price = buyPrice;
-
-                this.setState({ stockContractObj: this.state.stockContractObj.concat(buyObj)});
-                console.log(this.state.stockContractObj)
+                let unsorted = this.state.stockContractObj.concat(buyObj);
+                let sortedArr = this.sortStocks(unsorted);
+                this.setState({ stockContractObj: sortedArr});
+                console.log('sorted: ', this.state.stockContractObj);
+                
             }
         }.bind(this));
 
