@@ -65,7 +65,6 @@ class DayTraderViewer extends React.Component {
                         'purchasedAt': (result[5].toNumber()),
                     }
                     this.setState({ bags });
-                    console.log('sucks man', this.props.index, ' price: ', this.state.bags.sellingPrice);
                     let currentTime = (Date.now()/1000).toFixed(0);
                     if (this.state.bags.purchasedAt) {
                     let elapsedTime = 86400 - ((currentTime - this.state.bags.purchasedAt)).toFixed(0);

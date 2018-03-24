@@ -26,7 +26,7 @@ class ContractViewer extends React.Component {
         this.getout = this.getout.bind(this);
       }
 
-    componentDidMount () { // Replace current shit with new contracts/event listeners
+    componentDidMount () { 
         try {
             
         

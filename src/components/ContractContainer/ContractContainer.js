@@ -3,11 +3,14 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContractViewer.css';
 import ContractViewer from './ContractViewer';
 import DayTraderContainer from '../../components/DayTraderContainer';
+import Abi from './contractAbi.json';
 
 class ContractContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
+      stockContractObj: [],
+      sortedStockContractObj: [],
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
@@ -81,7 +84,113 @@ class ContractContainer extends React.Component {
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
+    this.generateBuyPrice =  this.generateBuyPrice.bind(this);
+    this.storeContracts =  this.storeContracts.bind(this);
+    
   }
+
+    componentDidMount () { // Replace current shit with new contracts/event listeners
+        try {
+        
+        if (typeof Web3 != 'undefined') {
+        console.log("Using web3 detected from external source like Metamask");
+        web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
+        } else {
+        console.log('use metamask!');
+        this.web3 = new Web3(new web3.providers.HttpProvider("http://localhost:8545")); // Not to be used.
+        }
+        
+        const MyContract = web3.eth.contract(Abi);
+
+        Object.keys(this.state.featuredStockAddress).map((key, index) => {
+                let stockName = key;
+                let contractAddress = this.state.featuredStockAddress[key].split('https://etherscan.io/address/',)[1];
+                var ContractInstance = MyContract.at(contractAddress);
+                
+                this.storeContracts(ContractInstance, index, stockName);
+          });
+        
+        
+        
+        this.setState({ ownerAccount: web3.eth.accounts[0] });
+        
+        
+        } catch (error) {
+            console.log('Error with MetaMask: ', error); 
+        }
+    }
+    generateBuyPrice() {
+
+    }
+
+    storeContracts(ContractInstance, index, stockName) { // gets contract instance passed in, stores each contract info to stockContractObj
+        
+        ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
+            if (error) {
+                console.error(error);
+            }
+            else {
+
+                let _weiprice = result.toNumber();
+                let _ethConverted = web3.fromWei(_weiprice, 'ether');
+                let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
+
+                let buyObj = Object.assign({}, this.state.stockContractObj[index]);
+                buyObj.name = stockName;
+                buyObj.price = buyPrice;
+
+                this.setState({ stockContractObj: this.state.stockContractObj.concat(buyObj)});
+                console.log(this.state.stockContractObj)
+            }
+        }.bind(this));
+
+        ContractInstance.balanceOf(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
+            if (error) {
+                console.error(error);
+            }
+            else {
+                let stockContractObj = this.state.stockContractObj.slice(0);
+                stockContractObj[index].contractBalance = (result.c[0]*.1).toFixed(1);
+
+                this.setState({ stockContractObj });
+
+            }
+        }.bind(this));
+
+        ContractInstance.totalSupply({from: this.state.ownerAccount}, function(error, result) {
+            if (error) {
+                console.error(error);
+            }
+            else {
+                let stockContractObj = this.state.stockContractObj.slice(0);
+                stockContractObj[index].tokenSupply = (result.c[0]*.1).toFixed(2);
+                this.setState({ stockContractObj });
+            }
+        }.bind(this));
+
+        ContractInstance.dividends(web3.eth.accounts[0], {from: this.state.ownerAccount}, function(error, result) {
+            if (error) {
+                console.error(error);
+            }
+            else {
+                
+                let div = result.toNumber();
+                let dividends = web3.fromWei(div); 
+                dividends = parseFloat(dividends).toFixed(4);
+                dividends = dividends > 0.00001 ? (dividends) : 0;     
+
+                let stockContractObj = this.state.stockContractObj.slice(0);
+                stockContractObj[index].dividends = dividends;
+                this.setState({ stockContractObj });
+                
+            }
+        }.bind(this));
+    }
+  
+
+
+
+    
 
   render() {
     var outerWrapper = {
@@ -89,7 +198,7 @@ class ContractContainer extends React.Component {
     };
     var featuredStyle = {
         marginLeft: '2%',
-       };
+    };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
