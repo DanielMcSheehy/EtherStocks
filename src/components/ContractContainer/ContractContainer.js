@@ -10,6 +10,7 @@ class ContractContainer extends React.Component {
     super(prop);
     this.state = {
       stockContractObj: [],
+      nonFeaturedstockContractObj: [],
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
