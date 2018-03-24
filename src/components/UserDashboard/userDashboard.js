@@ -15,7 +15,10 @@ class userDashboard extends React.Component {
 
     return (
      <div className={s.outerWrapper}>
-       This is the Portfolio
+         Your Shares:    <br />
+	     Your Dividends:   ETH <br />
+         Shares Value:   ETH <br />
+		 Portfolio Value:  ETH <br />
      </div>
     );
   }
