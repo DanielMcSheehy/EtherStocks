@@ -122,7 +122,7 @@ class ContractContainer extends React.Component {
         stockArr.sort(function (a,b) {
             return b.price - a.price;
         });
-        console.log(stockArr);
+       // console.log(stockArr);
         return stockArr;
     }
 
@@ -142,9 +142,9 @@ class ContractContainer extends React.Component {
                 buyObj.name = stockName;
                 buyObj.price = buyPrice;
                 let unsorted = this.state.stockContractObj.concat(buyObj);
-                let sortedArr = this.sortStocks(unsorted);
-                this.setState({ stockContractObj: sortedArr});
-                console.log('sorted: ', this.state.stockContractObj);
+                // let sortedArr = this.sortStocks(unsorted);
+                this.setState({ stockContractObj: unsorted});
+                //console.log('sorted: ', this.state.stockContractObj);
                 
             }
         }.bind(this));
@@ -186,8 +186,10 @@ class ContractContainer extends React.Component {
 
                 let stockContractObj = this.state.stockContractObj.slice(0);
                 stockContractObj[index].dividends = dividends;
-                this.setState({ stockContractObj });
+                let sortedArr = this.sortStocks(stockContractObj);
                 
+                this.setState({ stockContractObj: sortedArr });
+                console.log(this.state.stockContractObj);
             }
         }.bind(this));
     }
