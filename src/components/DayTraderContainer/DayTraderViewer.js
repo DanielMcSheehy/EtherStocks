@@ -101,9 +101,11 @@ class DayTraderViewer extends React.Component {
         marginTop: '10px',
         position: 'relative',
       };
-      //let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
-      let previewBuyPrice = (Math.random() * (1.2 - 0.03) + 0.03).toFixed(4);
-      let previewNextPrice = previewBuyPrice*2;
+
+      let previewBuyPrice = (Math.random() * (1.2 - 0.03) + 0.03).toFixed(4); // For nonMetaMask users
+      let previewNextPrice = previewBuyPrice*2; 
+      let previewAddress = '0x3311b10e76719f1bbfee2e235925b3d80a5e7830';
+      let owner = this.state.bags.ownerAddress ? this.state.bags.ownerAddress : previewAddress;
 
       let timeLeft = this.state.bags.purchasedAt ? ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0) : '';
       let priceFixed = this.state.bags.sellingPrice ? parseFloat(this.state.bags.sellingPrice).toFixed(4) : previewBuyPrice;
@@ -115,7 +117,7 @@ class DayTraderViewer extends React.Component {
         <DayStockView 
         address={this.props.contractAddress}
         stockName={this.props.stockName}
-        owner={this.state.bags.ownerAddress}
+        owner={owner}
         price={priceFixed}
         nextPrice={nextPriceFixed}
         purchasedAt={this.state.bags.purchasedAt}
