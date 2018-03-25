@@ -1,6 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContractViewer.css';
+import UserDashboard from '../../components/UserDashboard';
 import ContractViewer from './ContractViewer';
 import DayTraderContainer from '../../components/DayTraderContainer';
 import Abi from './contractAbi.json';
@@ -86,6 +87,7 @@ class ContractContainer extends React.Component {
     };
     this.storeContracts =  this.storeContracts.bind(this);
     this.sortStocks =  this.sortStocks.bind(this);
+    this.displayStockData = this.displayStockData.bind(this);
   }
 
     componentDidMount () { // Replace current shit with new contracts/event listeners
@@ -101,21 +103,24 @@ class ContractContainer extends React.Component {
         
         const MyContract = web3.eth.contract(Abi);
 
-        Object.keys(this.state.featuredStockAddress).map((key, index) => {
-                let stockName = key;
-                let contractAddress = this.state.featuredStockAddress[key].split('https://etherscan.io/address/',)[1];
-                var ContractInstance = MyContract.at(contractAddress);
-                
-                this.storeContracts(ContractInstance, index, stockName);
-          });
-        
-        
+            Object.keys(this.state.featuredStockAddress).map((key, index) => {
+                    let stockName = key;
+                    let contractAddress = this.state.featuredStockAddress[key].split('https://etherscan.io/address/',)[1];
+                    var ContractInstance = MyContract.at(contractAddress);
+                    
+                    this.storeContracts(ContractInstance, index, stockName);
+            });
+
+          
         this.setState({ ownerAccount: web3.eth.accounts[0] });
-        
         
         } catch (error) {
             console.log('Error with MetaMask: ', error); 
         }
+    }
+    displayStockData(event) {
+        event.preventDefault();
+        console.log('event: ', this.state.stockContractObj);
     }
     sortStocks(stockArr) {
         
@@ -138,14 +143,25 @@ class ContractContainer extends React.Component {
                 let _ethConverted = web3.fromWei(_weiprice, 'ether');
                 let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
 
-                let buyObj = Object.assign({}, this.state.stockContractObj[index]);
-                buyObj.name = stockName;
-                buyObj.price = buyPrice;
-                let unsorted = this.state.stockContractObj.concat(buyObj);
-                // let sortedArr = this.sortStocks(unsorted);
-                this.setState({ stockContractObj: unsorted});
-                //console.log('sorted: ', this.state.stockContractObj);
+
+                // let buyObj = Object.assign({}, this.state.stockContractObj[index]);
+                // buyObj.name = stockName;
+                // buyObj.price = buyPrice;
+                // let unsorted = this.state.stockContractObj.concat(buyObj);
                 
+                if (!this.state.stockContractObj[index]) {
+
+                    let buyObj = Object.assign({}, this.state.stockContractObj[index]);
+                    buyObj.name = stockName;
+                    buyObj.price = buyPrice;
+                    let unsorted = this.state.stockContractObj.concat(buyObj);
+                    this.setState({ stockContractObj: unsorted});
+                }
+                
+                else {
+                    let stockContractObj = this.state.stockContractObj.slice(0);
+                    stockContractObj[index].price = buyPrice;
+                }
             }
         }.bind(this));
 
@@ -154,11 +170,16 @@ class ContractContainer extends React.Component {
                 console.error(error);
             }
             else {
-                let stockContractObj = this.state.stockContractObj.slice(0);
-                stockContractObj[index].contractBalance = (result.c[0]*.1).toFixed(1);
-
+                try {
+                    
+                        let stockContractObj = this.state.stockContractObj.slice(0);
+                        stockContractObj[index].contractBalance = (result.c[0]*.1).toFixed(1);
+               
                 this.setState({ stockContractObj });
-
+                } catch (error) {
+                    console.log('setting balance error: ');
+                    //this.storeContracts(ContractInstance, index, stockName);
+                }
             }
         }.bind(this));
 
@@ -167,9 +188,21 @@ class ContractContainer extends React.Component {
                 console.error(error);
             }
             else {
+
+                try {
+                
+                //let stockContractObj = this.state.stockContractObj ? this.state.stockContractObj.slice(0) : [];
+               
+                    
+                 
                 let stockContractObj = this.state.stockContractObj.slice(0);
                 stockContractObj[index].tokenSupply = (result.c[0]*.1).toFixed(2);
                 this.setState({ stockContractObj });
+                
+                } catch (error) {
+                    //this.storeContracts(ContractInstance, index, stockName);
+                    console.log('total supply error: ');
+                }
             }
         }.bind(this));
 
@@ -178,18 +211,25 @@ class ContractContainer extends React.Component {
                 console.error(error);
             }
             else {
-                
+                try {
+                    
                 let div = result.toNumber();
                 let dividends = web3.fromWei(div); 
                 dividends = parseFloat(dividends).toFixed(4);
                 dividends = dividends > 0.00001 ? (dividends) : 0;     
-
+                
+                //let stockContractObj = this.state.stockContractObj ? this.state.stockContractObj.slice(0) : [];
                 let stockContractObj = this.state.stockContractObj.slice(0);
                 stockContractObj[index].dividends = dividends;
                 let sortedArr = this.sortStocks(stockContractObj);
                 
+                console.log('final state', this.state.stockContractObj);
+
                 this.setState({ stockContractObj: sortedArr });
-                console.log(this.state.stockContractObj);
+                } catch (error) {
+                    //this.storeContracts(ContractInstance, index, stockName);
+                    console.log('dividends error: ');
+                }
             }
         }.bind(this));
     }
@@ -232,6 +272,11 @@ class ContractContainer extends React.Component {
     });
     return( 
       <div>
+          <button onClick={this.displayStockData}>display</button>
+          <UserDashboard featuredStockArr={this.state.stockContractObj} />
+          <h1 style={{marginLeft: '44%'}}>Featured</h1>
+    
+          <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
         <div style={featuredStyle}>
         {FeaturedstockView}
         </div>
