@@ -48,6 +48,8 @@ class ContractViewer extends React.Component {
         this.getBuyPrice(ContractInstance);
         } catch (error) {
                console.log('Error with MetaMask'); 
+               let previewPriceValue = (Math.random() * (0.013 - 0.007) + 0.007).toFixed(5);
+               this.setState({ price: previewPriceValue });
         }
     }
         

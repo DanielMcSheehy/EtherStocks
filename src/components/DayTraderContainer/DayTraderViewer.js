@@ -15,6 +15,7 @@ class DayTraderViewer extends React.Component {
             ContractInstance: {},
             price: 0,
             calculatedTimer: 0,
+            previewTime: 0,
             bags: {},
         };
         this.getBuyPrice =  this.getBuyPrice.bind(this);
@@ -45,6 +46,9 @@ class DayTraderViewer extends React.Component {
 
         } catch (error) {
                 console.log('Please Use MetaMask ');
+                let previewTime = (Math.random() * (86400 - 7200) + 7200).toFixed(0);
+                this.setState({ previewTime });
+                
         }
     }
         
@@ -98,10 +102,14 @@ class DayTraderViewer extends React.Component {
         position: 'relative',
       };
       //let timeLeft =  this.state.bags.purchasedAt ?  ((Date.now())/1000 - (this.props.purchasedAt+1200)).toFixed(0) : 10;
-      let timeLeft = ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0);
-      let priceFixed = parseFloat(this.state.bags.sellingPrice).toFixed(4);
-      let nextPriceFixed = parseFloat(this.state.bags.nextSellingPrice).toFixed(4);
+      let previewBuyPrice = (Math.random() * (1.2 - 0.03) + 0.03).toFixed(4);
+      let previewNextPrice = previewBuyPrice*2;
+
+      let timeLeft = this.state.bags.purchasedAt ? ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0) : '';
+      let priceFixed = this.state.bags.sellingPrice ? parseFloat(this.state.bags.sellingPrice).toFixed(4) : previewBuyPrice;
+      let nextPriceFixed = this.state.bags.nextSellingPrice ? parseFloat(this.state.bags.nextSellingPrice).toFixed(4) : previewNextPrice;
       let calculatedTimer = this.state.calculatedTimer ? this.state.calculatedTimer : '';
+      calculatedTimer = this.state.previewTime ? this.state.previewTime : calculatedTimer;
     return ( 
       <div style={outerWrapper}>
         <DayStockView 
