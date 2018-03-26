@@ -31,6 +31,7 @@ class DayStockView extends React.Component {
       textAlign: 'center',
       marginRight: '10px',
       marginBottom: '10px',
+      minWidth: '200px',
     };
     const stockHeader = {
       backgroundColor: '#f7f7f7',
