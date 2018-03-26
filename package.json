@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "etherstocks",
   "version": "0.0.0",
   "private": true,
   "engines": {
@@ -161,5 +161,9 @@
     "render": "babel-node tools/run render",
     "serve": "babel-node tools/run runServer",
     "start": "babel-node tools/run start"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/DanielMcSheehy/EtherStocks.git",
+  "author": "Daniel McSheehy <dsm140130@utdallas.edu>",
+  "license": "MIT"
 }
