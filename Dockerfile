@@ -14,5 +14,5 @@ COPY ./build .
 
 # Run the container under "node" user by default
 USER node
-
+EXPOSE 3000
 CMD [ "node", "server.js" ]
