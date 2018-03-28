@@ -25,7 +25,7 @@ class DayTraderViewer extends React.Component {
     componentDidMount () { // Replace current shit with new contracts/event listeners
         try {
         if (typeof Web3 != 'undefined') {
-          console.log("Using web3 detected from external source like Metamask");
+          //console.log("Using web3 detected from external source like Metamask");
           web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
         } else {
           console.log('use metamask!');

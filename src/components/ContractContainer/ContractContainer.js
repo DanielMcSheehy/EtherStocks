@@ -106,8 +106,14 @@ class ContractContainer extends React.Component {
             let stockDataArr = this.state.stockDataArr;
            
             stockDataArr[index] = obj;
+            // stockDataArr[index].contractBalance && stockDataArr[index].price
+            if (key == 'price' && stockDataArr[index].contractBalance) {
+                let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
+                this.setState({ netWorth });
+                console.log('net:', this.state.netWorth);
+            }
 
-            if (stockDataArr[index].contractBalance && stockDataArr[index].price) {
+            if (key == 'contractBalance' && stockDataArr[index].price) {
                 let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
                 this.setState({ netWorth });
                 console.log('net:', this.state.netWorth);
@@ -172,7 +178,7 @@ class ContractContainer extends React.Component {
         </div>
         <div style={outerWrapper}>
           <br />
-          <DayTraderContainer netWorth={this.state.netWorth}  shareCount={this.state.shareCount}/>
+          <DayTraderContainer />
           <br />
           <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
