@@ -92,7 +92,6 @@ class ContractContainer extends React.Component {
 
     if (key == 'contractBalance') {
         this.setState({shareCount: (this.state.shareCount + value)});
-        console.log('shares: ', this.state.shareCount);
     }
 
     this.state.stockDataArr.forEach(function(stockObj, index) {
@@ -110,13 +109,11 @@ class ContractContainer extends React.Component {
             if (key == 'price' && stockDataArr[index].contractBalance) {
                 let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
                 this.setState({ netWorth });
-                console.log('net:', this.state.netWorth);
             }
 
             if (key == 'contractBalance' && stockDataArr[index].price) {
                 let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
                 this.setState({ netWorth });
-                console.log('net:', this.state.netWorth);
             }
            
         this.setState({stockDataArr});
@@ -173,6 +170,9 @@ class ContractContainer extends React.Component {
     });
     return( 
       <div>
+          <h1 style={{width: '100%', marginLeft: '44%'}}>Featured</h1>
+    
+    <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
         <div style={featuredStyle}>
         {FeaturedstockView}
         </div>
