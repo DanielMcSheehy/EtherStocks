@@ -47,7 +47,7 @@ class ContractViewer extends React.Component {
         
         this.getBuyPrice(ContractInstance);
         } catch (error) {
-               console.log('Error with MetaMask'); 
+               console.log('Error with MetaMask: ', error); 
                let previewPriceValue = (Math.random() * (0.013 - 0.007) + 0.007).toFixed(5);
                this.setState({ price: previewPriceValue });
         }
@@ -68,6 +68,18 @@ class ContractViewer extends React.Component {
                         //282303516109755     82303516109755
                     //buyPrice = buyPrice.toFixed(6); //Bad
                     this.setState({ price: buyPrice });
+
+
+
+                    // let stockDataObj = {
+                    //     name: this.props.stockName,
+                    //     price: this.state.price,
+                    //     contractBalance: this.state.contractBalance,
+                    //     tokenSupply: this.state.tokenSupply,
+                    //     dividends: this.state.dividends,
+                    // }
+                    
+                    this.props.storeChildStockData(this.props.stockName, 'price', this.state.price); //returns obj data to contractContainer *****
                 }
             }.bind(this));
             
@@ -82,6 +94,7 @@ class ContractViewer extends React.Component {
                     // console.log('new', result.toNumber());
                     // this.setState({ contractBalance: (_eth) });
                     //('see this? ', this.state.contractBalance);
+                    this.props.storeChildStockData(this.props.stockName, 'contractBalance', result.c[0]*.1);
                 }
             }.bind(this));
 
@@ -92,6 +105,7 @@ class ContractViewer extends React.Component {
                 else {
                     let tokenSupply = (result.c[0]*.1).toFixed(2)
                     this.setState({ tokenSupply });
+                    this.props.storeChildStockData(this.props.stockName, 'tokenSupply', this.state.tokenSupply);
                 }
             }.bind(this));
                 
@@ -110,8 +124,11 @@ class ContractViewer extends React.Component {
                     dividends = dividends > 0.00001 ? (dividends) : 0;
 
                     this.setState({ dividends }) //Very low
+                    this.props.storeChildStockData(this.props.stockName, 'dividends', this.state.dividends);
+                    
                 }
             }.bind(this));
+        
     }
     
   buy(_ethValue) {

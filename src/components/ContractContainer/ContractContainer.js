@@ -8,6 +8,9 @@ class ContractContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
+      stockDataArr: [],
+      shareCount: 0,
+      netWorth: 0,
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
@@ -81,6 +84,49 @@ class ContractContainer extends React.Component {
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
+    this.storeChildStockData = this.storeChildStockData.bind(this);
+  }
+
+  storeChildStockData(stockName, key, value) { //TODO: add sorting
+    let found = false;
+
+    if (key == 'contractBalance') {
+        this.setState({shareCount: (this.state.shareCount + value)});
+        console.log('shares: ', this.state.shareCount);
+    }
+
+    this.state.stockDataArr.forEach(function(stockObj, index) {
+        if (stockObj.name == stockName) {
+            let obj = stockObj;
+             
+             let string = key;
+             obj[string] = value;
+            
+            found = true;
+            let stockDataArr = this.state.stockDataArr;
+           
+            stockDataArr[index] = obj;
+
+            if (stockDataArr[index].contractBalance && stockDataArr[index].price) {
+                let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
+                this.setState({ netWorth });
+                console.log('net:', this.state.netWorth);
+            }
+           
+        this.setState({stockDataArr});
+        //console.log('found:', this.state.stockDataArr);
+            
+        }
+      }.bind(this));
+
+      if (!found) {
+        let stockObj = {};
+        stockObj.name = stockName
+        let string = key;
+        stockObj[string] = value;
+        this.setState({stockDataArr: this.state.stockDataArr.concat(stockObj)});
+      }
+      
   }
 
   render() {
@@ -94,6 +140,7 @@ class ContractContainer extends React.Component {
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
         <ContractViewer
+          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.featuredStockAddress[key].split(
@@ -108,6 +155,7 @@ class ContractContainer extends React.Component {
     Object.keys(this.state.nonFeaturedStockAddress).map((key, index) => {
       nonFeaturedstockView.push(
         <ContractViewer
+          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.nonFeaturedStockAddress[key].split(
@@ -124,7 +172,7 @@ class ContractContainer extends React.Component {
         </div>
         <div style={outerWrapper}>
           <br />
-          <DayTraderContainer />
+          <DayTraderContainer netWorth={this.state.netWorth}  shareCount={this.state.shareCount}/>
           <br />
           <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
