@@ -16,6 +16,7 @@ class Instructions extends React.Component {
   render() {
     return (
       <div className={s.root}>
+       <div id="test"></div>
         <div className={s.container}>
           <h1 className={s.header}>
             How to Play

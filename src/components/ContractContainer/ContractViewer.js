@@ -54,6 +54,7 @@ class ContractViewer extends React.Component {
     }
         
     getBuyPrice(ContractInstance) {    
+            this.props.storeChildStockData(this.props.stockName, this.props.stockName, this.props.stockName);
             ContractInstance.buyPrice({from: this.state.ownerAccount}, function(error, result) {
                 if (error) {
                     console.error(error);
@@ -79,7 +80,7 @@ class ContractViewer extends React.Component {
                     //     dividends: this.state.dividends,
                     // }
                     
-                    this.props.storeChildStockData(this.props.stockName, 'price', this.state.price); //returns obj data to contractContainer *****
+                this.props.storeChildStockData(this.props.stockName, 'price', this.state.price); //returns obj data to contractContainer *****
                 }
             }.bind(this));
             
@@ -125,7 +126,6 @@ class ContractViewer extends React.Component {
 
                     this.setState({ dividends }) //Very low
                     this.props.storeChildStockData(this.props.stockName, 'dividends', this.state.dividends);
-                    
                 }
             }.bind(this));
         

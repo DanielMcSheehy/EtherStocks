@@ -8,7 +8,7 @@ class ContractContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      stockDataArr: [],
+      stockDataArr: {},
       shareCount: 0,
       netWorth: 0,
       featuredStockAddress: {
@@ -85,60 +85,63 @@ class ContractContainer extends React.Component {
       },
     };
     this.storeChildStockData = this.storeChildStockData.bind(this);
+    this.scrollToFAQ = this.scrollToFAQ.bind(this);
   }
 
   storeChildStockData(stockName, key, value) { //TODO: add sorting
-    let found = false;
+    let strKey = key;
+    let strName = stockName;
 
-    if (key == 'contractBalance') {
-        this.setState({shareCount: (this.state.shareCount + value)});
+    if (!this.state.stockDataArr[strName]) {
+        
+    let stockDataArr = this.state.stockDataArr;
+    
+    stockDataArr[strName] = {};
+    
+    this.setState({stockDataArr});
+    //console.log(this.state.stockDataArr);
     }
+    else if (this.state.stockDataArr[strName][strKey] === undefined ) {
+        
+        let stockDataArr = this.state.stockDataArr;
 
-    this.state.stockDataArr.forEach(function(stockObj, index) {
-        if (stockObj.name == stockName) {
-            let obj = stockObj;
-             
-             let string = key;
-             obj[string] = value;
-            
-            found = true;
-            let stockDataArr = this.state.stockDataArr;
-           
-            stockDataArr[index] = obj;
-            // stockDataArr[index].contractBalance && stockDataArr[index].price
-            if (key == 'price' && stockDataArr[index].contractBalance) {
-                let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
-                this.setState({ netWorth });
-            }
-
-            if (key == 'contractBalance' && stockDataArr[index].price) {
-                let netWorth = this.state.netWorth + stockDataArr[index].contractBalance * stockDataArr[index].price;
-                this.setState({ netWorth });
-            }
-           
+        stockDataArr[strName][strKey] = value;
+        
         this.setState({stockDataArr});
-        //console.log('found:', this.state.stockDataArr);
-            
-        }
-      }.bind(this));
 
-      if (!found) {
-        let stockObj = {};
-        stockObj.name = stockName
-        let string = key;
-        stockObj[string] = value;
-        this.setState({stockDataArr: this.state.stockDataArr.concat(stockObj)});
-      }
-      
+                if (key == 'price' && stockDataArr[strName].contractBalance) {
+                    let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
+                    this.setState({ netWorth });
+                    //console.log('net', netWorth)
+                }
+
+                if (key == 'contractBalance' && stockDataArr[strName].price) {
+                            let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
+                            this.setState({ netWorth });
+                            //console.log('net', netWorth)
+                    }
+    
+                if (key == 'contractBalance') {
+                        this.setState({shareCount: (this.state.shareCount + value)});
+                        //console.log('share', this.state.shareCount);
+                    }
+    }
+  }
+
+  scrollToFAQ() {
+    var element = document.getElementById("test");
+
+    element.scrollIntoView();
   }
 
   render() {
+
     var outerWrapper = {
      clear: 'left',
     };
     var featuredStyle = {
-        marginLeft: '2%',
-       };
+        marginLeft: '3%',
+    };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
@@ -168,11 +171,31 @@ class ContractContainer extends React.Component {
         />,
       );
     });
-    return( 
-      <div>
-          <h1 style={{width: '100%', marginLeft: '44%'}}>Featured</h1>
     
-    <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
+
+    let netWorth = this.state.netWorth.toFixed(3);
+    let shareCount = this.state.shareCount.toFixed(1);
+    let dollarNetWorth = (netWorth*395.96).toFixed(2);
+    return( 
+        
+      <div>
+        <div className={s.bar}> 
+            <div className={s.innerText}>
+                Account value: <span className={s.greenText}>{netWorth}</span> ETH
+                <span className={s.spacer}>
+                    Total Shares: <span className={s.greenText}>{shareCount}</span>
+                </span>
+                <span className={s.spacer}>
+                    USD: <span className={s.greenText}>${dollarNetWorth}</span>
+                </span>
+                <span onClick={this.scrollToFAQ} className={s.howToPlay}>
+                    How to Play 
+                </span>
+            </div>
+        </div>
+        <h1 style={{width: '100%', marginLeft: '44%'}}>Featured</h1>
+        <hr style={{ marginLeft: '6%', width: '85%' }}></hr>
+
         <div style={featuredStyle}>
         {FeaturedstockView}
         </div>
@@ -185,6 +208,7 @@ class ContractContainer extends React.Component {
           <div style={featuredStyle}>
              {nonFeaturedstockView}
           </div>
+         
         </div>
       </div>
     );
