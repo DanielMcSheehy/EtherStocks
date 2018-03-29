@@ -3,10 +3,10 @@
     border: 1px solid darkblue;
     padding: 5px;
    margin-left: -2.5%;
-  width: 110%;
+  width: 103.15%;
+  
    height: 20px;
    background-color: #4f5b66;
-   position: fixed;
   position: -webkit-sticky;
     position: -moz-sticky;
     position: -ms-sticky;
