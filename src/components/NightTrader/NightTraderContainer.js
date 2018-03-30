@@ -26,6 +26,14 @@ class NightTraderContainer extends React.Component {
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'WAMPUM':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
+      },
+      threeMultiplierTraderAddress: {
+        'PLATINUM':
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
+        'CRYP2 KITTIES':
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
+        'WAMPUM':
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       }
     };
   }
@@ -78,7 +86,7 @@ class NightTraderContainer extends React.Component {
     var multiplier = {
      color: '#3b5998',
      fontWeight: 'bold',
-     marginTop: '20%',
+     marginTop: '0%',
      marginLeft: '0%', 
      marginRight: '0%',
      clear: 'left',
@@ -111,6 +119,19 @@ class NightTraderContainer extends React.Component {
         />,
       );
     });
+    const ThreeMultiplierStockView = [];
+    Object.keys(this.state.twoMultiplierTraderAddress).map((key, index) => {
+        TwoMultiplierStockView.push(
+        <NightTraderViewer
+          index={6+index}
+          stockName={key}
+          cookTime={this.state.cookTime}
+          contractAddress={
+            this.state.twoMultiplierTraderAddress[key]
+          }
+        />,
+      );
+    });
     // <h1 style={{ marginLeft: '24%' }}>Day Trader </h1>
           
 		//   <h3 style={{ marginLeft: '22%' }}> Price resets after 24 hours </h3>
@@ -127,6 +148,8 @@ class NightTraderContainer extends React.Component {
           {OneMultiplierStockView}
           <p style={multiplier}> </p>
           {TwoMultiplierStockView}
+          <p style={multiplier}> </p>
+          {ThreeMultiplierStockView}
         </div>
      </div>
     );

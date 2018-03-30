@@ -46,9 +46,6 @@ class NightTraderViewer extends React.Component {
 
         } catch (error) {
                 console.log('Please Use MetaMask ', error);
-                //let previewTime = (Math.random() * (86400 - 7200) + 7200).toFixed(0);
-                //this.setState({ previewTime });
-                
         }
     }
         
@@ -77,8 +74,6 @@ class NightTraderViewer extends React.Component {
                     this.setState({ timeToContestStart });
                 }
             }.bind(this));
-
-            
     }
     
   buy() {
