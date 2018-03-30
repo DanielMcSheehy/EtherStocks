@@ -10,6 +10,7 @@ class NightTraderContainer extends React.Component {
     this.state = {
       ownerAccount: '',
       contractBalance: 0,
+      cookTime: 0,
       featuredDayTraderAddress: {
         'COFFEE':
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
@@ -39,7 +40,7 @@ class NightTraderContainer extends React.Component {
         this.web3 = new Web3(new web3.providers.HttpProvider("http://localhost:8545")); // Not to be used.
       }
       const MyContract = web3.eth.contract(Abi);
-      var ContractInstance = MyContract.at(this.props.contractAddress);    
+      var ContractInstance = MyContract.at('0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5');    
       this.setState({ ownerAccount: web3.eth.accounts[0] });
                 ContractInstance.getBalance( {from: this.state.ownerAccount}, function(error, result) { // 0-5
                   if (error) {
@@ -47,9 +48,21 @@ class NightTraderContainer extends React.Component {
                   }
                   else {
                       let contractBalance = result.toNumber();
+                      contractBalance = web3.fromWei(contractBalance);
                       this.setState({ contractBalance });
                   }
               }.bind(this));
+
+              ContractInstance.timeLeftToCook( {from: this.state.ownerAccount}, function(error, result) { // 0-5
+                if (error) {
+                    console.error(error);
+                }
+                else {
+                    console.log('result cook', result.toNumber());
+                    let cookTime = result.toNumber();
+                    this.setState({ cookTime });
+                }
+            }.bind(this));
 
     } catch (error) {
             console.log('Please Use MetaMask ', error);
@@ -77,6 +90,7 @@ class NightTraderContainer extends React.Component {
         <NightTraderViewer
           index={index}
           stockName={key}
+          cookTime={this.state.cookTime}
           contractAddress={
             this.state.featuredDayTraderAddress[key]
           }
@@ -90,6 +104,7 @@ class NightTraderContainer extends React.Component {
         <NightTraderViewer
           index={3+index}
           stockName={key}
+          cookTime={this.state.cookTime}
           contractAddress={
             this.state.twoMultiplierTraderAddress[key]
           }
@@ -100,6 +115,7 @@ class NightTraderContainer extends React.Component {
           
 		//   <h3 style={{ marginLeft: '22%' }}> Price resets after 24 hours </h3>
     //   <hr style={{ marginLeft: '18%', width: '23%' }}></hr>
+    let contractBalance = this.state.contractBalance ? parseFloat(this.state.contractBalance).toFixed(4) : 0;
     return( 
       <div>
       

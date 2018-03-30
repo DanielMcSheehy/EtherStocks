@@ -172,12 +172,6 @@ class ContractContainer extends React.Component {
         />,
       );
     });
-//     <div style={left}>
-//     <DayTraderContainer />
-//   </div>
-//   <div style={left}>
-//   <NightTrader />
-//   </div>
 
     let netWorth = this.state.netWorth.toFixed(3);
     let shareCount = this.state.shareCount.toFixed(1);

@@ -93,6 +93,7 @@ class NightStockViewView extends React.Component {
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
     
     let buttonSwitch = !this.props.timeToContestStart ? <button onClick={this.props.click} style={purchaseButton}>Purchase</button> : <div style={purchaseTimer}>Starts in: <NightTraderTimer start={this.props.timeToContestStart}/></div>;
+    let cookTimer = this.props.cookTime > 0 ? <NightTraderTimer start={this.props.cookTime}/> : '4 Hours';
     return (
       <div style={outerWrapper}> 
         <div style={stockHeader}>
@@ -101,7 +102,7 @@ class NightStockViewView extends React.Component {
         <div style={ContentWrapper}>
           <p><span style={boldText}>Night Trade</span></p>
           <p><span style={boldText}>Price: </span>{this.props.price}</p>
-          <span style={boldText}>Catch time:</span>  4 Hours
+          <span style={boldText}>Win Jackpot in:</span> {cookTimer}
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>

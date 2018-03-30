@@ -77,6 +77,7 @@ class NightTraderViewer extends React.Component {
                     this.setState({ timeToContestStart });
                 }
             }.bind(this));
+
             
     }
     
@@ -119,6 +120,7 @@ class NightTraderViewer extends React.Component {
         nextPrice={nextPriceFixed}
         purchasedAt={this.state.bags.purchasedAt}
         timeToContestStart = {this.state.timeToContestStart}
+        cookTime={this.props.cookTime}
         click={this.buy}
         />
       </div>
