@@ -22,7 +22,7 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
         TULIPS:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-        'COFFEE':    
+        'ETHERGOO.IO':    
           'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       },
       nonFeaturedStockAddress: {
@@ -204,12 +204,16 @@ class ContractContainer extends React.Component {
             <div className={s.traderTitle}>
             Night Trader
             </div>
+            <p className={s.NightTraderInfo}>Last person to buy a stock wins the jackpot</p>
+            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
           <NightTrader />
           </div>
           <div className={s.traderWrap} id="right">
             <div className={s.traderTitle}>
                 Day Trader
             </div>
+            <p className={s.DayTraderInfo}>Price Resets after 24 hours</p>
+            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
           <DayTraderContainer />
           </div>
         </div>
