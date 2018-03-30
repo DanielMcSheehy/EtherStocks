@@ -2,6 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './NightStockView.css';
 import ButtonView from '../ButtonView';
+import NightTraderTimer from './NightTraderTimer';
 
 class NightStockViewView extends React.Component {
   constructor(prop) {
@@ -69,6 +70,15 @@ class NightStockViewView extends React.Component {
       color: 'white',
       borderRadius: '3px',
     };
+    const purchaseTimer = {
+      width: '100%',
+      height: '30px',
+      backgroundColor: '#363b74',
+      color: 'white',
+      borderRadius: '3px',
+      lineHeight: '15px',
+      fontSize: '15px',
+    };
     const boldText = {
       fontWeight: 'bold',
     };
@@ -81,23 +91,22 @@ class NightStockViewView extends React.Component {
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
 
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
-    //let price = this.props.price ? (this.props.price).toFixed(6) : 0;
-    let timer = <p style={purchaseButton}>{this.props.timeToContestStart}</p>
-    let buttonSwitch = this.props.timeToContestStart ? <button onClick={this.props.click} style={purchaseButton}>Purchase</button> : {timer};
+    
+    let buttonSwitch = !this.props.timeToContestStart ? <button onClick={this.props.click} style={purchaseButton}>Purchase</button> : <div style={purchaseTimer}>Starts in: <NightTraderTimer start={this.props.timeToContestStart}/></div>;
     return (
       <div style={outerWrapper}> 
         <div style={stockHeader}>
           <a style={headerText} href={addressLink}> {this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
-          <p><span style={boldText}>Day Trade</span></p>
+          <p><span style={boldText}>Night Trade</span></p>
           <p><span style={boldText}>Price: </span>{this.props.price}</p>
-          <span style={boldText}>Catch time:</span>  30 min
+          <span style={boldText}>Catch time:</span>  4 Hours
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
           </div>
-          <button onClick={this.props.click} style={purchaseButton}>Purchase</button>
+          {buttonSwitch}
         </div>
       
       </div>
