@@ -1,10 +1,9 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './DayStockView.css';
+import s from './NightStockView.css';
 import ButtonView from '../ButtonView';
-import DayTraderTimer from './DayTraderTimer';
 
-class DayStockView extends React.Component {
+class NightStockViewView extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
@@ -83,7 +82,8 @@ class DayStockView extends React.Component {
 
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
     //let price = this.props.price ? (this.props.price).toFixed(6) : 0;
-    let timer = this.props.calculatedTimer ? <DayTraderTimer start={this.props.calculatedTimer}/> : <div style={blank}></div>;
+    let timer = <p style={purchaseButton}>{this.props.timeToContestStart}</p>
+    let buttonSwitch = this.props.timeToContestStart ? <button onClick={this.props.click} style={purchaseButton}>Purchase</button> : {timer};
     return (
       <div style={outerWrapper}> 
         <div style={stockHeader}>
@@ -91,9 +91,8 @@ class DayStockView extends React.Component {
         </div>
         <div style={ContentWrapper}>
           <p><span style={boldText}>Day Trade</span></p>
-          <p><span style={boldText}>Buy price: </span>{this.props.price}</p>
-          <p><span style={boldText}>Next price: </span>{this.props.nextPrice}</p>
-          <span style={boldText}>Resets in:  </span>{timer}
+          <p><span style={boldText}>Price: </span>{this.props.price}</p>
+          <span style={boldText}>Catch time:</span>  30 min
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
@@ -106,4 +105,4 @@ class DayStockView extends React.Component {
   }
 }
 
-export default withStyles(s)(DayStockView);
+export default withStyles(s)(NightStockViewView);

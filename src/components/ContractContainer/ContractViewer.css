@@ -15,7 +15,7 @@
   right: 0;
   left: 0;
   z-index: 999;
-  box-shadow: rgba(0, 0, 0, 0.4) 0 4px 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 4px 4px;
   
 }
 
@@ -37,3 +37,23 @@
 .howToPlay:hover {
     color: limegreen;
 }
+
+.wrapper {
+    clear: left;
+}
+
+.traderWrap {
+    width: 49%;
+    float: right;
+    position: relative;
+    margin-left: 10px;
+}
+
+.traderTitle {
+    margin-top: 10px;
+    margin-left: 43%;
+    font-size: 25px;
+    line-height: 15px;
+    color: #3b5998;
+}
+

@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContractViewer.css';
 import ContractViewer from './ContractViewer';
 import DayTraderContainer from '../../components/DayTraderContainer';
-
+import NightTrader from '../../components/NightTrader';
 class ContractContainer extends React.Component {
   constructor(prop) {
     super(prop);
@@ -136,9 +136,12 @@ class ContractContainer extends React.Component {
 
   render() {
 
-    var outerWrapper = {
-     clear: 'left',
+   
+    var left = {
+        width: '45%',
+        float: 'right'
     };
+
     var featuredStyle = {
         marginLeft: '3%',
     };
@@ -171,7 +174,12 @@ class ContractContainer extends React.Component {
         />,
       );
     });
-    
+//     <div style={left}>
+//     <DayTraderContainer />
+//   </div>
+//   <div style={left}>
+//   <NightTrader />
+//   </div>
 
     let netWorth = this.state.netWorth.toFixed(3);
     let shareCount = this.state.shareCount.toFixed(1);
@@ -199,17 +207,28 @@ class ContractContainer extends React.Component {
         <div style={featuredStyle}>
         {FeaturedstockView}
         </div>
-        <div style={outerWrapper}>
-          <br />
+        <div className={s.wrapper}>
+          <div className={s.traderWrap} id="left">
+            <div className={s.traderTitle}>
+            Night Trader
+            </div>
+          <NightTrader />
+          </div>
+          <div className={s.traderWrap} id="right">
+            <div className={s.traderTitle}>
+                Day Trader
+            </div>
           <DayTraderContainer />
-          <br />
+          </div>
+        </div>
+         
           <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
           <div style={featuredStyle}>
              {nonFeaturedstockView}
           </div>
          
-        </div>
+        
       </div>
     );
   }

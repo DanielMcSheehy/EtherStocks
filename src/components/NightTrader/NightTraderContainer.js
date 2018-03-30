@@ -1,27 +1,27 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './DayTraderViewer.css';
-import DayTraderViewer from './DayTraderViewer';
+import NightTraderViewer from './NightTraderViewer';
 
-class DayTraderContainer extends React.Component {
+class NightTraderContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
       featuredDayTraderAddress: {
         'COFFEE':
-          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+          '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'TULIPS':
-           '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'BOTS':
-          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+          '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       },
       twoMultiplierTraderAddress: {
         'PLATINUM':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'CRYP2 KITTIES':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'WAMPUM':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       }
     };
   }
@@ -44,7 +44,7 @@ class DayTraderContainer extends React.Component {
     const OneMultiplierStockView = [];
     Object.keys(this.state.featuredDayTraderAddress).map((key, index) => {
         OneMultiplierStockView.push(
-        <DayTraderViewer
+        <NightTraderViewer
           index={index}
           stockName={key}
           contractAddress={
@@ -57,7 +57,7 @@ class DayTraderContainer extends React.Component {
     const TwoMultiplierStockView = [];
     Object.keys(this.state.twoMultiplierTraderAddress).map((key, index) => {
         TwoMultiplierStockView.push(
-        <DayTraderViewer
+        <NightTraderViewer
           index={3+index}
           stockName={key}
           contractAddress={
@@ -74,10 +74,6 @@ class DayTraderContainer extends React.Component {
      
         
         <div style={outerWrapper}>
-          
-          
-          
-        
         <p style={multiplier}>1.5X </p>
         {OneMultiplierStockView}
         <p style={multiplier}>2.0X </p>
@@ -88,4 +84,4 @@ class DayTraderContainer extends React.Component {
   }
 }
 
-export default withStyles(s)(DayTraderContainer);
+export default withStyles(s)(NightTraderContainer);
