@@ -1,5 +1,5 @@
 ![Alt text](UpdatedScreenshot.png?raw=true "Title")
-EtherStocks
+# EtherStocks
 
 In order to use this website, your browser needs to have the browser extension MetaMask installed. After that, you will see numerous stocks available for purchase in the table below.
 
