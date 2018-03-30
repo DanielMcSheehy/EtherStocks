@@ -50,8 +50,6 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xda9018d28bc96f4509645fbc28e872c7d678931d',
       'DRAGONS':
           'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
-      'COFFEE':    
-          'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       'COTTON':
           'https://etherscan.io/address/0x8c9ae207ee452c1a94e0653e5db1c7b4de7d76c2',
       'ALPACAS':

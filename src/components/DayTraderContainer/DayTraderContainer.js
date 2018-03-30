@@ -9,25 +9,25 @@ class DayTraderContainer extends React.Component {
     this.state = {
       featuredDayTraderAddress: {
         'COFFEE':
-          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+          '0x722ab587b0f710cf60c19d89b31127a616eed97b',
         'TULIPS':
-           '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+           '0x722ab587b0f710cf60c19d89b31127a616eed97b',
         'BOTS':
-          '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+          '0x722ab587b0f710cf60c19d89b31127a616eed97b',
       },
       twoMultiplierTraderAddress: {
         'PLATINUM':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x722ab587b0f710cf60c19d89b31127a616eed97b',
         'CRYP2 KITTIES':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x722ab587b0f710cf60c19d89b31127a616eed97b',
         'WAMPUM':
-            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
+            '0x722ab587b0f710cf60c19d89b31127a616eed97b',
       }
     };
   }
 
   render() {
-
+    // old address: 0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab
     var outerWrapper = {
      clear: 'left',
      
