@@ -22,7 +22,7 @@ class DayTraderViewer extends React.Component {
         this.buy = this.buy.bind(this);
       }
 
-    componentDidMount () { // Replace current shit with new contracts/event listeners
+    componentDidMount () { 
         try {
         if (typeof Web3 != 'undefined') {
           //console.log("Using web3 detected from external source like Metamask");
@@ -109,7 +109,7 @@ class DayTraderViewer extends React.Component {
       let timeLeft = this.state.bags.purchasedAt ? ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0) : '';
       let priceFixed = this.state.bags.sellingPrice ? parseFloat(this.state.bags.sellingPrice).toFixed(4) : previewBuyPrice;
       let nextPriceFixed = this.state.bags.nextSellingPrice ? parseFloat(this.state.bags.nextSellingPrice).toFixed(4) : previewNextPrice;
-      let calculatedTimer = this.state.calculatedTimer ? this.state.calculatedTimer : '';
+      let calculatedTimer = (this.state.calculatedTimer > 0) ? this.state.calculatedTimer : '';
       calculatedTimer = this.state.previewTime ? this.state.previewTime : calculatedTimer;
     return ( 
       <div style={outerWrapper}>

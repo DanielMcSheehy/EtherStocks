@@ -181,7 +181,7 @@ class ContractContainer extends React.Component {
       <div>
         <div className={s.bar}> 
             <div className={s.innerText}>
-                Account value: <span className={s.greenText}>{netWorth}</span> ETH
+                Account value: <span className={s.greenText}>{netWorth} ETH</span> 
                 <span className={s.spacer}>
                     Total Shares: <span className={s.greenText}>{shareCount}</span>
                 </span>

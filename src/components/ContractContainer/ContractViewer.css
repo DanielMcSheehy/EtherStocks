@@ -15,6 +15,7 @@
   right: 0;
   left: 0;
   z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 4px 5px;
   
 }
 
@@ -31,8 +32,8 @@
     color: limegreen;
 }
 .howToPlay {
-    margin-left: 25%;
+    margin-left: 32%;
 }
 .howToPlay:hover {
-    color: red;
+    color: limegreen;
 }
