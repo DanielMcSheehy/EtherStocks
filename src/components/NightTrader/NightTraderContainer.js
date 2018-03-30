@@ -118,9 +118,8 @@ class NightTraderContainer extends React.Component {
     let contractBalance = this.state.contractBalance ? parseFloat(this.state.contractBalance).toFixed(4) : 0;
     return( 
       <div>
-      
         <div className={s.pot}>
-          Pot: <span className={s.innerText}>{this.state.contractBalance} ETH </span>
+          Jackpot: <span className={s.innerText}>{this.state.contractBalance} ETH </span>
         </div>  
       
         <div style={outerWrapper}>

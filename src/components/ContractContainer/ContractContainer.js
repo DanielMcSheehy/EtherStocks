@@ -214,7 +214,7 @@ class ContractContainer extends React.Component {
           </div>
         </div>
          
-          <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
+          <h1 style={{ marginTop: '15%', marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
           <div style={featuredStyle}>
              {nonFeaturedstockView}
