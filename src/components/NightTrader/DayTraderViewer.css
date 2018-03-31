@@ -1,0 +1,16 @@
+.pot {
+    background-color: #4f5b66;
+    color: white;
+    width: 26%;
+    float: left;
+    margin-left: 38%;
+    margin-top: 0px;
+    padding: 1px;
+    text-align: center;
+    border-radius: 3px;
+    
+}
+.innerText {
+    color: limegreen;
+}
+

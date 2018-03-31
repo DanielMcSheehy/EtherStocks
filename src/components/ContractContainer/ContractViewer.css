@@ -1,0 +1,71 @@
+.bar {
+    min-width: 500px;
+    border: 1px solid darkblue;
+    padding: 5px;
+   margin-left: -2.5%;
+  width: 103.15%;
+  
+   height: 20px;
+   background-color: #4f5b66;
+  position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: sticky;
+    top: 0px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 4px 4px;
+  
+}
+
+.innerText {
+    color: white;
+    margin-left: 6%;
+    position: relative;
+}
+.spacer {
+    margin-left: 10px;
+}
+
+.greenText {
+    color: limegreen;
+}
+.howToPlay {
+    margin-left: 32%;
+}
+.howToPlay:hover {
+    color: limegreen;
+}
+
+.wrapper {
+    clear: left;
+    margin-top: 20px;
+}
+
+.traderWrap {
+    width: 49%;
+    float: right;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.traderTitle {
+    margin-top: 10px;
+    margin-left: 41%;
+    font-size: 25px;
+    line-height: 15px;
+    color: #3b5998;
+}
+
+
+.DayTraderInfo {
+    color: #4f5b66;
+    margin-left: 25%;
+}
+
+.NightTraderInfo {
+    color: #4f5b66;
+    margin-left: 19%;
+}

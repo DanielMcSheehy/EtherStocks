@@ -2,19 +2,19 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './DayTraderViewer.css';
 import Abi from './contractAbi.json';
-import DayStockView from '../DayStockView';
+import NightStockView from '../NightStockView';
 
 
 
 var Web3 = require('web3');
 
-class DayTraderViewer extends React.Component {
+class NightTraderViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ContractInstance: {},
             price: 0,
-            calculatedTimer: 0,
+            timeToContestStart: 0,
             previewTime: 0,
             bags: {},
         };
@@ -45,46 +45,41 @@ class DayTraderViewer extends React.Component {
         this.getBuyPrice(ContractInstance);
 
         } catch (error) {
-                console.log('Please Use MetaMask ');
-                let previewTime = (Math.random() * (86400 - 7200) + 7200).toFixed(0);
-                this.setState({ previewTime });
-                
+                console.log('Please Use MetaMask ', error);
         }
     }
         
     getBuyPrice(ContractInstance) {    
 
-            ContractInstance.getBag(this.props.index, {from: this.state.ownerAccount}, function(error, result) { // 0-5
+            ContractInstance.potatoes(this.props.index, {from: this.state.ownerAccount}, function(error, result) { // 0-5
                 if (error) {
                     console.error(error);
                 }
                 else {
-                    //'sellingPrice': (result[1].c[0])/10000,
                     let bags = {
                         'ownerAddress': result[0],
                         'sellingPrice': web3.fromWei(result[1].toNumber()),
-                        'nextSellingPrice': web3.fromWei(result[2].toNumber()),
-                        'level: ': result[3].c[0],
-                        'multipler': result[4].c[0],
-                        'purchasedAt': (result[5].toNumber()),
                     }
                     this.setState({ bags });
-                    let currentTime = (Date.now()/1000).toFixed(0);
-                    if (this.state.bags.purchasedAt) {
-                    let elapsedTime = 86400 - ((currentTime - this.state.bags.purchasedAt)).toFixed(0);
-                    
-                    this.setState({calculatedTimer: (elapsedTime)});
-                    }
-
                 }
             }.bind(this));
-            
+
+            ContractInstance.timeLeftToContestStart( {from: this.state.ownerAccount}, function(error, result) { // 0-5
+                if (error) {
+                    console.error(error);
+                }
+                else {
+                    console.log('result clock', result.toNumber());
+                    let timeToContestStart = result.toNumber();
+                    this.setState({ timeToContestStart });
+                }
+            }.bind(this));
     }
     
   buy() {
         //let _amountToSendInWei = this.state.bags.sellingPrice;
          let _amountToSendInWei = web3.toWei(this.state.bags.sellingPrice);
-        web3.eth.contract(Abi).at(this.props.contractAddress).purchase(this.props.index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+        web3.eth.contract(Abi).at(this.props.contractAddress).buyPotato(this.props.index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
             if (error) {
             console.error(error);
             }
@@ -109,18 +104,18 @@ class DayTraderViewer extends React.Component {
       let timeLeft = this.state.bags.purchasedAt ? ((Date.now())/1000 - (this.state.bags.purchasedAt+1200)).toFixed(0) : '';
       let priceFixed = this.state.bags.sellingPrice ? parseFloat(this.state.bags.sellingPrice).toFixed(4) : previewBuyPrice;
       let nextPriceFixed = this.state.bags.nextSellingPrice ? parseFloat(this.state.bags.nextSellingPrice).toFixed(4) : previewNextPrice;
-      let calculatedTimer = (this.state.calculatedTimer > 0) ? this.state.calculatedTimer : '';
-      calculatedTimer = this.state.previewTime ? this.state.previewTime : calculatedTimer;
+
     return ( 
       <div style={outerWrapper}>
-        <DayStockView 
+        <NightStockView 
         address={this.props.contractAddress}
         stockName={this.props.stockName}
         owner={owner}
         price={priceFixed}
         nextPrice={nextPriceFixed}
         purchasedAt={this.state.bags.purchasedAt}
-        calculatedTimer = {calculatedTimer}
+        timeToContestStart = {this.state.timeToContestStart}
+        cookTime={this.props.cookTime}
         click={this.buy}
         />
       </div>
@@ -128,4 +123,4 @@ class DayTraderViewer extends React.Component {
   }
 }
 
-export default withStyles(s)(DayTraderViewer);
+export default withStyles(s)(NightTraderViewer);

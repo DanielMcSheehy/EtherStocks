@@ -34,9 +34,7 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div >
-          <h1 style={{marginLeft: '44%'}}>Featured</h1>
-    
-          <hr style={{ marginLeft: '4%', width: '90%' }}></hr>
+          
           <ContractContainer />
           
           <div style={{ clear: 'left', minWidth: '500px' }}>

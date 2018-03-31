@@ -3,11 +3,14 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContractViewer.css';
 import ContractViewer from './ContractViewer';
 import DayTraderContainer from '../../components/DayTraderContainer';
-
+import NightTrader from '../../components/NightTrader';
 class ContractContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
+      stockDataArr: {},
+      shareCount: 0,
+      netWorth: 0,
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
@@ -19,7 +22,7 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
         TULIPS:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-        'COFFEE':    
+        'ETHERGOO.IO':    
           'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       },
       nonFeaturedStockAddress: {
@@ -47,8 +50,6 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xda9018d28bc96f4509645fbc28e872c7d678931d',
       'DRAGONS':
           'https://etherscan.io/address/0x47a03f5bf46bbc95cadd4a5311bcead23597d4e8',
-      'COFFEE':    
-          'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       'COTTON':
           'https://etherscan.io/address/0x8c9ae207ee452c1a94e0653e5db1c7b4de7d76c2',
       'ALPACAS':
@@ -81,19 +82,72 @@ class ContractContainer extends React.Component {
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
+    this.storeChildStockData = this.storeChildStockData.bind(this);
+    this.scrollToFAQ = this.scrollToFAQ.bind(this);
+  }
+
+  storeChildStockData(stockName, key, value) { //TODO: add sorting
+    let strKey = key;
+    let strName = stockName;
+
+    if (!this.state.stockDataArr[strName]) {
+        
+    let stockDataArr = this.state.stockDataArr;
+    
+    stockDataArr[strName] = {};
+    
+    this.setState({stockDataArr});
+    //console.log(this.state.stockDataArr);
+    }
+    else if (this.state.stockDataArr[strName][strKey] === undefined ) {
+        
+        let stockDataArr = this.state.stockDataArr;
+
+        stockDataArr[strName][strKey] = value;
+        
+        this.setState({stockDataArr});
+
+                if (key == 'price' && stockDataArr[strName].contractBalance) {
+                    let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
+                    this.setState({ netWorth });
+                    //console.log('net', netWorth)
+                }
+
+                if (key == 'contractBalance' && stockDataArr[strName].price) {
+                            let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
+                            this.setState({ netWorth });
+                            //console.log('net', netWorth)
+                    }
+    
+                if (key == 'contractBalance') {
+                        this.setState({shareCount: (this.state.shareCount + value)});
+                        //console.log('share', this.state.shareCount);
+                    }
+    }
+  }
+
+  scrollToFAQ() {
+    var element = document.getElementById("test");
+
+    element.scrollIntoView();
   }
 
   render() {
-    var outerWrapper = {
-     clear: 'left',
+
+   
+    var left = {
+        width: '45%',
+        float: 'right'
     };
+
     var featuredStyle = {
-        marginLeft: '2%',
-       };
+        marginLeft: '0%',
+    };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
         <ContractViewer
+          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.featuredStockAddress[key].split(
@@ -108,6 +162,7 @@ class ContractContainer extends React.Component {
     Object.keys(this.state.nonFeaturedStockAddress).map((key, index) => {
       nonFeaturedstockView.push(
         <ContractViewer
+          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.nonFeaturedStockAddress[key].split(
@@ -117,21 +172,60 @@ class ContractContainer extends React.Component {
         />,
       );
     });
+
+    let netWorth = this.state.netWorth.toFixed(3);
+    let shareCount = this.state.shareCount.toFixed(1);
+    let dollarNetWorth = (netWorth*394.96).toFixed(2);
     return( 
+        
       <div>
+        <div className={s.bar}> 
+            <div className={s.innerText}>
+                Account value: <span className={s.greenText}>{netWorth} ETH</span> 
+                <span className={s.spacer}>
+                    Total Shares: <span className={s.greenText}>{shareCount}</span>
+                </span>
+                <span className={s.spacer}>
+                    USD: <span className={s.greenText}>${dollarNetWorth}</span>
+                </span>
+                <span onClick={this.scrollToFAQ} className={s.howToPlay}>
+                    How to Play 
+                </span>
+            </div>
+        </div>
+        <h1 style={{ marginLeft: '44%'}}>Featured</h1>
+        <hr style={{ marginLeft: '6%', width: '85%' }}></hr>
+
         <div style={featuredStyle}>
         {FeaturedstockView}
         </div>
-        <div style={outerWrapper}>
-          <br />
+        <div className={s.wrapper}>
+          <div className={s.traderWrap} id="left">
+            <div className={s.traderTitle}>
+            Night Trader
+            </div>
+            <p className={s.NightTraderInfo}>Last person to buy a stock by the countdown wins jackpot</p>
+            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
+          <NightTrader />
+          </div>
+          <div className={s.traderWrap} id="right">
+            <div className={s.traderTitle}>
+                Day Trader
+            </div>
+            <p className={s.DayTraderInfo}>Price Resets after 24 hours of no purchases</p>
+            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
           <DayTraderContainer />
-          <br />
-          <h1 style={{ marginLeft: '40%', paddingTop: '4%', clear: 'left'}}>Current Stocks</h1>
+          </div>
+        </div>
+         
+        <div style={{ marginTop: '0%', clear: 'left', clear: 'right'}}>
+          <h1 style={{ marginTop: '0%', marginLeft: '40%', paddingTop: '4%', clear: 'left', clear: 'right'}}>Current Stocks</h1>
           <hr style={{ marginLeft: '4%',  width: '90%' }}></hr>
           <div style={featuredStyle}>
              {nonFeaturedstockView}
           </div>
-        </div>
+        </div> 
+        
       </div>
     );
   }

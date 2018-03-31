@@ -16,6 +16,7 @@ class Instructions extends React.Component {
   render() {
     return (
       <div className={s.root}>
+       <div id="test"></div>
         <div className={s.container}>
           <h1 className={s.header}>
             How to Play
@@ -25,6 +26,21 @@ class Instructions extends React.Component {
             After that, you will see numerous stocks available for purchase in the table below.
           </p>
           <p className={s.boldText}>
+            DayTrader:
+          </p>
+          <p>
+          This is a high risk, high reward game of hot potato, buy a meaningless asset and hope someone else buys it from you for 1.5, or 2x the price.  With every purchase the clock resets to 24hrs, but when the clock runs out the fairy tale ends, and the price goes back to 0.005. Not for the faint of heart!  (fees will be used to promote and pump the real, fake stocks).
+          </p>
+          <p className={s.boldText}>
+            NightTrader:
+          </p>
+          <p>
+          Like the day trader except a percentage of every purchase goes into a jackpot, and with every buy the timer resets to 8 hours.  The last one to buy when clock runs out wins 70% of jackpot, the rest will be used to start a new jackpot, and the devs will put their share into pumping the stock associated with the winning bid (usually in about 24hrs, so get in before them and make some dividends!).
+          </p>
+          <p className={s.boldText}>
+            EtherStocks:
+          </p>
+          <p>
             There are multiple actions that you can do with each stock:
           </p>
           <div>

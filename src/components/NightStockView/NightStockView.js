@@ -1,10 +1,10 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './DayStockView.css';
+import s from './NightStockView.css';
 import ButtonView from '../ButtonView';
-import DayTraderTimer from './DayTraderTimer';
+import NightTraderTimer from './NightTraderTimer';
 
-class DayStockView extends React.Component {
+class NightStockViewView extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
@@ -70,6 +70,15 @@ class DayStockView extends React.Component {
       color: 'white',
       borderRadius: '3px',
     };
+    const purchaseTimer = {
+      width: '100%',
+      height: '30px',
+      backgroundColor: '#363b74',
+      color: 'white',
+      borderRadius: '3px',
+      lineHeight: '15px',
+      fontSize: '15px',
+    };
     const boldText = {
       fontWeight: 'bold',
     };
@@ -82,23 +91,23 @@ class DayStockView extends React.Component {
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
 
     let ownerAddress = this.props.owner ? `${this.props.owner.toString().slice(0,5)}...` : '';
-    //let price = this.props.price ? (this.props.price).toFixed(6) : 0;
-    let timer = this.props.calculatedTimer ? <DayTraderTimer start={this.props.calculatedTimer}/> : <div style={blank}></div>;
+    
+    let buttonSwitch = !this.props.timeToContestStart ? <button onClick={this.props.click} style={purchaseButton}>Purchase</button> : <div style={purchaseTimer}>Starts in: <NightTraderTimer start={this.props.timeToContestStart}/></div>;
+    let cookTimer = this.props.cookTime > 0 ? <NightTraderTimer start={this.props.cookTime}/> : '4 Hours';
     return (
       <div style={outerWrapper}> 
         <div style={stockHeader}>
           <a style={headerText} href={addressLink}> {this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
-          <p><span style={boldText}>Day Trade</span></p>
-          <p><span style={boldText}>Buy price: </span>{this.props.price}</p>
-          <p><span style={boldText}>Next price: </span>{this.props.nextPrice}</p>
-          <span style={boldText}>Resets in:  </span>{timer}
+          <p><span style={boldText}>Night Trade</span></p>
+          <p><span style={boldText}>Price: </span>{this.props.price}</p>
+          <span style={boldText}>Win Jackpot in:</span> {cookTimer}
 
           <div style={ownerHeader}>
             <a style={ownerLink} href={`https://etherscan.io/address/${this.props.owner}`}>Owner: {ownerAddress}</a>
           </div>
-          <button onClick={this.props.click} style={purchaseButton}>Purchase</button>
+          {buttonSwitch}
         </div>
       
       </div>
@@ -106,4 +115,4 @@ class DayStockView extends React.Component {
   }
 }
 
-export default withStyles(s)(DayStockView);
+export default withStyles(s)(NightStockViewView);
