@@ -12,7 +12,7 @@ class NightTraderContainer extends React.Component {
       contractBalance: 0,
       cookTime: 0,
       featuredDayTraderAddress: {
-        'COFFEE':
+        'ETHERGOO.IO':
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'TULIPS':
            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
@@ -28,11 +28,11 @@ class NightTraderContainer extends React.Component {
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       },
       threeMultiplierTraderAddress: {
-        'PLATINUM':
+        'KARMA':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
-        'CRYP2 KITTIES':
+        'COCOA':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
-        'WAMPUM':
+        'MICRO DOSE':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       }
     };
@@ -120,14 +120,14 @@ class NightTraderContainer extends React.Component {
       );
     });
     const ThreeMultiplierStockView = [];
-    Object.keys(this.state.twoMultiplierTraderAddress).map((key, index) => {
-        TwoMultiplierStockView.push(
+    Object.keys(this.state.threeMultiplierTraderAddress).map((key, index) => {
+        ThreeMultiplierStockView.push(
         <NightTraderViewer
           index={6+index}
           stockName={key}
           cookTime={this.state.cookTime}
           contractAddress={
-            this.state.twoMultiplierTraderAddress[key]
+            this.state.threeMultiplierTraderAddress[key]
           }
         />,
       );
