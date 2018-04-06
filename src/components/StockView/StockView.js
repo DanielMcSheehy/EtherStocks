@@ -47,20 +47,32 @@ class StockView extends React.Component {
     const boldText = {
       fontWeight: 'bold',
     };
+    const adLink = {
+      margin: '0px',
+      marginBottom: '-30px',
+      color: 'limeGreen'
+    }
+    const shiftUpStyle = {
+      marginTop: '-5px',
+    }
     const balance = {
       fontSize: '15px',
     }
     
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
     let graphLink = `http://shawntabrizi.com/ethgraph/?address=${this.props.address}`;
+
+    let promotionalLink = this.props.stockName === "ETHERGOO.IO" ? <a style={adLink} href="https://ethergoo.io/">Play Here!</a> : '';
+    let shiftUp = this.props.stockName === "ETHERGOO.IO" ? <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p> : <p className='stockPrice'><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
     return (
-      <div style={outerWrapper}>
+      <div className="stockContainer" style={outerWrapper}>
         <div style={stockHeader}>
-          <a style={headerText} href={addressLink}>{this.props.stockName}</a>
+          <a className='stockName' style={headerText} href={addressLink}>{this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
-          <p><span style={boldText}>Price: </span> {this.props.price} ETH</p>
-          <p style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
+          {promotionalLink}
+          {shiftUp}
+          <p className='shares' style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
           <p style={balance}><span style={boldText}><span style={balance}>Total Shares: </span></span>{this.props.tokenSupply}</p>
           <p><span style={boldText}>Dividends:</span> {this.props.dividends} ETH</p>
           <a href={graphLink}>Chart</a>

@@ -82,58 +82,47 @@ class ContractContainer extends React.Component {
         'https://etherscan.io/address/0x2Fa0ac498D01632f959D3C18E38f4390B005e200',
       },
     };
-    this.storeChildStockData = this.storeChildStockData.bind(this);
     this.scrollToFAQ = this.scrollToFAQ.bind(this);
   }
 
-  storeChildStockData(stockName, key, value) { //TODO: add sorting
-    let strKey = key;
-    let strName = stockName;
+  //document.querySelectorAll('.stockContainer .stockName')
+  //document.querySelectorAll('.stockContainer .shares')[0].innerText
+  componentDidMount () {
+      //console.log('baby');
+        setTimeout(function(){ 
+        let containerObj = [];
+        let nameArr = document.querySelectorAll('.stockContainer .stockName');
+        let sharesArr = document.querySelectorAll('.stockContainer .shares');
+        let stockArr = document.querySelectorAll('.stockContainer .stockPrice');
 
-    if (!this.state.stockDataArr[strName]) {
+        console.log('here', sharesArr[1].innerText.match(/[-.0-9]+/));
+        for (let i = 0; i <= nameArr.length -1; i++ ) {
+            let obj = {
+                stockName: nameArr[i].innerText,
+                shares: sharesArr[i].innerText.match(/[-.0-9]+/)[0],
+                price: stockArr[i].innerText.match(/[-.0-9]+/)[0],
+            }
+
+            containerObj.push(obj);
+            
+            this.setState({shareCount: (this.state.shareCount + obj.shares)});
+            this.setState({netWorth: (this.state.netWorth + obj.shares * obj.price)});
+
+        }
         
-    let stockDataArr = this.state.stockDataArr;
-    
-    stockDataArr[strName] = {};
-    
-    this.setState({stockDataArr});
-    //console.log(this.state.stockDataArr);
-    }
-    else if (this.state.stockDataArr[strName][strKey] === undefined ) {
+
+        }.bind(this), 1000);
         
-        let stockDataArr = this.state.stockDataArr;
-
-        stockDataArr[strName][strKey] = value;
-        
-        this.setState({stockDataArr});
-
-                if (key == 'price' && stockDataArr[strName].contractBalance) {
-                    let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
-                    this.setState({ netWorth });
-                    //console.log('net', netWorth)
-                }
-
-                if (key == 'contractBalance' && stockDataArr[strName].price) {
-                            let netWorth = this.state.netWorth + stockDataArr[strName].contractBalance * stockDataArr[strName].price;
-                            this.setState({ netWorth });
-                            //console.log('net', netWorth)
-                    }
-    
-                if (key == 'contractBalance') {
-                        this.setState({shareCount: (this.state.shareCount + value)});
-                        //console.log('share', this.state.shareCount);
-                    }
-    }
   }
+
+
 
   scrollToFAQ() {
     var element = document.getElementById("test");
-
     element.scrollIntoView();
   }
 
   render() {
-
    
     var left = {
         width: '45%',
@@ -147,7 +136,6 @@ class ContractContainer extends React.Component {
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
         <ContractViewer
-          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.featuredStockAddress[key].split(
@@ -162,7 +150,6 @@ class ContractContainer extends React.Component {
     Object.keys(this.state.nonFeaturedStockAddress).map((key, index) => {
       nonFeaturedstockView.push(
         <ContractViewer
-          storeChildStockData = {this.storeChildStockData}
           stockName={key}
           contractAddress={
             this.state.nonFeaturedStockAddress[key].split(
@@ -173,15 +160,15 @@ class ContractContainer extends React.Component {
       );
     });
 
-    let netWorth = this.state.netWorth.toFixed(3);
-    let shareCount = this.state.shareCount.toFixed(1);
-    let dollarNetWorth = (netWorth*394.96).toFixed(2);
+    let netWorth = parseFloat(this.state.netWorth).toFixed(3);
+    let shareCount = parseFloat(this.state.shareCount).toFixed(1);
+    let dollarNetWorth = parseFloat(netWorth*380.96).toFixed(2);
     return( 
         
       <div>
         <div className={s.bar}> 
             <div className={s.innerText}>
-                Account value: <span className={s.greenText}>{netWorth} ETH</span> 
+                Portfolio value: <span className={s.greenText}>{netWorth} ETH</span> 
                 <span className={s.spacer}>
                     Total Shares: <span className={s.greenText}>{shareCount}</span>
                 </span>

@@ -140,7 +140,7 @@ class NightTraderContainer extends React.Component {
     return( 
       <div>
         <div className={s.pot}>
-          Jackpot: <span className={s.innerText}>{this.state.contractBalance} ETH </span>
+          Jackpot: <span className={s.innerText}>{contractBalance} ETH </span>
         </div>  
       
         <div style={outerWrapper}>
