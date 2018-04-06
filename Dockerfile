@@ -8,7 +8,7 @@ COPY ./yarn.lock .
 
 # Install Node.js dependencies
 RUN yarn install --production --no-progress
-RUN yarn remove sequelize
+
 # Copy application files
 COPY ./build .
 
