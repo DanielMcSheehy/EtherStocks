@@ -85,37 +85,33 @@ class ContractContainer extends React.Component {
     this.scrollToFAQ = this.scrollToFAQ.bind(this);
   }
 
-  //document.querySelectorAll('.stockContainer .stockName')
-  //document.querySelectorAll('.stockContainer .shares')[0].innerText
   componentDidMount () {
-      //console.log('baby');
         setTimeout(function(){ 
-        let containerObj = [];
-        let nameArr = document.querySelectorAll('.stockContainer .stockName');
-        let sharesArr = document.querySelectorAll('.stockContainer .shares');
-        let stockArr = document.querySelectorAll('.stockContainer .stockPrice');
+            let containerObj = [];
+            let nameArr = document.querySelectorAll('.stockContainer .stockName');
+            let sharesArr = document.querySelectorAll('.stockContainer .shares');
+            let stockArr = document.querySelectorAll('.stockContainer .stockPrice');
 
-        //console.log('here', sharesArr[1].innerText.match(/[-.0-9]+/));
-        for (let i = 0; i <= nameArr.length -1; i++ ) {
-            let obj = {
-                stockName: nameArr[i].innerText,
-                shares: parseFloat(sharesArr[i].innerText.match(/[-.0-9]+/)[0]),
-                price: stockArr[i].innerText.match(/[-.0-9]+/)[0],
+            //console.log('here', sharesArr[1].innerText.match(/[-.0-9]+/));
+            for (let i = 0; i <= nameArr.length -1; i++ ) {
+                let obj = {
+                    stockName: nameArr[i].innerText,
+                    shares: parseFloat(sharesArr[i].innerText.match(/[-.0-9]+/)[0]),
+                    price: stockArr[i].innerText.match(/[-.0-9]+/)[0],
+                }
+                // fetch(`http://localhost:4000/stock/${obj.stockName}/${obj.price}`)
+                // .then(function(response) {
+                //     return response.json();
+                // })
+                // .then(function(myJson) {
+                //     console.log(myJson);
+                // });
+                containerObj.push(obj);
+                this.setState({shareCount: (this.state.shareCount + obj.shares)});
+                this.setState({netWorth: (this.state.netWorth + obj.shares * obj.price)});
             }
-
-            containerObj.push(obj);
-           
-            this.setState({shareCount: (this.state.shareCount + obj.shares)});
-            this.setState({netWorth: (this.state.netWorth + obj.shares * obj.price)});
-
-        }
-        
-
         }.bind(this), 1000);
-        
   }
-
-
 
   scrollToFAQ() {
     var element = document.getElementById("test");
@@ -162,7 +158,6 @@ class ContractContainer extends React.Component {
 
     let netWorth = parseFloat(this.state.netWorth).toFixed(3);
     let shareCount = parseFloat(this.state.shareCount).toFixed(1);
-    console.log('shares: ', this.state.shareCount);
     let dollarNetWorth = parseFloat(netWorth*380.96).toFixed(2);
     return( 
         

@@ -66,7 +66,6 @@ class NightTraderContainer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    console.log('result cook', result.toNumber());
                     let cookTime = result.toNumber();
                     this.setState({ cookTime });
                 }

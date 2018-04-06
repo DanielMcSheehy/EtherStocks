@@ -70,7 +70,6 @@ class ContractViewer extends React.Component {
                     //buyPrice = buyPrice.toFixed(6); //Bad
                     this.setState({ price: buyPrice });
                     
-                
                 }
             }.bind(this));
             
@@ -129,9 +128,15 @@ class ContractViewer extends React.Component {
             console.error(error);
             }
             else {
-            //console.log('result: ', result);
+                // fetch(`http://localhost:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+                // .then(function(response) {
+                //     return response.json();
+                // })
+                // .then(function(myJson) {
+                //     console.log(myJson);
+                // });
             }
-        });
+        }.bind(this));
     }
     else {
         alert('Minimum Purchase of 0.000001');
@@ -144,9 +149,15 @@ class ContractViewer extends React.Component {
         console.error(error);
         }
         else {
-        console.log('result: ', result);
+            // fetch(`http://localhost:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+            //     .then(function(response) {
+            //         return response.json();
+            //     })
+            //     .then(function(myJson) {
+            //         console.log(myJson);
+            //     });
         }
-    });
+    }.bind(this));
   }
 
   reinvest() {
@@ -157,7 +168,7 @@ class ContractViewer extends React.Component {
         else {
         console.log('result: ', result);
         }
-    });
+    }.bind(this));
   }
 
   withdraw() {
