@@ -185,22 +185,7 @@ class ContractContainer extends React.Component {
         {FeaturedstockView}
         </div>
         <div className={s.wrapper}>
-          <div className={s.traderWrap} id="left">
-            <div className={s.traderTitle}>
-            Night Trader
-            </div>
-            <p className={s.NightTraderInfo}>Last person to buy a stock by the countdown wins jackpot</p>
-            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
-          <NightTrader />
-          </div>
-          <div className={s.traderWrap} id="right">
-            <div className={s.traderTitle}>
-                Day Trader
-            </div>
-            <p className={s.DayTraderInfo}>Price Resets after 24 hours of no purchases</p>
-            <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
-          <DayTraderContainer />
-          </div>
+          
         </div>
          
         <div style={{ marginTop: '0%', clear: 'left', clear: 'right'}}>
