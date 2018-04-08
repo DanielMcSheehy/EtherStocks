@@ -62,8 +62,8 @@ class StockView extends React.Component {
     let addressLink = `https://etherscan.io/address/${this.props.address}`;
     let graphLink = `http://shawntabrizi.com/ethgraph/?address=${this.props.address}`;
 
-    let promotionalLink = this.props.stockName === "ETHERGOO.IO" ? <a style={adLink} href="https://ethergoo.io/">Play Here!</a> : '';
-    let shiftUp = this.props.stockName === "ETHERGOO.IO" ? <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p> : <p className='stockPrice'><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
+    let promotionalLink = this.props.stockName === "EtherGoo" ? <a style={adLink} href="https://ethergoo.io/">Play Here!</a> : '';
+    let shiftUp = this.props.stockName === "EtherGoo" ? <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p> : <p className='stockPrice'><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
     return (
       <div className="stockContainer" style={outerWrapper}>
         <div style={stockHeader}>
