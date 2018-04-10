@@ -73,8 +73,8 @@ class StockView extends React.Component {
         </div>
         <div style={ContentWrapper}>
           {promotionalLink}
-          {shiftUp}
           {promotionalLink2}
+          {shiftUp}
           {shiftUp2}
           <p className='shares' style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
           <p style={balance}><span style={boldText}><span style={balance}>Total Shares: </span></span>{this.props.tokenSupply}</p>
