@@ -8,7 +8,7 @@ class DayTraderContainer extends React.Component {
     super(prop);
     this.state = {
       featuredDayTraderAddress: {
-        'COFFEE':
+        'EtherGoo':
           '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'TULIPS':
            '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
@@ -16,7 +16,7 @@ class DayTraderContainer extends React.Component {
           '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
       },
       twoMultiplierTraderAddress: {
-        'PLATINUM':
+        'Chibi Fighters':
             '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
         'CRYP2 KITTIES':
             '0x15a322AAcA55B30112B7f43B4C737E448CcCc8Ab',
