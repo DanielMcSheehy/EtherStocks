@@ -14,7 +14,7 @@ class ContractContainer extends React.Component {
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
-        'PLATINUM':
+        'Chibi Fighters':
           'https://etherscan.io/address/0xf39729a98d936199c8260af86018ebf21ed8f846',
         'WAMPUM':
           'https://etherscan.io/address/0xa9e20fdd18c792f302e273b09aa142984f25ea64',
@@ -22,7 +22,7 @@ class ContractContainer extends React.Component {
           'https://etherscan.io/address/0xc908a34165d2720d12ffcfb6b99b47161b1c9946',
         TULIPS:
           'https://etherscan.io/address/0x2309ec057db80fbacfd57cf7e275b096f65d1e75',
-        'ETHERGOO':    
+        'EtherGoo':    
           'https://etherscan.io/address/0xc6b5756b2ac3c4c3176ca4b768ae2689ff8b9cee',
       },
       nonFeaturedStockAddress: {
