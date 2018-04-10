@@ -108,7 +108,7 @@ class ContractContainer extends React.Component {
                 // });
                 containerObj.push(obj);
                 this.setState({shareCount: (this.state.shareCount + obj.shares)});
-                this.setState({netWorth: (this.state.netWorth + obj.shares * obj.price)});
+                this.setState({netWorth: (this.state.netWorth + obj.shares * (obj.price*0.79))});
             }
         }.bind(this), 1000);
   }
