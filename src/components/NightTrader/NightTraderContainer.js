@@ -12,7 +12,7 @@ class NightTraderContainer extends React.Component {
       contractBalance: 0,
       cookTime: 0,
       featuredDayTraderAddress: { //Featured
-        'ETHERGOO.IO':
+        'EtherGoo':
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'TULIPS':
            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
@@ -20,7 +20,7 @@ class NightTraderContainer extends React.Component {
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       },
       twoMultiplierTraderAddress: {
-        'PLATINUM':
+        'Chibi Fighters':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'CRYP2 KITTIES':
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
