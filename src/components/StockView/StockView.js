@@ -63,8 +63,8 @@ class StockView extends React.Component {
     let graphLink = `http://shawntabrizi.com/ethgraph/?address=${this.props.address}`;
 
     let promotionalLink = this.props.stockName === "EtherGoo" ? <a style={adLink} href="https://ethergoo.io/">Play Here!</a> : '';
-    let promotionalLink2 = this.props.stockName === "Chibi Fighters" ? <a style={adLink} href="https://chibifighters.io/">Play Here!</a> : '';
     let shiftUp = this.props.stockName === "EtherGoo" ? <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p> : <p className='stockPrice'><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
+    let promotionalLink2 = this.props.stockName === "Chibi Fighters" ? <a style={adLink} href="https://chibifighters.io/">Play Here!</a> : '';    
     let shiftUp2 = this.props.stockName === "Chibi Fighters" ? <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p> : <p className='stockPrice'><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
     return (
       <div className="stockContainer" style={outerWrapper}>
@@ -73,8 +73,8 @@ class StockView extends React.Component {
         </div>
         <div style={ContentWrapper}>
           {promotionalLink}
-          {shiftUp}
           {promotionalLink2}
+          {shiftUp}
           {shiftUp2}
           <p className='shares' style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
           <p style={balance}><span style={boldText}><span style={balance}>Total Shares: </span></span>{this.props.tokenSupply}</p>
