@@ -66,8 +66,7 @@ class ContractViewer extends React.Component {
                     let _ethConverted = web3.fromWei(_weiprice, 'ether');
                     
                     let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
-                        //282303516109755     82303516109755
-                    //buyPrice = buyPrice.toFixed(6); //Bad
+
                     this.setState({ price: buyPrice });
                     
                 }
@@ -81,9 +80,6 @@ class ContractViewer extends React.Component {
                     
                     this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) });
                     // let _eth = web3.fromWei(result.toNumber(), 'ether');
-                    // console.log('new', result.toNumber());
-                    // this.setState({ contractBalance: (_eth) });
-                    //('see this? ', this.state.contractBalance);
                     
                 }
             }.bind(this));
@@ -104,17 +100,12 @@ class ContractViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    //let div = result.c[0];
                     let div = result.toNumber();
                     let dividends = web3.fromWei(div); 
                     dividends = parseFloat(dividends).toFixed(4);
-                        
-                    
-                    //.log('div', dividends);
                     dividends = dividends > 0.00001 ? (dividends) : 0;
 
-                    this.setState({ dividends }) //Very low
-
+                    this.setState({ dividends }) 
                 }
             }.bind(this));
         
@@ -128,13 +119,14 @@ class ContractViewer extends React.Component {
             console.error(error);
             }
             else {
-                // fetch(`http://localhost:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
-                // .then(function(response) {
-                //     return response.json();
-                // })
-                // .then(function(myJson) {
-                //     console.log(myJson);
-                // });
+                fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .catch(error => console.error('Error with server fetch:', error))
+                .then(function(myJson) {
+                    console.log(myJson);
+                });
             }
         }.bind(this));
     }
@@ -149,13 +141,14 @@ class ContractViewer extends React.Component {
         console.error(error);
         }
         else {
-            // fetch(`http://localhost:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
-            //     .then(function(response) {
-            //         return response.json();
-            //     })
-            //     .then(function(myJson) {
-            //         console.log(myJson);
-            //     });
+            fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .catch(error => console.error('Error with server fetch:', error))
+                .then(function(myJson) {
+                    console.log(myJson);
+                });
         }
     }.bind(this));
   }
@@ -189,6 +182,14 @@ class ContractViewer extends React.Component {
         }
         else {
         console.log('result: ', result);
+        fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/getout/0/${this.state.price}`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .catch(error => console.error('Error with server fetch:', error))
+                .then(function(myJson) {
+                    console.log(myJson);
+                });
         }
     });
   }
@@ -200,7 +201,7 @@ class ContractViewer extends React.Component {
         float: 'left',
         position: 'relative',
       };
-      
+
     return ( // This is where we put stocks. Will be dynamic very soon.
       <div style={outerWrapper}>
         <StockView 

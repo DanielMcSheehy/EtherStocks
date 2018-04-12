@@ -11,6 +11,7 @@ class ContractContainer extends React.Component {
       stockDataArr: {},
       shareCount: 0,
       netWorth: 0,
+      ETH_CONVERSION_RATE: 400,
       featuredStockAddress: {
         'CRYP2 KITTIES':
           'https://etherscan.io/address/0xa6230691b2b1cff2f9737ccfa3ff95d580e482a0',
@@ -86,29 +87,46 @@ class ContractContainer extends React.Component {
   }
 
   componentDidMount () {
+
+        
+        fetch(`https://api.coinmarketcap.com/v1/ticker/ethereum/`)
+        .then(function(response) {
+            return response.json();
+        })
+        .catch(error => console.error('Error with eth api', error))
+        .then(function(response) {  
+            this.setState({ETH_CONVERSION_RATE: response[0].price_usd});
+        }.bind(this));
+
         setTimeout(function(){ 
+            
+        
             let containerObj = [];
             let nameArr = document.querySelectorAll('.stockContainer .stockName');
             let sharesArr = document.querySelectorAll('.stockContainer .shares');
-            let stockArr = document.querySelectorAll('.stockContainer .stockPrice');
+            let stockArr = document.querySelectorAll('.stockContainer .stockPrice'); 
+            let divArr = document.querySelectorAll('.stockContainer .stockDividends');
 
-            //console.log('here', sharesArr[1].innerText.match(/[-.0-9]+/));
             for (let i = 0; i <= nameArr.length -1; i++ ) {
                 let obj = {
                     stockName: nameArr[i].innerText,
                     shares: parseFloat(sharesArr[i].innerText.match(/[-.0-9]+/)[0]),
                     price: stockArr[i].innerText.match(/[-.0-9]+/)[0],
+                    dividends: parseFloat(divArr[i].innerText.match(/[-.0-9]+/)[0]),
                 }
-                // fetch(`http://localhost:4000/stock/${obj.stockName}/${obj.price}`)
-                // .then(function(response) {
-                //     return response.json();
-                // })
-                // .then(function(myJson) {
-                //     console.log(myJson);
-                // });
+
+                fetch(`http://18.188.127.109:4000/stock/${obj.stockName}/${obj.price}`)
+                .then(function(response) {
+                    return response.json();
+                })
+                .catch(error => console.error('Error with server fetch:', error))
+                .then(function(myJson) {
+                    //console.log(myJson);
+                });
+
                 containerObj.push(obj);
                 this.setState({shareCount: (this.state.shareCount + obj.shares)});
-                this.setState({netWorth: (this.state.netWorth + obj.shares * (obj.price*0.79))});
+                this.setState({netWorth: (this.state.netWorth + obj.shares * (obj.price*0.79) + obj.dividends )});
             }
         }.bind(this), 1000);
   }
@@ -158,7 +176,7 @@ class ContractContainer extends React.Component {
 
     let netWorth = parseFloat(this.state.netWorth).toFixed(3);
     let shareCount = parseFloat(this.state.shareCount).toFixed(1);
-    let dollarNetWorth = parseFloat(netWorth*380.96).toFixed(2);
+    let dollarNetWorth = parseFloat(netWorth*this.state.ETH_CONVERSION_RATE).toFixed(2);
     return( 
         
       <div>
