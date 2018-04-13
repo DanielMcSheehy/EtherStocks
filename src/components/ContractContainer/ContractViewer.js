@@ -119,7 +119,7 @@ class ContractViewer extends React.Component {
             console.error(error);
             }
             else {
-                fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+                fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`)
                 .then(function(response) {
                     return response.json();
                 })
@@ -141,7 +141,7 @@ class ContractViewer extends React.Component {
         console.error(error);
         }
         else {
-            fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}`)
+            fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`)
                 .then(function(response) {
                     return response.json();
                 })
@@ -182,7 +182,7 @@ class ContractViewer extends React.Component {
         }
         else {
         console.log('result: ', result);
-        fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/getout/0/${this.state.price}`)
+        fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/getout/0/${this.state.price}/${this.props.stockName}`)
                 .then(function(response) {
                     return response.json();
                 })
