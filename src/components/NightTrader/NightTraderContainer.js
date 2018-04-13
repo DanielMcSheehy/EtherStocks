@@ -14,7 +14,7 @@ class NightTraderContainer extends React.Component {
       cookTime: 0,
       lastBagHolderAddress: '',
       featuredDayTraderAddress: { //Featured
-        'ETHERGOO.IO':
+        'EtherGoo':
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
         'TULIPS':
            '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
