@@ -143,9 +143,6 @@ class ContractContainer extends React.Component {
         float: 'right'
     };
 
-    var featuredStyle = {
-        marginLeft: '0%',
-    };
     const FeaturedstockView = [];
     Object.keys(this.state.featuredStockAddress).map((key, index) => {
       FeaturedstockView.push(
@@ -174,6 +171,10 @@ class ContractContainer extends React.Component {
       );
     });
 
+    var featuredStyle = {
+        marginLeft: '0%',
+    };
+
     let netWorth = parseFloat(this.state.netWorth).toFixed(3);
     let shareCount = parseFloat(this.state.shareCount).toFixed(1);
     let dollarNetWorth = parseFloat(netWorth*this.state.ETH_CONVERSION_RATE).toFixed(2);
@@ -199,8 +200,8 @@ class ContractContainer extends React.Component {
         <h1 style={{ marginLeft: '44%'}}>Featured</h1>
         <hr style={{ marginLeft: '6%', width: '85%' }}></hr>
 
-        <div style={featuredStyle}>
-        {FeaturedstockView}
+        <div className={s.featuredStocks}>
+            {FeaturedstockView}
         </div>
         <div className={s.wrapper}>
           

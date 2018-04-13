@@ -19,6 +19,15 @@
   
 }
 
+.featuredStocks {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  min-width: 1100px;
+  margin-left: -4.25%;
+}
+
+
 .innerText {
     color: white;
     margin-left: 6%;
