@@ -8,9 +8,11 @@ class NightTraderContainer extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
+      ContractInstance: {},
       ownerAccount: '',
       contractBalance: 0,
       cookTime: 0,
+      lastBagHolderAddress: '',
       featuredDayTraderAddress: { //Featured
         'ETHERGOO.IO':
           '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
@@ -36,6 +38,7 @@ class NightTraderContainer extends React.Component {
             '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5',
       }
     };
+    this.finalizeGame = this.finalizeGame.bind(this);
   }
 
   componentDidMount () { 
@@ -48,7 +51,9 @@ class NightTraderContainer extends React.Component {
         this.web3 = new Web3(new web3.providers.HttpProvider("http://localhost:8545")); // Not to be used.
       }
       const MyContract = web3.eth.contract(Abi);
-      var ContractInstance = MyContract.at('0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5');    
+      var ContractInstance = MyContract.at('0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5'); 
+
+      this.setState({ ContractInstance });  
       this.setState({ ownerAccount: web3.eth.accounts[0] });
                 ContractInstance.getBalance( {from: this.state.ownerAccount}, function(error, result) { // 0-5
                   if (error) {
@@ -71,11 +76,35 @@ class NightTraderContainer extends React.Component {
                 }
             }.bind(this));
 
+            ContractInstance.lastHotPotatoHolder.call( {from: this.state.ownerAccount}, function(error, result) { // 0-5
+              if (error) {
+                  console.error(error);
+              }
+              else {
+                this.setState({ lastBagHolderAddress: result });
+              }
+          }.bind(this));
+
+
     } catch (error) {
             console.log('Please Use MetaMask ', error);
     }
   }
 
+  finalizeGame(event) {
+    event.preventDefault();
+    let contractAddress = '0x6d7de51bcfa5b4f3d470de3aca3041e0908060e5';
+    let _amountToSendInWei = 0;
+    web3.eth.contract(Abi).at(contractAddress).buyPotato(64, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
+      if (error) {
+      console.error('error at finalize: ', error);
+      }
+      else {
+      
+      }
+  });
+  }
+ 
   render() {
 
     var outerWrapper = {
@@ -131,16 +160,23 @@ class NightTraderContainer extends React.Component {
         />,
       );
     });
-    // <h1 style={{ marginLeft: '24%' }}>Day Trader </h1>
-          
-		//   <h3 style={{ marginLeft: '22%' }}> Price resets after 24 hours </h3>
-    //   <hr style={{ marginLeft: '18%', width: '23%' }}></hr>
+
     let contractBalance = this.state.contractBalance ? parseFloat(this.state.contractBalance).toFixed(4) : 0;
+    let winnerAddress = this.state.lastBagHolderAddress ? <a class={s.winnerAddressLink} href={`https://etherscan.io/address/${this.state.lastBagHolderAddress}`}>{(this.state.lastBagHolderAddress).slice(0, 10) + '...'}</a>: '';
+    let finalizeContainer = this.state.cookTime === 0 ?  <button className={s.finalizeButton} onClick={this.finalizeGame}> Finalize </button> : '';
     return( 
       <div>
         <div className={s.pot}>
           Jackpot: <span className={s.innerText}>{contractBalance} ETH </span>
         </div>  
+
+        <div className={s.winnerContainer}>
+          Last Winner: {winnerAddress}
+        </div>
+
+        <div className={s.finalizeButtonWrapper}> 
+            {finalizeContainer}
+        </div>
       
         <div style={outerWrapper}>
           <p style={multiplier}> </p>

@@ -50,7 +50,6 @@ class NightTraderViewer extends React.Component {
     }
         
     getBuyPrice(ContractInstance) {    
-
             ContractInstance.potatoes(this.props.index, {from: this.state.ownerAccount}, function(error, result) { // 0-5
                 if (error) {
                     console.error(error);
@@ -69,7 +68,7 @@ class NightTraderViewer extends React.Component {
                     console.error(error);
                 }
                 else {
-                    console.log('result clock', result.toNumber());
+                    console.log('result new clock', result.toNumber());
                     let timeToContestStart = result.toNumber();
                     this.setState({ timeToContestStart });
                 }
