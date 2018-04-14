@@ -216,7 +216,7 @@ class ContractContainer extends React.Component {
             <div className={s.traderTitle}>
                 Day Trader
             </div>
-            <p className={s.DayTraderInfo}>Price Resets after 24 hours of no purchases</p>
+            <p className={s.DayTraderInfo}>Price Resets after 24 hours of no purchases. This is a high risk, high reward game of hot potato, buy a meaningless asset and hope someone else buys it from you for 1.5, or 2x the price.  With every purchase the clock resets to 24hrs, but when the clock runs out the fairy tale ends, and the price goes back to 0.005. Not for the faint of heart!  (fees will be used to promote and pump the real, fake stocks) </p>
             <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
           <DayTraderContainer />
           </div>
