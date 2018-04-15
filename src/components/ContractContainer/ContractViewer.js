@@ -26,10 +26,9 @@ class ContractViewer extends React.Component {
         this.getout = this.getout.bind(this);
       }
 
-    componentDidMount () { // Replace current shit with new contracts/event listeners
+    componentDidMount () { 
         try {
             
-        
         if (typeof Web3 != 'undefined') {
           //console.log("Using web3 detected from external source like Metamask");
           web3 = new Web3(window.web3.currentProvider); // This is where it listens to metamask
@@ -172,7 +171,7 @@ class ContractViewer extends React.Component {
         else {
         console.log('result: ', result);
         }
-    });
+    }.bind(this));
   }
 
   getout() {
@@ -181,7 +180,6 @@ class ContractViewer extends React.Component {
         console.error(error);
         }
         else {
-        console.log('result: ', result);
         fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/getout/0/${this.state.price}/${this.props.stockName}`)
                 .then(function(response) {
                     return response.json();
@@ -191,7 +189,7 @@ class ContractViewer extends React.Component {
                     console.log(myJson);
                 });
         }
-    });
+    }.bind(this));
   }
 
   render() {
