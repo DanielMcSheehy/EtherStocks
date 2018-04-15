@@ -68,18 +68,18 @@ class StockView extends React.Component {
     if (this.props.stockName === "EtherGoo" || this.props.stockName === "Chibi Fighters") {
       shiftUp = <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
       if (this.props.stockName === "EtherGoo") {
-        promotionaLink = <a style={adLink} href="https://ethergoo.io/">Play Here!</a>;
+        promotionaLink = <a style={adLink} target="_blank" href="https://ethergoo.io/">Play Here!</a>;
         
       }
       else if (this.props.stockName === "Chibi Fighters") {
-        promotionaLink = <a style={adLink} href="https://chibifighters.io/">Play Here!</a>;
+        promotionaLink = <a style={adLink} target="_blank" href="https://chibifighters.io/">Play Here!</a>;
       }
     }
 
     return (
       <div className="stockContainer" style={outerWrapper}>
         <div style={stockHeader}>
-          <a className='stockName' style={headerText} href={addressLink}>{this.props.stockName}</a>
+          <a className='stockName' style={headerText} href={addressLink} target="_blank">{this.props.stockName}</a>
         </div>
         <div style={ContentWrapper}>
 
@@ -89,7 +89,7 @@ class StockView extends React.Component {
           <p className='shares' style={balance}><span style={boldText}>Balance: </span>{this.props.shares} Shares</p>
           <p style={balance}><span style={boldText}><span style={balance}>Total Shares: </span></span>{this.props.tokenSupply}</p>
           <p className="stockDividends"><span style={boldText}>Dividends:</span> {this.props.dividends} ETH</p>
-          <a href={graphLink}>Chart</a>
+          <a href={graphLink} target="_blank">Chart</a>
           <ButtonView 
           buy={this.props.buy} 
           sell={this.props.sell} 
