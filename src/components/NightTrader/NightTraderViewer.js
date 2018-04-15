@@ -78,12 +78,13 @@ class NightTraderViewer extends React.Component {
   buy() {
         //let _amountToSendInWei = this.state.bags.sellingPrice;
          let _amountToSendInWei = web3.toWei(this.state.bags.sellingPrice);
+        
         web3.eth.contract(Abi).at(this.props.contractAddress).buyPotato(this.props.index, {from: this.state.ownerAccount, value: _amountToSendInWei}, function(error, result) {
             if (error) {
             console.error(error);
             }
             else {
-            
+                    window.location.reload();
             }
         });
   }

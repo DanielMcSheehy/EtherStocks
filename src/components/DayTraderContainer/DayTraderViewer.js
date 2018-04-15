@@ -89,7 +89,7 @@ class DayTraderViewer extends React.Component {
             console.error(error);
             }
             else {
-            
+                window.location.reload();
             }
         });
   }
