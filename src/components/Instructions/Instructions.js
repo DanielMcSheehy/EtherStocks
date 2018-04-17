@@ -35,7 +35,7 @@ class Instructions extends React.Component {
             NightTrader:
           </p>
           <p>
-          Like the day trader except a percentage of every purchase goes into a jackpot, and with every buy the timer resets to 8 hours.  The last one to buy when clock runs out wins 70% of jackpot, the rest will be used to start a new jackpot, and the devs will put their share into pumping the stock associated with the winning bid (usually in about 24hrs, so get in before them and make some dividends!).
+          Like the day trader except a percentage of every purchase goes into a jackpot, and with every buy the timer resets to 6 hours.  The last one to buy when clock runs out wins 70% of jackpot, the rest will be used to start a new jackpot, and the devs will put their share into pumping the stock associated with the winning bid (usually in about 24hrs, so get in before them and make some dividends!).
           </p>
           <p className={s.boldText}>
             EtherStocks:
