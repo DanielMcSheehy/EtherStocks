@@ -26,7 +26,7 @@ class Navigation extends React.Component {
     return (
       <div className={s.root} role="navigation">
       <div className={s.logo}>
-        <a className={s.link} href="https://www.reddit.com/r/EtherStocks/"> 
+        <a className={s.link} target="_blank" href="https://www.reddit.com/r/EtherStocks/"> 
               <img
                 style={roundLogo}
                 height="50px"
@@ -34,7 +34,7 @@ class Navigation extends React.Component {
                 alt="React"
               />
           </a>
-          <a className={s.link} href="https://metamask.io/">
+          <a className={s.link} target="_blank" href="https://metamask.io/">
               <img 
                 src={MetaMaskSVG}
                 height="50px"

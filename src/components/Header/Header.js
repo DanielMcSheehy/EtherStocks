@@ -38,7 +38,7 @@ class Header extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
-          <a className={s.brand} href="https://github.com/DanielMcSheehy/EtherStocks">
+          <a className={s.brand} target="_blank" href="https://github.com/DanielMcSheehy/EtherStocks">
             <img
               src={GitLogo}
               style={roundLogo}
@@ -47,7 +47,7 @@ class Header extends React.Component {
             />
           </a>
 
-          <a className={s.brand} href="https://discord.gg/mb2mHJF">
+          <a className={s.brand} target="_blank" href="https://discord.gg/mb2mHJF">
             <img
               src={DiscordLogo}
               style={roundLogo}
@@ -56,7 +56,7 @@ class Header extends React.Component {
             />
           </a>
 
-          <a className={s.brand} href="https://steemit.com/@brittuf">
+          <a className={s.brand} target="_blank" href="https://steemit.com/trending/etherstocks">
             <img
               src={Steemit}
               style={roundLogo}
