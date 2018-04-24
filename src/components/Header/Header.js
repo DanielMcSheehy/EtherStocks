@@ -18,13 +18,14 @@ import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
 import Steemit from './steemit-vector-logo.svg';
 import DiscordLogo from './discordlogo.png';
+import TwitterLogo from './Twitter_Logo_BLue.png';
 
 
 
 class Header extends React.Component {
   render() {
     var outerWrapper = {
-      marginLeft: '8%',
+      marginLeft: '0%',
     };
     var roundLogo = {
       borderRadius: '5px',
@@ -38,35 +39,45 @@ class Header extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
-          <a className={s.brand} target="_blank" href="https://github.com/DanielMcSheehy/EtherStocks">
-            <img
-              src={GitLogo}
-              style={roundLogo}
-              height="45px"
-              alt="React"
-            />
-          </a>
+          <div className={s.logo_wrapper}>
+            <a className={s.brand} target="_blank" href="https://twitter.com/etherstocks?lang=en">
+              <img
+                src={TwitterLogo}
+                style={roundLogo}
+                height="55px"
+                alt="React"
+              />
+            </a>
+            <a className={s.brand} target="_blank" href="https://github.com/DanielMcSheehy/EtherStocks">
+              <img
+                src={GitLogo}
+                style={roundLogo}
+                height="45px"
+                alt="React"
+              />
+            </a>
 
-          <a className={s.brand} target="_blank" href="https://discord.gg/mb2mHJF">
-            <img
-              src={DiscordLogo}
-              style={roundLogo}
-              height="45px"
-              alt="React"
-            />
-          </a>
-
-          <a className={s.brand} target="_blank" href="https://steemit.com/trending/etherstocks">
-            <img
-              src={Steemit}
-              style={roundLogo}
-              height="45px"
-              alt="React"
-            />
-          </a>
+            <a className={s.brand} target="_blank" href="https://discord.gg/mb2mHJF">
+              <img
+                src={DiscordLogo}
+                style={roundLogo}
+                height="45px"
+                alt="React"
+              />
+            </a>
+           
+            <a className={s.brand} target="_blank" href="https://steemit.com/trending/etherstocks">
+              <img
+                src={Steemit}
+                style={roundLogo}
+                height="45px"
+                alt="React"
+              />
+            </a>
+            </div>
           <div className={s.banner}>
           <img
-          style={outerWrapper}
+              style={outerWrapper}
               src={EthLogo}
               width="100px"
               alt="React"

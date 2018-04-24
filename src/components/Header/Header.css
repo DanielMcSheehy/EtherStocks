@@ -24,6 +24,10 @@
   max-width: var(--max-content-width);
 }
 
+.logo_wrapper {
+  margin-left: -90px;
+}
+
 .brand {
   color: color(var(--brand-color) lightness(+10%));
   text-decoration: none;
@@ -36,11 +40,12 @@
 
 .banner {
   text-align: center;
+  margin-left: 10px;
 }
 
 .bannerTitle {
   margin: 0;
-  margin-left: 10px;
+  margin-left: 20px;
   padding: 10px;
   font-weight: normal;
   font-size: 4em;
