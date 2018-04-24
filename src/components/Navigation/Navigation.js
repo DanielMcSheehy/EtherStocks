@@ -16,6 +16,7 @@ import MetaMaskLogo from './MetaMask.png';
 import MetaMaskSVG from './metamasksvg.svg';
 import Reddit from './Reddit_icon.svg';
 import TrustLogo from './trustUpdated.png';
+import FacebookLogo from './flogo_RGB_HEX-512.png';
 
 class Navigation extends React.Component {
   render() {
@@ -34,7 +35,15 @@ class Navigation extends React.Component {
                 src={TrustLogo}
                 alt="React"
               />
-          </a>
+        </a>
+        <a className={s.link} target="_blank" href="https://www.facebook.com/EtherStocks/"> 
+              <img
+                style={roundLogo}
+                height="50px"
+                src={FacebookLogo}
+                alt="React"
+              />
+        </a>
         <a className={s.link} target="_blank" href="https://www.reddit.com/r/EtherStocks/"> 
               <img
                 style={roundLogo}
