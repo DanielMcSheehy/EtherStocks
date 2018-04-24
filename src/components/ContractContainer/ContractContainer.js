@@ -207,7 +207,7 @@ class ContractContainer extends React.Component {
             <div className={s.traderTitle}>
             Night Trader
             </div>
-            <p className={s.NightTraderInfo}>Last person to buy a stock by the countdown wins jackpot. Like the day trader except a percentage of every purchase goes into a jackpot, and with every buy the timer resets to 8 hours.  The last one to buy when clock runs out wins 70% of jackpot, the rest will be used to start a new jackpot, and the devs will put their share into pumping the stock associated with the winning bid (usually in about 24hrs, so get in before them and make some dividends!)</p>
+            <p className={s.NightTraderInfo}>Like the day trader except a percentage of every purchase goes into a jackpot, and with every buy the timer resets to 6 hours.  The last one to buy when clock runs out wins 70% of jackpot, the rest will be used to start a new jackpot, and the devs will put their share into pumping the stock associated with the winning bid (usually in about 24hrs, so get in before them and make some dividends!)</p>
             <hr style={{ marginLeft: '30%', width: '40%' }}></hr>
           <NightTrader />
           </div>

@@ -68,7 +68,7 @@ class StockView extends React.Component {
     if (this.props.stockName === "EtherGoo" || this.props.stockName === "Chibi Fighters") {
       shiftUp = <p className='stockPrice' style={shiftUpStyle}><span style={boldText}>Price: </span> {this.props.price} ETH</p>;
       if (this.props.stockName === "EtherGoo") {
-        promotionaLink = <a style={adLink} target="_blank" href="https://ethergoo.io/">Play Here!</a>;
+        promotionaLink = <a style={adLink} target="_blank" href="https://ethergoo.io/freekitty/0x53CD39080eE226a339362c44128bF272d528C1A7">Play Here!</a>;
         
       }
       else if (this.props.stockName === "Chibi Fighters") {
