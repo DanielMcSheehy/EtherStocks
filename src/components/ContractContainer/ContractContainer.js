@@ -88,7 +88,7 @@ class ContractContainer extends React.Component {
 
   componentDidMount () {
 
-        
+
         fetch(`https://api.coinmarketcap.com/v1/ticker/ethereum/`)
         .then(function(response) {
             return response.json();
@@ -100,7 +100,6 @@ class ContractContainer extends React.Component {
 
         setTimeout(function(){ 
             
-        
             let containerObj = [];
             let nameArr = document.querySelectorAll('.stockContainer .stockName');
             let sharesArr = document.querySelectorAll('.stockContainer .shares');

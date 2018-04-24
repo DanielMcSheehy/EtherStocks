@@ -15,6 +15,7 @@ import Link from '../Link';
 import MetaMaskLogo from './MetaMask.png';
 import MetaMaskSVG from './metamasksvg.svg';
 import Reddit from './Reddit_icon.svg';
+import TrustLogo from './trustUpdated.png';
 
 class Navigation extends React.Component {
   render() {
@@ -26,6 +27,14 @@ class Navigation extends React.Component {
     return (
       <div className={s.root} role="navigation">
       <div className={s.logo}>
+      <a className={s.link} target="_blank" href="https://trustwalletapp.com"> 
+              <img
+                style={roundLogo}
+                height="50px"
+                src={TrustLogo}
+                alt="React"
+              />
+          </a>
         <a className={s.link} target="_blank" href="https://www.reddit.com/r/EtherStocks/"> 
               <img
                 style={roundLogo}
