@@ -198,7 +198,7 @@ class ContractContainer extends React.Component {
         </div>
         <h1 style={{ marginLeft: '44%'}}>Featured</h1>
         <hr style={{ marginLeft: '6%', width: '85%' }}></hr>
-
+        
         <div className={s.featuredStocks}>
             {FeaturedstockView}
         </div>
