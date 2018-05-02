@@ -143,7 +143,6 @@ class ContractViewer extends React.Component {
           });
         }
       });
-        );
     } else {
       alert('Minimum Purchase of 0.000001');
     }
@@ -231,7 +230,7 @@ class ContractViewer extends React.Component {
   render() {
     const outerWrapper = {
       minWidth: '180px',
-      marginLeft: '1.5%',
+      marginLeft: '3.5%',
       position: 'relative',
     };
 
