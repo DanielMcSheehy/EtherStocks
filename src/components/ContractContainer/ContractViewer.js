@@ -5,7 +5,7 @@ import GameView from '../GameView';
 import Abi from './contractAbi.json';
 import StockView from '../StockView';
 
-var Web3 = require('web3');
+const Web3 = require('web3');
 
 class ContractViewer extends React.Component {
   constructor(props) {
@@ -39,16 +39,17 @@ class ContractViewer extends React.Component {
 
       const MyContract = web3.eth.contract(Abi);
 
-      var ContractInstance = MyContract.at(this.props.contractAddress);
+      const ContractInstance = MyContract.at(this.props.contractAddress);
 
       this.setState({ ownerAccount: web3.eth.accounts[0] });
 
       this.getBuyPrice(ContractInstance);
     } catch (error) {
       console.log('Error with MetaMask: ', error);
-      let previewPriceValue = (Math.random() * (0.013 - 0.007) + 0.007).toFixed(
-        5,
-      );
+      const previewPriceValue = (
+        Math.random() * (0.013 - 0.007) +
+        0.007
+      ).toFixed(5);
       this.setState({ price: previewPriceValue });
     }
   }
@@ -57,67 +58,61 @@ class ContractViewer extends React.Component {
     ContractInstance.buyPrice(
       { from: this.state.ownerAccount },
       (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
+        if (error) {
+          console.error(error);
+        } else {
+          const _weiprice = result.toNumber();
+          // let _ethConverted = (_weiprice/1e18);
+          const _ethConverted = web3.fromWei(_weiprice, 'ether');
 
-        let _weiprice = result.toNumber();
-                    //let _ethConverted = (_weiprice/1e18);
-                    let _ethConverted = web3.fromWei(_weiprice, 'ether');
-                    
-                    let buyPrice = ((1/(_ethConverted*.9))/1000000).toFixed(6);
+          const buyPrice = (1 / (_ethConverted * 0.9) / 1000000).toFixed(6);
 
-                    this.setState({ price: buyPrice });
-                    
-                  }
-                });
+          this.setState({ price: buyPrice });
+        }
+      },
+    );
 
     ContractInstance.balanceOf(
       web3.eth.accounts[0],
       { from: this.state.ownerAccount },
       (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-
-        this.setState({ contractBalance: (result.c[0]*.1).toFixed(1) });
-                    // let _eth = web3.fromWei(result.toNumber(), 'ether');
-                    
-                  }
-                });
+        if (error) {
+          console.error(error);
+        } else {
+          this.setState({ contractBalance: (result.c[0] * 0.1).toFixed(1) });
+          // let _eth = web3.fromWei(result.toNumber(), 'ether');
+        }
+      },
+    );
 
     ContractInstance.totalSupply(
       { from: this.state.ownerAccount },
       (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        let tokenSupply = (result.c[0]*.1).toFixed(2)
-        this.setState({ tokenSupply });
-
-      }
-    });
+        if (error) {
+          console.error(error);
+        } else {
+          const tokenSupply = (result.c[0] * 0.1).toFixed(2);
+          this.setState({ tokenSupply });
+        }
+      },
+    );
 
     ContractInstance.dividends(
       web3.eth.accounts[0],
       { from: this.state.ownerAccount },
       (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        let div = result.toNumber();
-        let dividends = web3.fromWei(div); 
-        dividends = parseFloat(dividends).toFixed(4);
-        dividends = dividends > 0.00001 ? (dividends) : 0;
+        if (error) {
+          console.error(error);
+        } else {
+          const div = result.toNumber();
+          let dividends = web3.fromWei(div);
+          dividends = parseFloat(dividends).toFixed(4);
+          dividends = dividends > 0.00001 ? dividends : 0;
 
-        this.setState({ dividends }) 
-      }
-    });
-
+          this.setState({ dividends });
+        }
+      },
+    );
   }
 
   buy(_ethValue) {
@@ -129,20 +124,24 @@ class ContractViewer extends React.Component {
         .fund(
           { from: this.state.ownerAccount, value: _amountToSendInWei },
           (error, result) => {
-        if (error) {
-          console.error(error);
-        }
-        else {
-          fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`)
-          .then(function(response) {
-            return response.json();
-          })
-          .catch(error => console.error('Error with server fetch:', error))
-          .then(function(myJson) {
-            console.log(myJson);
-          });
-        }
-      });
+            if (error) {
+              console.error(error);
+            } else {
+              fetch(
+                `http://18.188.127.109:4000/transaction/${
+                  this.state.ownerAccount
+                }/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`,
+              )
+                .then(response => response.json())
+                .catch(error =>
+                  console.error('Error with server fetch:', error),
+                )
+                .then(myJson => {
+                  console.log(myJson);
+                });
+            }
+          },
+        );
     } else {
       alert('Minimum Purchase of 0.000001');
     }
@@ -153,78 +152,70 @@ class ContractViewer extends React.Component {
     web3.eth
       .contract(Abi)
       .at(this.props.contractAddress)
-      .sellMyTokens(
-        { from: this.state.ownerAccount },
-        (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`)
-        .then(function(response) {
-          return response.json();
-        })
-        .catch(error => console.error('Error with server fetch:', error))
-        .then(function(myJson) {
-          console.log(myJson);
-        });
-      }
-    });
+      .sellMyTokens({ from: this.state.ownerAccount }, (error, result) => {
+        if (error) {
+          console.error(error);
+        } else {
+          fetch(
+            `http://18.188.127.109:4000/transaction/${
+              this.state.ownerAccount
+            }/buy/${_ethValue}/${this.state.price}/${this.props.stockName}`,
+          )
+            .then(response => response.json())
+            .catch(error => console.error('Error with server fetch:', error))
+            .then(myJson => {
+              console.log(myJson);
+            });
+        }
+      });
   }
 
   reinvest() {
     web3.eth
       .contract(Abi)
       .at(this.props.contractAddress)
-      .reinvestDividends(
-        { from: this.state.ownerAccount },
-        (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        console.log('result: ', result);
-      }
-    });
+      .reinvestDividends({ from: this.state.ownerAccount }, (error, result) => {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log('result: ', result);
+        }
+      });
   }
 
   withdraw() {
     web3.eth
       .contract(Abi)
       .at(this.props.contractAddress)
-      .withdraw(
-        { from: this.state.ownerAccount },
-        (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        console.log('result: ', result);
-      }
-    });
+      .withdraw({ from: this.state.ownerAccount }, (error, result) => {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log('result: ', result);
+        }
+      });
   }
 
   getout() {
     web3.eth
       .contract(Abi)
       .at(this.props.contractAddress)
-      .getMeOutOfHere(
-        { from: this.state.ownerAccount },
-        (error, result) => {
-      if (error) {
-        console.error(error);
-      }
-      else {
-        fetch(`http://18.188.127.109:4000/transaction/${this.state.ownerAccount}/getout/0/${this.state.price}/${this.props.stockName}`)
-        .then(function(response) {
-          return response.json();
-        })
-        .catch(error => console.error('Error with server fetch:', error))
-        .then(function(myJson) {
-          console.log(myJson);
-        });
-      }
-    });
+      .getMeOutOfHere({ from: this.state.ownerAccount }, (error, result) => {
+        if (error) {
+          console.error(error);
+        } else {
+          fetch(
+            `http://18.188.127.109:4000/transaction/${
+              this.state.ownerAccount
+            }/getout/0/${this.state.price}/${this.props.stockName}`,
+          )
+            .then(response => response.json())
+            .catch(error => console.error('Error with server fetch:', error))
+            .then(myJson => {
+              console.log(myJson);
+            });
+        }
+      });
   }
 
   render() {
