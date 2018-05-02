@@ -18,8 +18,7 @@ import EthLogo from './badge-critical-charts.png'; //190
 import GitLogo from './gitlogo.svg';
 import Steemit from './steemit-vector-logo.svg';
 import DiscordLogo from './discordlogo.png';
-import TwitterLogo from './Twitter_Logo_BLue.png';
-
+import TwitterLogo from './Twitter_Logo_Blue.png';
 
 
 class Header extends React.Component {
