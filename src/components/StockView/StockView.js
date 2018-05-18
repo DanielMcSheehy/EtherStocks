@@ -93,7 +93,7 @@ class StockView extends React.Component {
         );
       } else if (this.props.stockName === 'Chibi Fighters') {
         promotionaLink = (
-          <a style={adLink} target="_blank" href="https://chibifighters.io/">
+          <a style={adLink} target="_blank" href="https://chibigame.io/?r=155">
             Play Here!
           </a>
         );
